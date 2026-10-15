@@ -1,0 +1,276 @@
+check round 11 on LAPTOP-R77M5D6M - failed (exit 1)
+cmd: powershell -NoProfile -ExecutionPolicy Bypass -File code/local_check.ps1
+elapsed: 40s
+
+OK: all .ps1 files are ASCII-only
+OK: sync.config.json branch=arena/84877cdd-rea
+OK: sync.config.json branch matches HEAD (arena/84877cdd-rea)
+OK: root scripts identical to skills/git-sync/scripts
+OK: no drive-style variable typos ($var:)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+OK: every .ps1 parses
+   (gate ran via E:\hermes\git\bin\bash.exe [git])
+== accept 2a: silent push PROVEN (ls-remote + push --dry-run, prompts disabled)
+== accept 2b (fallback): one LONG-LIVED loop process - one brief flash per logon,
+   not per poll. For zero flash: admin PowerShell -> .\watch.ps1 -Unregister ;
+   .\watch.ps1 -Register -Headless   (or fix the launcher, see watch-*.log)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+== check_loop_summary PASSED
+== accept 2c: watcher closing lines verified (every exit path has its summary)
+== deliverables: (no deliverable/OFFICE_HASHES.json - package checks skipped)
+   SKIP 3h no Office deliverable declared in deliverable/OFFICE_HASHES.json - nothing to open
+== task r11: t1_link_probe.ps1
+# rea x git-sync link probe
+Executed ON THE LOCAL MACHINE by the git-sync watcher (code/local_check.ps1 section 4):
+the agent pushed this script, the watcher pulled it, ran it here, and pushes this file back.
+LINK_PROBE_ROUND=11
+time_local=2026-10-15 16:03:36 +08:00
+time_utc=2026-10-15 08:03:36
+host=LAPTOP-R77M5D6M
+os=Microsoft Windows 11 专业版 (build 26200)
+powershell=5.1.26100.8875
+session_id=1 interactive=True
+git=git version 2.54.0.windows.1
+repo_path=E:\0github\git-sync\rea-84877cdd
+remote=https://github.com/mqgg5630-cyber/rea.git
+config_branch=arena/84877cdd-rea
+head_branch=arena/84877cdd-rea branch_matches_config=True
+head=31aee20be check: request round 11 (awaiting local check)
+watcher_task=git-sync-watch-rea-84877cdd state=Running mode=powershell loop
+LINK_PROBE_OK=True
+== link probe report: results/link/LINK_PROBE.md (ok=True)
+== task r11 t1_link_probe.ps1 ok (4s)
+== task r11: t2_computer_use_smoke.ps1
+# rea computer-use smoke (Windows UI Automation)
+CU_ROUND=11
+time_local=2026-10-15 16:03:38 +08:00
+host=LAPTOP-R77M5D6M
+CU_SESSION_ID=1 interactive=True
+CU_BACKEND_PRESENT=True path=E:\0mcp-agv-arena-optimized\github\windows-computer-use\plugins\windows-computer-use\scripts\windows-uia.ps1
+CU_HEALTH=True
+CU_ATTEMPT1 child_pid=55440
+CU_ATTEMPT1 child_alive=True child_win_title=Windows PowerShell
+CU_ATTEMPT1 readback ok=True box_len=23 marker_len=23
+  app_log| parent:launch pid_pending 16:03:40
+  app_log| start
+  app_log| shown
+  app_log| click box_len=23
+  app_log| wrote
+  app_log| exit
+CU_ATTEMPT1 find=True button_id=uia:active.2 edit_id=uia:active.1 set_value=True(ValuePattern) invoke=True(Invoke) marker=True tainted=False
+CU_BACKEND=windows-computer-use-uia
+CU_WINDOW_FOUND=True
+CU_UIA_TYPE_OK=True
+CU_UIA_INVOKE_OK=True
+CU_MARKER_OK=True
+CU_TAINTED_MARKER=False
+CU_ATTEMPTS=1
+screen=1536x864 screens=1
+lab_backends=windows-computer-use=True Windows-MCP=True pywinauto-mcp=True
+COMPUTER_USE_SMOKE_OK=True
+== computer-use report: results/computer_use/CU_SMOKE.md (ok=True backend=windows-computer-use-uia)
+== task r11 t2_computer_use_smoke.ps1 ok (16s)
+== task r11: t3_accio_discovery.ps1
+# AccioWork discovery (read-only)
+ACCIO_ROUND=11
+time_local=2026-10-15 16:03:54 +08:00
+host=LAPTOP-R77M5D6M
+target=E:\AccioWork
+ACCIO_FOUND=True
+## Top level (22 entries, directories first)
+- [dir ] locales (2026-10-12 16:15)
+- [dir ] resources (2026-10-12 16:15)
+- [file] Accio.exe 218836 KB (2026-10-11 16:52)
+- [file] chrome_100_percent.pak 113.4 KB (2026-10-11 16:52)
+- [file] chrome_200_percent.pak 183.2 KB (2026-10-11 16:52)
+- [file] d3dcompiler_47.dll 4630.4 KB (2026-10-11 16:52)
+- [file] dxcompiler.dll 25065 KB (2026-10-11 16:52)
+- [file] dxil.dll 1468.4 KB (2026-10-11 16:52)
+- [file] ffmpeg.dll 3024 KB (2026-10-11 16:52)
+- [file] icudtl.dat 10568.5 KB (2026-10-11 16:52)
+- [file] install-channel.json 0 KB (2026-10-12 16:15)
+- [file] libEGL.dll 510.5 KB (2026-10-11 16:52)
+- [file] libGLESv2.dll 7779 KB (2026-10-11 16:52)
+- [file] LICENSE.electron.txt 1.1 KB (2026-10-11 16:52)
+- [file] LICENSES.chromium.html 19019 KB (2026-10-11 16:52)
+- [file] resources.pak 6634.7 KB (2026-10-11 16:52)
+- [file] snapshot_blob.bin 333.3 KB (2026-10-11 16:52)
+- [file] Uninstall Accio.exe 518.1 KB (2026-10-11 16:51)
+- [file] v8_context_snapshot.bin 698.4 KB (2026-10-11 16:52)
+- [file] vk_swiftshader.dll 5492.5 KB (2026-10-11 16:52)
+- [file] vk_swiftshader_icd.json 0.1 KB (2026-10-11 16:52)
+- [file] vulkan-1.dll 932.5 KB (2026-10-11 16:52)
+## Files (recursive, depth<=4, cap 400)
+- Accio.exe | 218836 KB | 2026-10-11 16:52
+- chrome_100_percent.pak | 113.4 KB | 2026-10-11 16:52
+- chrome_200_percent.pak | 183.2 KB | 2026-10-11 16:52
+- d3dcompiler_47.dll | 4630.4 KB | 2026-10-11 16:52
+- dxcompiler.dll | 25065 KB | 2026-10-11 16:52
+- dxil.dll | 1468.4 KB | 2026-10-11 16:52
+- ffmpeg.dll | 3024 KB | 2026-10-11 16:52
+- icudtl.dat | 10568.5 KB | 2026-10-11 16:52
+- install-channel.json | 0 KB | 2026-10-12 16:15
+- libEGL.dll | 510.5 KB | 2026-10-11 16:52
+- libGLESv2.dll | 7779 KB | 2026-10-11 16:52
+- LICENSE.electron.txt | 1.1 KB | 2026-10-11 16:52
+- LICENSES.chromium.html | 19019 KB | 2026-10-11 16:52
+- locales\af.pak | 596.1 KB | 2026-10-11 16:52
+- locales\am.pak | 966.6 KB | 2026-10-11 16:52
+- locales\ar.pak | 1066.9 KB | 2026-10-11 16:52
+- locales\bg.pak | 1103.2 KB | 2026-10-11 16:52
+- locales\bn.pak | 1422.1 KB | 2026-10-11 16:52
+- locales\ca.pak | 671.2 KB | 2026-10-11 16:52
+- locales\cs.pak | 697.2 KB | 2026-10-11 16:52
+- locales\da.pak | 627 KB | 2026-10-11 16:52
+- locales\de.pak | 672.1 KB | 2026-10-11 16:52
+- locales\el.pak | 1213.9 KB | 2026-10-11 16:52
+- locales\en-GB.pak | 543.1 KB | 2026-10-11 16:52
+- locales\en-US.pak | 549 KB | 2026-10-11 16:52
+- locales\es.pak | 659 KB | 2026-10-11 16:52
+- locales\es-419.pak | 662.2 KB | 2026-10-11 16:52
+- locales\et.pak | 602.1 KB | 2026-10-11 16:52
+- locales\fa.pak | 996.3 KB | 2026-10-11 16:52
+- locales\fi.pak | 612.7 KB | 2026-10-11 16:52
+- locales\fil.pak | 695 KB | 2026-10-11 16:52
+- locales\fr.pak | 716.4 KB | 2026-10-11 16:52
+- locales\gu.pak | 1405.4 KB | 2026-10-11 16:52
+- locales\he.pak | 871.8 KB | 2026-10-11 16:52
+- locales\hi.pak | 1487.5 KB | 2026-10-11 16:52
+- locales\hr.pak | 671 KB | 2026-10-11 16:52
+- locales\hu.pak | 717.3 KB | 2026-10-11 16:52
+- locales\id.pak | 593 KB | 2026-10-11 16:52
+- locales\it.pak | 648.5 KB | 2026-10-11 16:52
+- locales\ja.pak | 791.5 KB | 2026-10-11 16:52
+- locales\kn.pak | 1612.5 KB | 2026-10-11 16:52
+- locales\ko.pak | 671.4 KB | 2026-10-11 16:52
+- locales\lt.pak | 729.9 KB | 2026-10-11 16:52
+- locales\lv.pak | 727.2 KB | 2026-10-11 16:52
+- locales\ml.pak | 1661.9 KB | 2026-10-11 16:52
+- locales\mr.pak | 1375.7 KB | 2026-10-11 16:52
+- locales\ms.pak | 624.8 KB | 2026-10-11 16:52
+- locales\nb.pak | 598.7 KB | 2026-10-11 16:52
+- locales\nl.pak | 623.5 KB | 2026-10-11 16:52
+- locales\pl.pak | 696.8 KB | 2026-10-11 16:52
+- locales\pt-BR.pak | 652.7 KB | 2026-10-11 16:52
+- locales\pt-PT.pak | 656.3 KB | 2026-10-11 16:52
+- locales\ro.pak | 681.4 KB | 2026-10-11 16:52
+- locales\ru.pak | 1129.5 KB | 2026-10-11 16:52
+- locales\sk.pak | 708.7 KB | 2026-10-11 16:52
+- locales\sl.pak | 679 KB | 2026-10-11 16:52
+- locales\sr.pak | 1044.4 KB | 2026-10-11 16:52
+- locales\sv.pak | 605.5 KB | 2026-10-11 16:52
+- locales\sw.pak | 640.6 KB | 2026-10-11 16:52
+- locales\ta.pak | 1653.3 KB | 2026-10-11 16:52
+- locales\te.pak | 1527.9 KB | 2026-10-11 16:52
+- locales\th.pak | 1282.7 KB | 2026-10-11 16:52
+- locales\tr.pak | 652 KB | 2026-10-11 16:52
+- locales\uk.pak | 1137.7 KB | 2026-10-11 16:52
+- locales\ur.pak | 981.5 KB | 2026-10-11 16:52
+- locales\vi.pak | 774.6 KB | 2026-10-11 16:52
+- locales\zh-CN.pak | 554.4 KB | 2026-10-11 16:52
+- locales\zh-TW.pak | 547.4 KB | 2026-10-11 16:52
+- resources.pak | 6634.7 KB | 2026-10-11 16:52
+- resources\accio-mcp-cli\accio-mcp.mjs | 144.9 KB | 2026-10-11 16:52
+- resources\accio-swap.exe | 450.5 KB | 2026-10-11 16:52
+- resources\app.asar | 118831.3 KB | 2026-10-11 16:52
+- resources\app-update.yml | 0.5 KB | 2026-10-11 16:52
+- resources\badge\badge-dot.png | 0.4 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\background.js | 13 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\content-script.js | 2.1 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\manifest.json | 1.5 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\README.md | 7.4 KB | 2026-10-11 16:52
+- resources\electron.ico | 352.6 KB | 2026-10-11 16:52
+- resources\elevate.exe | 115.5 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\1688-merchant-profile.dsl.json | 1.6 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\1688-stable-identity.dsl.json | 0.9 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\doudian-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\doudian-store-profile.dsl.json | 1.4 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\jd-merchant-profile.dsl.json | 1.2 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\jd-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\pdd-merchant-products.dsl.json | 1.3 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\pdd-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\taobao-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\taobao-store-profile.dsl.json | 1.4 KB | 2026-10-11 16:52
+- resources\iab-guard-extension\guard.js | 0.5 KB | 2026-10-11 16:52
+- resources\iab-guard-extension\manifest.json | 0.3 KB | 2026-10-11 16:52
+- resources\install-monitor-manifest.json | 0.4 KB | 2026-10-11 16:52
+- resources\pre-install\lark-cli-1.0.0-windows-amd64.zip | 5335.3 KB | 2026-10-11 16:52
+- resources\pre-install\node-v22.23.2-win-x64.zip | 34847.3 KB | 2026-10-11 16:52
+- resources\pre-install\PortableGit-2.44.0-64-bit.7z.exe | 60317.8 KB | 2026-10-11 16:52
+- resources\pre-install\python-3.12.2-full-amd64.zip | 14631.7 KB | 2026-10-11 16:52
+- resources\pre-install\win-x64.version | 0 KB | 2026-10-11 16:52
+- resources\pre-install\zip.exe | 183.2 KB | 2026-10-11 16:52
+- resources\profile-browser.ico | 352.6 KB | 2026-10-11 16:52
+- resources\remote-tools.json | 1.1 KB | 2026-10-11 16:52
+- resources\tray-icon.png | 0.3 KB | 2026-10-11 16:52
+- resources\tray-icon@2x.png | 0.7 KB | 2026-10-11 16:52
+- resources\tray-icon@3x.png | 1.1 KB | 2026-10-11 16:52
+- resources\tray-icon-dark.png | 0.3 KB | 2026-10-11 16:52
+- resources\tray-icon-dark@2x.png | 0.6 KB | 2026-10-11 16:52
+- resources\tray-icon-dark@3x.png | 0.9 KB | 2026-10-11 16:52
+- resources\tray-win.ico | 288.6 KB | 2026-10-11 16:52
+- resources\wiki-skills\merchant-wiki-compiler\requirements.txt | 0 KB | 2026-10-11 16:52
+- resources\wiki-skills\merchant-wiki-compiler\SKILL.md | 17.5 KB | 2026-10-11 16:52
+- snapshot_blob.bin | 333.3 KB | 2026-10-11 16:52
+- Uninstall Accio.exe | 518.1 KB | 2026-10-11 16:51
+- v8_context_snapshot.bin | 698.4 KB | 2026-10-11 16:52
+- vk_swiftshader.dll | 5492.5 KB | 2026-10-11 16:52
+- vk_swiftshader_icd.json | 0.1 KB | 2026-10-11 16:52
+- vulkan-1.dll | 932.5 KB | 2026-10-11 16:52
+doc_kinds=.exe=6 .pak=58 .dll=8 .dat=1 .json=16 .txt=2 .html=1 .mjs=1 .asar=1 .yml=1 .png=7 .js=3 .md=2 .ico=3 .zip=3 .version=1 .bin=2
+files_listed=116 top_dirs=2 truncated=False
+ACCIO_PROBE_OK=True
+== accio report: results/accio/ACCIO_TREE.md (found=True)
+== task r11 t3_accio_discovery.ps1 ok (2s)
+== task r11: t4_accio_asar_inventory.ps1
+# Accio app.asar inventory (read-only, stage 1 of the replication)
+ASAR_ROUND=11
+time_local=2026-10-15 16:03:55 +08:00
+host=LAPTOP-R77M5D6M
+target=E:\AccioWork\resources\app.asar
+asar_bytes=121683226
+asar_sha256=115DFC0F9295F2953C9C3503C11DF7BE1AA502B9CF2D0389675327CF0978D382
+head_hex=04-00-00-00-48-01-07-00-44-01-07-00-40-01-07-00-7B-22-66-69-6C-65-73-22-3A-7B-22-6E-6F-64-65-5F-6D-6F-64-75-6C-65-73-22-3A-7B-22-66-69-6C-65-73-22-3A-7B-22-6E-6F-64-65-2D-70-74-79-22-3A-7B-22
+head_ascii=....H...D...@...{"files":{"node_modules":{"files":{"node-pty":{"
+u32@0=4 u32@4=459080 u64@0=1971733586247684
+probe_log=8_459080=not-json-start[D...@...] 4_4=skip-len 8_0=skip-len
+ACCIO_ASAR_OK=False
+detail=stage header-probe: no header layout candidate parsed (checked pickled/bare variants)
+   [FAIL] task exited 1 (2s)
+== accept 2d: hands-free auto_pull/auto_push present in watch.ps1
+== success criteria: results/status/success_criteria.json
+   rea x git-sync v2.8.1 - round 11 on arena/84877cdd-rea. Round 10: every asar header-layout candidate was rejected. Round 11 reports the first 64 bytes (hex+ascii+u32/u64) and a per-candidate probe log, relaxes JSON validation for very large headers, and adds a u64-length candidate - ground truth instead of guesses.
+   OK   exists: watch.ps1 (84094 B)
+   OK   exists: auth.ps1 (33980 B)
+   OK   exists: bootstrap.ps1 (5765 B)
+   OK   exists: skills/git-sync/VERSION (6 B)
+   OK   exists: skills/git-sync/sync.config.json (2151 B)
+   OK   exists: skills/computer-use/SKILL.md (3537 B)
+   OK   exists: skills/cloud-interop/SKILL.md (2869 B)
+   OK   exists: code/local_check.ps1 (30377 B)
+   OK   exists: code/tasks/manifest.json (2019 B)
+   OK   exists: code/tasks/t1_link_probe.ps1 (5571 B)
+   OK   exists: code/tasks/t2_computer_use_smoke.ps1 (24530 B)
+   OK   exists: code/tasks/t3_accio_discovery.ps1 (5433 B)
+   OK   exists: results/link/LINK_PROBE.md (819 B)
+   OK   exists: results/computer_use/CU_SMOKE.md (1049 B)
+   OK   exists: results/accio/ACCIO_TREE.md (8465 B)
+   OK   exists: code/tasks/t4_accio_asar_inventory.ps1 (16007 B)
+   OK   exists: results/accio/ASAR_TREE.md (799 B)
+   FAIL MISSING file: results/accio/asar_index.json
+   FAIL MISSING file: results/accio/ASAR_EXTRACT_INDEX.md
+   FAIL MISSING file: results/accio/RESOURCES_CAPTURE.md
+   OK   contains results/link/LINK_PROBE.md <- LINK_PROBE_OK=True
+   OK   contains results/computer_use/CU_SMOKE.md <- COMPUTER_USE_SMOKE_OK=True
+   OK   contains results/accio/ACCIO_TREE.md <- ACCIO_PROBE_OK=True
+   FAIL DOES NOT contain in results/accio/ASAR_TREE.md: ACCIO_ASAR_OK=True
+   OK   regex results/link/LINK_PROBE.md
+   OK   regex results/computer_use/CU_SMOKE.md
+   OK   regex results/accio/ACCIO_TREE.md
+   OK   regex results/accio/ASAR_TREE.md
