@@ -1,5 +1,5 @@
 <#
-  t8: Verify the V3 visual special deck (PPTX + PDF) landed on the laptop via
+  t9: Verify the V3 one-case ten-image set deck (PPTX + PDF) landed on the laptop via
   git download and write results/hotcase/HOTCASE_V3_VERIFY.md.
   Receipt markers: HOTCASE_V3_OK, HOTCASE_V3_PPTX_SHA256, HOTCASE_V3_PDF_SHA256,
   *_BYTES, HOTCASE_V3_ROUND. ASCII only.
@@ -13,7 +13,7 @@ $outDir = Join-Path $repoRoot 'results\hotcase'
 $expectedPath = Join-Path $repoRoot 'results\status\expected_hotcase_v3.json'
 $now = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz')
 $envName = $env:COMPUTERNAME
-$targets = @('deliverable/hotcase/HOTCASE_VISUAL_V3.pptx', 'deliverable/hotcase/HOTCASE_VISUAL_V3.pdf')
+$targets = @('deliverable/hotcase/HOTCASE_SET10_V3.pptx', 'deliverable/hotcase/HOTCASE_SET10_V3.pdf')
 function Write-V3Fail([string]$why, [hashtable]$got) {
   if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Force -Path $outDir | Out-Null }
   $lines = @()

@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 22 on arena/84877cdd-rea. V3 deck: ONE case x TEN standard 1688 set images (main/detail/factory-strength/reviews/customization/usage/scene/selling-point/specs/packaging) with crisp PIL-composed Chinese callouts on-image; verified laptop-side by t9 via git download + sha256 receipt.",
+  "description": "rea x git-sync v2.8.1 - round 23 on arena/84877cdd-rea. V3 deck: ONE case x TEN standard 1688 set images (main/detail/factory-strength/reviews/customization/usage/scene/selling-point/specs/packaging) with crisp PIL-composed Chinese callouts on-image; verified laptop-side by t9 via git download + sha256 receipt.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -74,11 +74,11 @@
     "results/hotcase/HOTCASE_V3_VERIFY.md": "HOTCASE_V3_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=22\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=22\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=22\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=22\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=22\\b",
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=23\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=23\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=23\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=23\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=23\\b",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
     "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b",
     "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b",
