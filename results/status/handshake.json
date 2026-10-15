@@ -1,9 +1,9 @@
 {
-    "round":  1,
-    "arena_state":  "awaiting_check",
-    "local_state":  "failed",
-    "arena_updated":  "2026-10-15 02:30:41",
-    "local_updated":  "2026-10-15 10:34:05",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: rea x git-sync v2.8.1 round 1 - pull, run code/tasks t1_link_probe + t2_computer_use_smoke on the local machine, push receipts back"
+  "round": 2,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-15 03:15:30",
+  "local_updated": null,
+  "host": "",
+  "note": "verify: rea x git-sync round 2 - link probe + fixed computer-use smoke + read-only E:\\AccioWork discovery on this session branch"
 }
