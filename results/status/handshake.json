@@ -1,9 +1,9 @@
 {
-    "round":  10,
-    "arena_state":  "awaiting_check",
-    "local_state":  "failed",
-    "arena_updated":  "2026-10-15 07:56:33",
-    "local_updated":  "2026-10-15 15:58:54",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: round 10 - regression net + Accio app.asar inventory take 2"
+  "round": 11,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-15 08:03:22",
+  "local_updated": null,
+  "host": "",
+  "note": "verify: round 11 - what do the first 64 bytes of app.asar actually say"
 }
