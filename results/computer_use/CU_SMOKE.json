@@ -1,5 +1,5 @@
 ﻿{
-    "round":  5,
+    "round":  6,
     "ok":  "False",
     "backend":  "windows-computer-use-uia",
     "session_id":  1,
@@ -12,5 +12,5 @@
     "attempts":  2,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "invoke reported ok but no marker appeared"
+    "detail":  "invoke reported ok but no marker file appeared"
 }
