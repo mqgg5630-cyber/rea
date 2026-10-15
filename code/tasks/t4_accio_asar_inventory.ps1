@@ -93,23 +93,36 @@ $blobBase = [uint64]0
 $fs = $null
 try {
     $fs = [System.IO.File]::OpenRead($asarPath)
+    $head = New-Object byte[] 64
+    [void]$fs.Read($head, 0, 64)
+    Add-ReportLine ('head_hex=' + ([System.BitConverter]::ToString($head)))
     $lenBuf = New-Object byte[] 4
-    [void]$fs.Read($lenBuf, 0, 4)
+    [Array]::Copy($head, 0, $lenBuf, 0, 4)
     $A = [System.BitConverter]::ToUInt32($lenBuf, 0)
-    [void]$fs.Read($lenBuf, 0, 4)
+    [Array]::Copy($head, 4, $lenBuf, 0, 4)
     $B = [System.BitConverter]::ToUInt32($lenBuf, 0)
+    $u64 = [System.BitConverter]::ToUInt64($head, 0)
+    $asciiHead = ''
+    foreach ($hb in $head) {
+        if ($hb -ge 32 -and $hb -lt 127) { $asciiHead += [char]$hb } else { $asciiHead += '.' }
+    }
+    Add-ReportLine ('head_ascii=' + $asciiHead)
+    Add-ReportLine ('u32@0=' + $A + ' u32@4=' + $B + ' u64@0=' + $u64)
     $cands = @()
-    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$B;     base = [uint64](8 + $B) })
-    if ([int64]$A -ne [int64]$B + 4 -and [int64]$A -ne [int64]$B) { $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]($A - 4); base = [uint64](4 + $A) }) }
-    $cands += ,([pscustomobject]@{ jsonOff = 4; jsonLen = [int64]$A;     base = [uint64](4 + $A) })
+    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$B;       base = [uint64](8 + $B) })
+    $cands += ,([pscustomobject]@{ jsonOff = 4; jsonLen = [int64]$A;       base = [uint64](4 + $A) })
     $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]($A - 4); base = [uint64](4 + $A) })
+    if ($u64 -gt 16 -and $u64 -lt 67108864) {
+        $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$u64; base = [uint64](8 + $u64) })
+    }
     $seen = @{}
+    $probeLog = @()
     foreach ($cd in $cands) {
         if ($headerJson) { break }
         $key = [string]$cd.jsonOff + '_' + [string]$cd.jsonLen
         if ($seen.Contains($key)) { continue }
         $seen[$key] = $true
-        if ($cd.jsonLen -le 16 -or $cd.jsonLen -gt 67108864) { continue }
+        if ($cd.jsonLen -le 16 -or $cd.jsonLen -gt 67108864) { $probeLog += ($key + '=skip-len'); continue }
         try {
             $jb = New-Object byte[] $cd.jsonLen
             [void]$fs.Seek([int64]$cd.jsonOff, [System.IO.SeekOrigin]::Begin)
@@ -119,18 +132,30 @@ try {
                 if ($n -le 0) { break }
                 $rTot += $n
             }
-            if ($rTot -ne $cd.jsonLen) { continue }
+            if ($rTot -ne $cd.jsonLen) { $probeLog += ($key + '=short-read'); continue }
             $txt = [System.Text.Encoding]::UTF8.GetString($jb)
-            if (-not $txt.TrimStart().StartsWith('{')) { continue }
+            $trim = $txt.TrimStart()
+            if (-not $trim.StartsWith('{')) { $probeLog += ($key + '=not-json-start[' + ($trim.Substring(0, [Math]::Min(8, $trim.Length)) -replace '[^\x20-\x7E]', '.') + ']'); continue }
+            if ($trim.Length -lt 40 -or $trim.IndexOf('"files"') -lt 0 -or $trim.IndexOf('"files"') -gt 400) { $probeLog += ($key + '=no-files-key-near-start'); continue }
             $probe = $null
-            try { $probe = ($txt | ConvertFrom-Json) } catch { $probe = $null }
+            try { $probe = ($txt | ConvertFrom-Json) } catch { $probe = $null; $probeLog += ($key + '=json-threw') }
             if ($null -ne $probe -and ($probe.PSObject.Properties.Name -contains 'files')) {
                 $headerJson = $txt
                 $jsonLen = $cd.jsonLen
                 $blobBase = $cd.base
+            } elseif ($null -eq $probe) {
+                # ConvertFrom-Json can choke on very large headers - accept the
+                # structural hints instead and keep the raw text
+                $headerJson = $txt
+                $jsonLen = $cd.jsonLen
+                $blobBase = $cd.base
+                $probeLog += ($key + '=accepted-without-ps-parse')
+            } else {
+                $probeLog += ($key + '=parsed-but-no-files')
             }
-        } catch { }
+        } catch { $probeLog += ($key + '=threw') }
     }
+    Add-ReportLine ('probe_log=' + ($probeLog -join ' '))
 } catch {
     Write-AsarFail 'header-read' $_.Exception.Message
 } finally {

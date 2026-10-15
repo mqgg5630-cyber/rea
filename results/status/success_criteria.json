@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 10 on arena/84877cdd-rea. Round 9 died on a header-layout assumption ([u32 bufLen][u32 jsonLen] vs bare [u32 jsonLen] asar writers); round 10 auto-probes the layout candidates and every failure stage now reports ACCIO_ASAR_OK=False with a visible detail instead of a silent exit.",
+  "description": "rea x git-sync v2.8.1 - round 11 on arena/84877cdd-rea. Round 10: every asar header-layout candidate was rejected. Round 11 reports the first 64 bytes (hex+ascii+u32/u64) and a per-candidate probe log, relaxes JSON validation for very large headers, and adds a u64-length candidate - ground truth instead of guesses.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -29,9 +29,9 @@
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=10\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=10\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=10\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=10\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=11\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=11\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=11\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=11\\b"
   }
 }

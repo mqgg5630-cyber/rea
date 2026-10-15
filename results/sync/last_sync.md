@@ -1,8 +1,8 @@
 # 最近一轮同步回执（agent -> 分支）
 
-- 时间：2026-10-15 07:56 UTC
+- 时间：2026-10-15 08:03 UTC
 - 分支：`arena/84877cdd-rea`
-- 本轮助手提交：fix: round 10 - asar header layout auto-probe (pickled vs bare writers) + no silent failure stages
+- 本轮助手提交：diag: round 11 - asar head hex/ascii + per-candidate probe log + u64 candidate
 - 本轮改动文件：
    M code/tasks/manifest.json
    M code/tasks/t4_accio_asar_inventory.ps1
