@@ -1,9 +1,9 @@
 {
-    "round":  18,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-15 09:33:55",
-    "local_updated":  "2026-10-15 17:35:40",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: round 18 - hotcase replication deliverable (ppt+pdf)"
+  "round": 18,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-15 09:36:33",
+  "local_updated": "2026-10-15 17:35:40",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "hands-free: criteria met"
 }
