@@ -1,9 +1,9 @@
 {
-    "round":  19,
-    "arena_state":  "awaiting_check",
-    "local_state":  "failed",
-    "arena_updated":  "2026-10-15 11:31:17",
-    "local_updated":  "2026-10-15 19:35:24",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: round 19 - hotcase V2 visual special deliverable (ppt+pdf)"
+  "round": 20,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-15 11:38:36",
+  "local_updated": null,
+  "host": "",
+  "note": "verify: round 20 - hotcase V2 + v1 hash re-pin after binary-attr fix"
 }
