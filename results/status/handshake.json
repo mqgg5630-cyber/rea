@@ -1,9 +1,9 @@
 {
-  "round": 3,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 06:55:29",
-  "local_updated": null,
-  "host": "",
-  "note": "verify: rea x git-sync round 3 - link probe + proven-backend computer-use smoke + AccioWork re-probe"
+    "round":  3,
+    "arena_state":  "awaiting_check",
+    "local_state":  "failed",
+    "arena_updated":  "2026-10-15 06:55:29",
+    "local_updated":  "2026-10-15 14:57:02",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "verify: rea x git-sync round 3 - link probe + proven-backend computer-use smoke + AccioWork re-probe"
 }

@@ -1,13 +1,14 @@
 ﻿{
-    "round":  2,
+    "round":  3,
     "ok":  "False",
+    "backend":  "raw-dotnet-uia",
     "session_id":  1,
     "interactive":  true,
-    "window_found":  true,
+    "window_found":  false,
     "uia_type_ok":  false,
     "uia_invoke_ok":  false,
-    "marker_ok":  false,
+    "marker_ok":  true,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "text box not found via UIA after 12 s of retries (the window itself was found)"
+    "detail":  "test window not visible to UIA (locked screen or session transition?)"
 }
