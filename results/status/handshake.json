@@ -1,9 +1,9 @@
 {
-    "round":  24,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-15 12:37:32",
-    "local_updated":  "2026-10-15 20:47:48",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "round 24: laptop verify HOTCASE_SET10_V4 hashes (t10_hotcase_v4_verify) + criteria 75 files"
+  "round": 24,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-15 12:48:40",
+  "local_updated": "2026-10-15 20:47:48",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "hands-free: criteria met"
 }
