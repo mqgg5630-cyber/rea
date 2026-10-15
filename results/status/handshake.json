@@ -1,9 +1,9 @@
 {
-  "round": 25,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 12:50:36",
-  "local_updated": null,
-  "host": "",
-  "note": "round 25: re-verify HOTCASE_SET10_V4 after m6 fix (t10) + criteria"
+    "round":  25,
+    "arena_state":  "awaiting_check",
+    "local_state":  "passed",
+    "arena_updated":  "2026-10-15 12:50:36",
+    "local_updated":  "2026-10-15 20:52:59",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "round 25: re-verify HOTCASE_SET10_V4 after m6 fix (t10) + criteria"
 }
