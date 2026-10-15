@@ -1,7 +1,7 @@
 ﻿# Accio app.asar inventory (read-only, stage 1 of the replication)
 
-ASAR_ROUND=23
-time_local=2026-10-15 20:15:01 +08:00
+ASAR_ROUND=24
+time_local=2026-10-15 20:47:34 +08:00
 host=LAPTOP-R77M5D6M
 target=E:\AccioWork\resources\app.asar
 asar_bytes=121683226
