@@ -1,15 +1,15 @@
 ﻿# rea computer-use smoke (Windows UI Automation)
 
-CU_ROUND=18
-time_local=2026-10-15 17:35:13 +08:00
+CU_ROUND=19
+time_local=2026-10-15 19:34:52 +08:00
 host=LAPTOP-R77M5D6M
 CU_SESSION_ID=1 interactive=True
 CU_BACKEND_PRESENT=True path=E:\0mcp-agv-arena-optimized\github\windows-computer-use\plugins\windows-computer-use\scripts\windows-uia.ps1
 CU_HEALTH=True
-CU_ATTEMPT1 child_pid=57052
+CU_ATTEMPT1 child_pid=67192
 CU_ATTEMPT1 child_alive=True child_win_title=Windows PowerShell
 CU_ATTEMPT1 readback ok=True box_len=23 marker_len=23
-  app_log| parent:launch pid_pending 17:35:15
+  app_log| parent:launch pid_pending 19:34:55
   app_log| start
   app_log| shown
   app_log| click box_len=23
