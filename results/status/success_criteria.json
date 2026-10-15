@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 19 on arena/84877cdd-rea. V2 visual-optimization special deck: 1688 product-image design across three real product lines (shoe charms / insulated bottle / canvas tote), network sample + AI-restyled hero shots, full 5-slot image sets, QC checklist and prompt assets; verified laptop-side by t8 via git download + sha256 receipt. (Fix: v1 PDF restored to its hash-pinned canonical bytes; deliverables marked binary in .gitattributes to stop eol renormalization flip-flop.)",
+  "description": "rea x git-sync v2.8.1 - round 22 on arena/84877cdd-rea. V3 deck: ONE case x TEN standard 1688 set images (main/detail/factory-strength/reviews/customization/usage/scene/selling-point/specs/packaging) with crisp PIL-composed Chinese callouts on-image; verified laptop-side by t9 via git download + sha256 receipt.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -45,7 +45,22 @@
     "deliverable/hotcase/img2/tote_hero_v2.png",
     "deliverable/hotcase/img2/tote_scene.png",
     "results/hotcase/HOTCASE_V2_VERIFY.md",
-    "results/status/expected_hotcase_v2.json"
+    "results/status/expected_hotcase_v2.json",
+    "code/tasks/t9_hotcase_v3_verify.ps1",
+    "deliverable/hotcase/HOTCASE_SET10_V3.pptx",
+    "deliverable/hotcase/HOTCASE_SET10_V3.pdf",
+    "deliverable/hotcase/img3/final/m1.png",
+    "deliverable/hotcase/img3/final/m2.png",
+    "deliverable/hotcase/img3/final/m3.png",
+    "deliverable/hotcase/img3/final/m4.png",
+    "deliverable/hotcase/img3/final/m5.png",
+    "deliverable/hotcase/img3/final/m6.png",
+    "deliverable/hotcase/img3/final/m7.png",
+    "deliverable/hotcase/img3/final/m8.png",
+    "deliverable/hotcase/img3/final/m9.png",
+    "deliverable/hotcase/img3/final/m10.png",
+    "results/hotcase/HOTCASE_V3_VERIFY.md",
+    "results/status/expected_hotcase_v3.json"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
@@ -55,16 +70,18 @@
     "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_OK=True",
     "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_OK=True",
-    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_OK=True"
+    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_OK=True",
+    "results/hotcase/HOTCASE_V3_VERIFY.md": "HOTCASE_V3_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=21\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=21\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=21\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=21\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=21\\b",
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=22\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=22\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=22\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=22\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=22\\b",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
     "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b",
-    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b"
+    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b",
+    "results/hotcase/HOTCASE_V3_VERIFY.md": "HOTCASE_V3_ROUND=3\\b"
   }
 }
