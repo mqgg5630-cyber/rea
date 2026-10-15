@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 13 on arena/84877cdd-rea. Stage 2 of the Accio replication: token-level symbol scan of the minified asar bundles (main entry / 13MB gateway worker / workflow worker / renderer core): IPC channel names, MCP tools, env keys, external hosts, spawned binaries, agent-runtime signals - deduped lists and short redacted context windows, never the megabyte bodies.",
+  "description": "rea x git-sync v2.8.1 - round 14 on arena/84877cdd-rea. Stage 3 of the Accio replication: synthesize rounds 12-13 harvest into deliverable/ACCIO_REPLICATION.md (comprehensive Chinese replication spec, observed vs inferred), verified laptop-side by t6 via git download + sha256 receipt (results/deliverable/DELIVERABLE_VERIFY.md).",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -22,20 +22,26 @@
     "results/accio/ASAR_EXTRACT_INDEX.md",
     "results/accio/RESOURCES_CAPTURE.md",
     "code/tasks/t5_accio_symbolscan.ps1",
-    "results/accio/SYMBOL_SCAN.md"
+    "results/accio/SYMBOL_SCAN.md",
+    "code/tasks/t6_deliverable_verify.ps1",
+    "deliverable/ACCIO_REPLICATION.md",
+    "results/status/expected_deliverable.json",
+    "results/deliverable/DELIVERABLE_VERIFY.md"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
     "results/computer_use/CU_SMOKE.md": "COMPUTER_USE_SMOKE_OK=True",
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True",
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True",
-    "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True"
+    "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True",
+    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=13\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=13\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=13\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=13\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=13\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=14\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=14\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=14\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=14\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=14\\b",
+    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b"
   }
 }
