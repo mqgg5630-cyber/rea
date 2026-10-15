@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 14 on arena/84877cdd-rea. Stage 3 of the Accio replication: synthesize rounds 12-13 harvest into deliverable/ACCIO_REPLICATION.md (comprehensive Chinese replication spec, observed vs inferred), verified laptop-side by t6 via git download + sha256 receipt (results/deliverable/DELIVERABLE_VERIFY.md).",
+  "description": "rea x git-sync v2.8.1 - round 18 on arena/84877cdd-rea. Hotcase replication deliverable: 17-slide bilingual-renderer deck (PPTX+PDF) replaying the Accio/1688 playbook - four-dimension product selection, three-track style development, AI visual optimization; verified laptop-side by t7 via git download + sha256 receipt.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -26,7 +26,13 @@
     "code/tasks/t6_deliverable_verify.ps1",
     "deliverable/ACCIO_REPLICATION.md",
     "results/status/expected_deliverable.json",
-    "results/deliverable/DELIVERABLE_VERIFY.md"
+    "results/deliverable/DELIVERABLE_VERIFY.md",
+    "code/tasks/t7_hotcase_verify.ps1",
+    "deliverable/hotcase/HOTCASE_REPLICA.pptx",
+    "deliverable/hotcase/HOTCASE_REPLICA.pdf",
+    "deliverable/hotcase/README.md",
+    "results/hotcase/HOTCASE_VERIFY.md",
+    "results/status/expected_hotcase.json"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
@@ -34,14 +40,16 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True",
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True",
     "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True",
-    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_OK=True"
+    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_OK=True",
+    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=17\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=17\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=17\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=17\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=17\\b",
-    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=18\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=18\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=18\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=18\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=18\\b",
+    "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
+    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b"
   }
 }

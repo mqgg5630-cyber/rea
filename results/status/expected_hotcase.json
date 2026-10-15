@@ -1,0 +1,8 @@
+{
+  "stage": "hotcase-1",
+  "files": {
+    "deliverable/hotcase/HOTCASE_REPLICA.pptx": "3FBEC9770BA58E2D290B717E34F0CDE090F4C7174DEBFDDF0BF9EC1A3492779E",
+    "deliverable/hotcase/HOTCASE_REPLICA.pdf": "40FF6D1D1114017F403AD93BFA0848F55683B273A2C00AC90F9C37C5F161192B"
+  },
+  "note": "Hotcase replication deck (binary artifacts; git treats as binary, hashes stable across checkouts)."
+}

@@ -109,7 +109,8 @@
       "t3_accio_discovery.ps1",
       "t4_accio_asar_inventory.ps1",
       "t5_accio_symbolscan.ps1",
-      "t6_deliverable_verify.ps1"
+      "t6_deliverable_verify.ps1",
+      "t7_hotcase_verify.ps1"
     ],
     "19": [
       "t1_link_probe.ps1",
@@ -117,7 +118,17 @@
       "t3_accio_discovery.ps1",
       "t4_accio_asar_inventory.ps1",
       "t5_accio_symbolscan.ps1",
-      "t6_deliverable_verify.ps1"
+      "t6_deliverable_verify.ps1",
+      "t7_hotcase_verify.ps1"
+    ],
+    "20": [
+      "t1_link_probe.ps1",
+      "t2_computer_use_smoke.ps1",
+      "t3_accio_discovery.ps1",
+      "t4_accio_asar_inventory.ps1",
+      "t5_accio_symbolscan.ps1",
+      "t6_deliverable_verify.ps1",
+      "t7_hotcase_verify.ps1"
     ]
   }
 }
