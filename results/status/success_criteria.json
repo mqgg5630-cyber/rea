@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 7 on session branch arena/84877cdd-rea. Round 6 left one link: backend set_value+readback prove the box holds the challenge, InvokePattern reports success, yet the WinForms handler never runs. Round 7 gives the test app its own lifecycle log (start/shown/click/wrote/error) as ground truth and escalates to a real mouse click (backend 'click' action, same as r249's fallback).",
+  "description": "rea x git-sync v2.8.1 - round 8 on session branch arena/84877cdd-rea. Round 7: even the app's own log never appeared - writes into %TEMP% from the child are invisible while the task's own CU_SMOKE.md lands every round. Round 8 moves the child's marker+log+script into results/computer_use/ (a proven-writable dir), the parent seeds the log, and child pid/window-title plus backend click errors are reported - a decisive identity test for what is actually being driven.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=7\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=7\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=7\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=8\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=8\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=8\\b"
   }
 }

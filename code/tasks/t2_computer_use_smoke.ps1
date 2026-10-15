@@ -201,7 +201,7 @@ if ($sessionId -eq 0) {
         $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $title = 'REA UIA self test ' + $stamp
         $marker = 'REACU' + ($stamp -replace '[^0-9]', '') + (Get-Random -Minimum 1000 -Maximum 9999)
-        $workDir = Join-Path ([System.IO.Path]::GetTempPath()) ('rea-cu-' + $stamp + '-a' + $attempt)
+        $workDir = Join-Path $outDir ('cu_a' + $attempt + '_' + $stamp)
         New-Item -ItemType Directory -Force -Path $workDir | Out-Null
         $appScript = Join-Path $workDir 'cu_test_window.ps1'
         $markerFile = Join-Path $workDir 'marker.txt'
@@ -210,7 +210,14 @@ if ($sessionId -eq 0) {
 
         $proc = $null
         try {
+            [System.IO.File]::WriteAllText($logFile, ('parent:launch pid_pending ' + (Get-Date).ToString('HH:mm:ss') + [Environment]::NewLine), (New-Object System.Text.UTF8Encoding($false)))
             $proc = Start-Process -FilePath $psExe -ArgumentList ('-STA -NoProfile -ExecutionPolicy Bypass -File "' + $appScript + '"') -PassThru
+            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' child_pid=' + $proc.Id)
+            Start-Sleep -Milliseconds 800
+            $proc.Refresh()
+            $childTitle = ''
+            try { $childTitle = [string]$proc.MainWindowTitle } catch { }
+            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' child_alive=' + (-not $proc.HasExited) + ' child_win_title=' + $childTitle)
         } catch {
             $detail = 'could not start the test window: ' + $_.Exception.Message
             continue
@@ -281,6 +288,10 @@ if ($sessionId -eq 0) {
                     # InvokePattern was a no-op on this app -> REAL mouse click
                     $clk = Invoke-Wcu 'click' ([pscustomobject]@{ elementId = $btnId; windowTitle = $title; activate = $true })
                     $clkOk = [bool]($clk -and $clk.ok)
+                    $clkErr = ''
+                    try { if (-not $clkOk) { $clkErr = [string]$clk.error } } catch { }
+                    try { if (-not $clkOk -and -not $clkErr) { $clkErr = [string]$clk.raw } } catch { }
+                    Add-ReportLine ('CU_ATTEMPT' + $attempt + ' click_action ok=' + $clkOk + ' err=' + $clkErr)
                     $invMethod = $invMethod + '+click(' + $clkOk + ')'
                     $waitUntil = (Get-Date).AddSeconds(8)
                     while ((-not (Test-Path -LiteralPath $markerFile)) -and ((Get-Date) -lt $waitUntil)) {
