@@ -1,9 +1,9 @@
 {
-  "round": 21,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 11:42:02",
-  "local_updated": null,
-  "host": "",
-  "note": "verify: round 21 - hotcase v1+v2 hash-pinned decks (after static-marker fix)"
+    "round":  21,
+    "arena_state":  "awaiting_check",
+    "local_state":  "passed",
+    "arena_updated":  "2026-10-15 11:42:02",
+    "local_updated":  "2026-10-15 19:43:54",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "verify: round 21 - hotcase v1+v2 hash-pinned decks (after static-marker fix)"
 }
