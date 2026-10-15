@@ -9,6 +9,11 @@
       "t1_link_probe.ps1",
       "t2_computer_use_smoke.ps1",
       "t3_accio_discovery.ps1"
+    ],
+    "3": [
+      "t1_link_probe.ps1",
+      "t2_computer_use_smoke.ps1",
+      "t3_accio_discovery.ps1"
     ]
   }
 }

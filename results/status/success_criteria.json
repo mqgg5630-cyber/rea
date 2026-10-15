@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 (from mqgg5630-cyber/git-pull-arena arena/01a0ff69) - round 2 on session branch arena/84877cdd-rea. Round 1 proved the pull->run->push link but failed the computer-use leg (CU window found, text box raced a single UIA FindFirst); round 2 re-runs the link probe, runs the retry-hardened computer-use smoke, and adds a read-only discovery of E:\\AccioWork so the agent can plan the unfinished replication task there. 'Local' means the user's Windows machine running the git-sync watcher on THIS branch - never a sandbox folder.",
+  "description": "rea x git-sync v2.8.1 - round 3 on session branch arena/84877cdd-rea. Round 2 proved link probe + E:\\AccioWork discovery but failed computer-use again (window found, controls invisible to raw .NET UIA - the backend race fix did not help, so it never was a race). Round 3 swaps t2 to the PROVEN windows-computer-use UIA backend recipe that produced WCU_UIA_INVOKE_OK=True on this laptop in git-pull-arena round 249, with a diagnostics tree dump if the backend path regresses.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=2\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=2\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=2\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=3\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=3\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=3\\b"
   }
 }
