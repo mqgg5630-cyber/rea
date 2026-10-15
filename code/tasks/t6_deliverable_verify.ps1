@@ -8,13 +8,14 @@
 [CmdletBinding()] param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
-$repoRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
+$cwd = (Get-Location).Path
+Set-Location (Join-Path $PSScriptRoot '..\..')
+$repoRoot = (Get-Location).Path
 $docRel = 'deliverable/ACCIO_REPLICATION.md'
 $docPath = Join-Path $repoRoot ($docRel -replace '/', [IO.Path]::DirectorySeparatorChar)
 $outDir = Join-Path $repoRoot 'results\deliverable'
 $expectedRel = 'results/status/expected_deliverable.json'
 $expectedPath = Join-Path $repoRoot ($expectedRel -replace '/', [IO.Path]::DirectorySeparatorChar)
-$cwd = (Get-Location).Path
 $now = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz')
 $envName = $env:COMPUTERNAME
 function Write-DeliverableFail([string]$why) {
