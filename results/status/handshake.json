@@ -1,9 +1,9 @@
 {
-  "round": 23,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 12:13:44",
-  "local_updated": null,
-  "host": "",
-  "note": "round 23: verify HOTCASE_SET10_V3 pptx/pdf hashes via t9 + criteria"
+    "round":  23,
+    "arena_state":  "awaiting_check",
+    "local_state":  "passed",
+    "arena_updated":  "2026-10-15 12:13:44",
+    "local_updated":  "2026-10-15 20:15:16",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "round 23: verify HOTCASE_SET10_V3 pptx/pdf hashes via t9 + criteria"
 }
