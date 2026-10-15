@@ -12,8 +12,12 @@ Accio/1688 打法演示案例：
 
 | 文件 | 说明 |
 |---|---|
-| `HOTCASE_REPLICA.pptx` | 17 页演示稿（16:9，微软雅黑，可编辑） |
-| `HOTCASE_REPLICA.pdf` | 同内容 PDF（Noto Sans SC 子集嵌入，跨平台保真） |
+| `HOTCASE_REPLICA.pptx` | v1 方法论 17 页演示稿（16:9，微软雅黑，可编辑） |
+| `HOTCASE_REPLICA.pdf` | v1 同内容 PDF（Noto Sans SC 子集嵌入） |
+| `HOTCASE_VISUAL_V2.pptx` | **v2 视觉优化专项 16 页**：1688 产品图设计，鞋花/保温杯/帆布包三案例 |
+| `HOTCASE_VISUAL_V2.pdf` | v2 同内容 PDF |
+| `img2/` | v2 素材：网络原始样张 2 张（来源见 deck 第 16 页）+ AI 重设计/场景/SKU 图 8 张 |
+| `build/deck_core.py` + `build_deck_v2.py` | v2 构建脚本（PPTX/PDF 同源渲染） |
 | `img/` | AI 生成的案例素材：优化前/后主图、套装矩阵图 |
 | `charts/` | 6 张数据图（matplotlib，示例复盘口径） |
 | `build/build_deck.py` | 完全可复现的构建脚本（图表 + PPTX + PDF 同一内容源） |

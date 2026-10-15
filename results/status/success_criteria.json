@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 18 on arena/84877cdd-rea. Hotcase replication deliverable: 17-slide bilingual-renderer deck (PPTX+PDF) replaying the Accio/1688 playbook - four-dimension product selection, three-track style development, AI visual optimization; verified laptop-side by t7 via git download + sha256 receipt.",
+  "description": "rea x git-sync v2.8.1 - round 19 on arena/84877cdd-rea. V2 visual-optimization special deck: 1688 product-image design across three real product lines (shoe charms / insulated bottle / canvas tote), network sample + AI-restyled hero shots, full 5-slot image sets, QC checklist and prompt assets; verified laptop-side by t8 via git download + sha256 receipt.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -32,7 +32,20 @@
     "deliverable/hotcase/HOTCASE_REPLICA.pdf",
     "deliverable/hotcase/README.md",
     "results/hotcase/HOTCASE_VERIFY.md",
-    "results/status/expected_hotcase.json"
+    "results/status/expected_hotcase.json",
+    "code/tasks/t8_hotcase_v2_verify.ps1",
+    "deliverable/hotcase/HOTCASE_VISUAL_V2.pptx",
+    "deliverable/hotcase/HOTCASE_VISUAL_V2.pdf",
+    "deliverable/hotcase/img2/shoe_hero_v2.png",
+    "deliverable/hotcase/img2/shoe_scene.png",
+    "deliverable/hotcase/img2/shoe_sku.png",
+    "deliverable/hotcase/img2/bottle_hero_v2.png",
+    "deliverable/hotcase/img2/bottle_scene.png",
+    "deliverable/hotcase/img2/tote_before.png",
+    "deliverable/hotcase/img2/tote_hero_v2.png",
+    "deliverable/hotcase/img2/tote_scene.png",
+    "results/hotcase/HOTCASE_V2_VERIFY.md",
+    "results/status/expected_hotcase_v2.json"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
@@ -41,15 +54,17 @@
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True",
     "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_OK=True",
-    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_OK=True"
+    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_OK=True",
+    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=18\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=18\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=18\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=18\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=18\\b",
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=19\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=19\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=19\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=19\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=19\\b",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
-    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b"
+    "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b",
+    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b"
   }
 }
