@@ -1,9 +1,9 @@
 {
-    "round":  8,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-15 07:43:36",
-    "local_updated":  "2026-10-15 15:44:40",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: rea x git-sync round 8 - decisive child-identity diagnostics"
+  "round": 8,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-15 07:45:20",
+  "local_updated": "2026-10-15 15:44:40",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "hands-free: criteria met"
 }
