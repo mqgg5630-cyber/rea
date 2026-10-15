@@ -1,16 +1,16 @@
 ﻿{
-    "round":  7,
-    "ok":  "False",
+    "round":  8,
+    "ok":  "True",
     "backend":  "windows-computer-use-uia",
     "session_id":  1,
     "interactive":  true,
     "window_found":  true,
     "uia_type_ok":  true,
     "uia_invoke_ok":  true,
-    "marker_ok":  false,
+    "marker_ok":  true,
     "tainted_marker":  false,
-    "attempts":  2,
+    "attempts":  1,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "neither InvokePattern nor a real mouse click produced the marker"
+    "detail":  ""
 }
