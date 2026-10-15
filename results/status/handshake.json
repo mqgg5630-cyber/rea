@@ -1,9 +1,9 @@
 {
-    "round":  13,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-15 08:20:15",
-    "local_updated":  "2026-10-15 16:22:24",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "verify: round 13 - Accio app.asar deep symbol scan"
+  "round": 13,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-15 08:23:21",
+  "local_updated": "2026-10-15 16:22:24",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "hands-free: criteria met"
 }
