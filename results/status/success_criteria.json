@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 4 on session branch arena/84877cdd-rea. Round 3 revealed the real failure mode: the raw-UIA pre-check gated out the proven windows-computer-use backend, and a human at the keyboard raced the centered TopMost test window (marker written while raw UIA never saw the window). Round 4 lets the backend be the window finder (no raw-UIA gate), docks a small non-TopMost labelled window, retries once with a fresh title, and rejects human pre-clicks (tainted markers).",
+  "description": "rea x git-sync v2.8.1 - round 5 on session branch arena/84877cdd-rea. Round 4's multi-word title shattered on Start-Process -ArgumentList quoting so the backend substring match never hit, and outside clicks kept arriving before the backend. Round 5 bakes title+challenge into the app script (zero quoting surface), arms the button only after the backend set_value-types the per-attempt challenge (outside clicks become no-ops), retries find for 22 s, and rejects tainted markers.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=4\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=4\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=4\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=5\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=5\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=5\\b"
   }
 }
