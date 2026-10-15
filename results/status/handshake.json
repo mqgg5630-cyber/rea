@@ -1,9 +1,9 @@
 {
-  "round": 14,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 08:31:08",
-  "local_updated": null,
-  "host": "",
-  "note": "verify: round 14 - Accio replication deliverable"
+    "round":  14,
+    "arena_state":  "awaiting_check",
+    "local_state":  "failed",
+    "arena_updated":  "2026-10-15 08:31:08",
+    "local_updated":  "2026-10-15 16:31:41",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "verify: round 14 - Accio replication deliverable"
 }
