@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 24 on arena/84877cdd-rea. V4 deck: case #2 ceramic mug (plain-studio backgrounds), same ten-slot 1688 standard set; verified laptop-side by t10 via git download + sha256 receipt. Drive: root files organized into 8 group folders; V4 pptx pushed to Drive delivery folder.",
+  "description": "rea x git-sync v2.8.1 - round 25 on arena/84877cdd-rea. V4 deck: case #2 ceramic mug (plain-studio backgrounds), same ten-slot 1688 standard set; verified laptop-side by t10 via git download + sha256 receipt. Drive: root files organized into 8 group folders; V4 pptx pushed to Drive delivery folder.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -90,11 +90,11 @@
     "results/hotcase/HOTCASE_V4_VERIFY.md": "HOTCASE_V4_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=24\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=24\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=24\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=24\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=24\\b",
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=25\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=25\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=25\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=25\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=25\\b",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
     "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b",
     "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b",
