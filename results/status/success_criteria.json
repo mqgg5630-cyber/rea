@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 6 on session branch arena/84877cdd-rea. Round 5 proved the whole backend drive works (find/set_value/invoke all True, zero outside interference) but the marker never landed. Round 6 makes the click handler always write marker|boxtext (the file is the diagnostic), forces the ValuePattern set_value path, adds a backend read-back of the typed challenge, and logs every method used, so the receipt pinpoints the last broken link instead of a bare False.",
+  "description": "rea x git-sync v2.8.1 - round 7 on session branch arena/84877cdd-rea. Round 6 left one link: backend set_value+readback prove the box holds the challenge, InvokePattern reports success, yet the WinForms handler never runs. Round 7 gives the test app its own lifecycle log (start/shown/click/wrote/error) as ground truth and escalates to a real mouse click (backend 'click' action, same as r249's fallback).",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=6\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=6\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=6\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=7\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=7\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=7\\b"
   }
 }

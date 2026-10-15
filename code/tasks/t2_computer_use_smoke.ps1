@@ -105,10 +105,13 @@ if ($sessionId -eq 0) {
     # the file content is itself the diagnostic: an outside click yields
     # "marker|<whatever the box holds>" and never counts, while the backend's
     # challenge-armed click must yield exactly "marker|marker".
-    function New-TestAppScript([string]$Path, [string]$Title, [string]$Marker, [string]$OutFile) {
+    function New-TestAppScript([string]$Path, [string]$Title, [string]$Marker, [string]$OutFile, [string]$LogFile) {
         $lines = @(
             '$ErrorActionPreference = ''Continue''',
             'Add-Type -AssemblyName System.Windows.Forms',
+            ('$logFile = ' + (ConvertTo-PsLiteral $LogFile)),
+            'function AppLog([string]$m) { try { [System.IO.File]::AppendAllText($logFile, ($m + [Environment]::NewLine), (New-Object System.Text.UTF8Encoding($false))) } catch { } }',
+            'AppLog ''start''',
             '$form = New-Object System.Windows.Forms.Form',
             ('$form.Text = ' + (ConvertTo-PsLiteral $Title)),
             '$form.Width = 380',
@@ -118,6 +121,7 @@ if ($sessionId -eq 0) {
             '$form.Top = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea.Bottom - 220',
             '$form.TopMost = $false',
             '$form.ShowInTaskbar = $false',
+            '$form.Add_Shown({ AppLog ''shown'' })',
             '$label = New-Object System.Windows.Forms.Label',
             '$label.Left = 20',
             '$label.Top = 16',
@@ -137,15 +141,25 @@ if ($sessionId -eq 0) {
             '$btn.Height = 40',
             ('$marker = ' + (ConvertTo-PsLiteral $Marker)),
             ('$outFile = ' + (ConvertTo-PsLiteral $OutFile)),
-            '$btn.Add_Click({ [System.IO.File]::WriteAllText($outFile, ($marker + ''|'' + $box.Text), (New-Object System.Text.UTF8Encoding($false))); $form.Close() })',
+            '$btn.Add_Click({',
+            '    AppLog (''click box_len='' + $box.Text.Length)',
+            '    try {',
+            '        [System.IO.File]::WriteAllText($outFile, ($marker + ''|'' + $box.Text), (New-Object System.Text.UTF8Encoding($false)))',
+            '        AppLog ''wrote''',
+            '    } catch {',
+            '        AppLog (''write_error '' + $_.Exception.Message)',
+            '    }',
+            '    $form.Close()',
+            '})',
             '$timer = New-Object System.Windows.Forms.Timer',
             '$timer.Interval = 50000',
-            '$timer.Add_Tick({ $timer.Stop(); $form.Close() })',
+            '$timer.Add_Tick({ $timer.Stop(); AppLog ''timeout''; $form.Close() })',
             '$timer.Start()',
             '$form.Controls.Add($label)',
             '$form.Controls.Add($box)',
             '$form.Controls.Add($btn)',
-            '[void]$form.ShowDialog()'
+            '[void]$form.ShowDialog()',
+            'AppLog ''exit'''
         )
         Set-Content -LiteralPath $Path -Value $lines -Encoding ASCII
     }
@@ -191,7 +205,8 @@ if ($sessionId -eq 0) {
         New-Item -ItemType Directory -Force -Path $workDir | Out-Null
         $appScript = Join-Path $workDir 'cu_test_window.ps1'
         $markerFile = Join-Path $workDir 'marker.txt'
-        New-TestAppScript -Path $appScript -Title $title -Marker $marker -OutFile $markerFile
+        $logFile = Join-Path $workDir 'app.log'
+        New-TestAppScript -Path $appScript -Title $title -Marker $marker -OutFile $markerFile -LogFile $logFile
 
         $proc = $null
         try {
@@ -246,35 +261,52 @@ if ($sessionId -eq 0) {
             } elseif (-not $detail) { $detail = 'backend could not find the Write Marker button in the test window' }
             $typeOk = $thisTypeOk -and $readbackOk
 
-            # invoke only when armed; then expect exactly "marker|marker"
+            # invoke only when armed; escalate to a real mouse click when the
+            # InvokePattern is a no-op on this app; expect exactly "marker|marker"
             $thisInvokeOk = $false
             $thisMarkerOk = $false
             $invMethod = ''
             $markerContent = ''
             if ($findOk -and $typeOk -and (-not (Test-Path -LiteralPath $markerFile))) {
-                $inv = Invoke-Wcu 'invoke' ([pscustomobject]@{ elementId = $btnId; fallbackClick = $true; windowTitle = $title; activate = $true })
+                $inv = Invoke-Wcu 'invoke' ([pscustomobject]@{ elementId = $btnId; fallbackClick = $false; windowTitle = $title; activate = $true })
                 $thisInvokeOk = [bool]($inv -and $inv.ok)
                 try { $invMethod = [string]$inv.method } catch { }
                 if ($thisInvokeOk) {
-                    $waitUntil = (Get-Date).AddSeconds(12)
+                    $waitUntil = (Get-Date).AddSeconds(5)
                     while ((-not (Test-Path -LiteralPath $markerFile)) -and ((Get-Date) -lt $waitUntil)) {
-                        Start-Sleep -Milliseconds 300
+                        Start-Sleep -Milliseconds 250
                     }
-                    if (Test-Path -LiteralPath $markerFile) {
-                        $markerContent = [System.IO.File]::ReadAllText($markerFile)
-                        $thisMarkerOk = ($markerContent -eq ($marker + '|' + $marker))
-                        if (-not $thisMarkerOk) {
-                            $boxSide = ''
-                            if ($markerContent.StartsWith($marker + '|')) { $boxSide = $markerContent.Substring($marker.Length + 1) }
-                            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' marker_content_box_side_len=' + $boxSide.Length + ' equals_marker=' + ($boxSide -eq $marker))
-                            if (-not $detail) { $detail = 'click happened but the box did not hold the challenge (see box_side)' }
-                        }
-                    } elseif (-not $detail) { $detail = 'invoke reported ok but no marker file appeared' }
-                } elseif (-not $detail) { $detail = 'invoke returned not-ok' }
+                } else { $invMethod = 'not-ok' }
+                if (-not (Test-Path -LiteralPath $markerFile)) {
+                    # InvokePattern was a no-op on this app -> REAL mouse click
+                    $clk = Invoke-Wcu 'click' ([pscustomobject]@{ elementId = $btnId; windowTitle = $title; activate = $true })
+                    $clkOk = [bool]($clk -and $clk.ok)
+                    $invMethod = $invMethod + '+click(' + $clkOk + ')'
+                    $waitUntil = (Get-Date).AddSeconds(8)
+                    while ((-not (Test-Path -LiteralPath $markerFile)) -and ((Get-Date) -lt $waitUntil)) {
+                        Start-Sleep -Milliseconds 250
+                    }
+                }
+                if (Test-Path -LiteralPath $markerFile) {
+                    $markerContent = [System.IO.File]::ReadAllText($markerFile)
+                    $thisMarkerOk = ($markerContent -eq ($marker + '|' + $marker))
+                    if (-not $thisMarkerOk) {
+                        $boxSide = ''
+                        if ($markerContent.StartsWith($marker + '|')) { $boxSide = $markerContent.Substring($marker.Length + 1) }
+                        Add-ReportLine ('CU_ATTEMPT' + $attempt + ' marker_content_box_side_len=' + $boxSide.Length + ' equals_marker=' + ($boxSide -eq $marker))
+                        if (-not $detail) { $detail = 'click happened but the box did not hold the challenge (see box_side)' }
+                    }
+                } elseif (-not $detail) { $detail = 'neither InvokePattern nor a real mouse click produced the marker' }
             } elseif ($findOk -and $typeOk -and (Test-Path -LiteralPath $markerFile)) {
                 $detail = 'marker existed before the backend invoked (tainted by an outside click)'
             }
             if ($thisInvokeOk) { $invokeOk = $true }
+            # the app's own lifecycle log is the ground truth about the handler
+            if (Test-Path -LiteralPath $logFile) {
+                foreach ($ll in @(Get-Content -LiteralPath $logFile -Encoding UTF8 -ErrorAction SilentlyContinue)) {
+                    if ($ll.Trim()) { Add-ReportLine ('  app_log| ' + $ll.Trim()) }
+                }
+            }
             Add-ReportLine ('CU_ATTEMPT' + $attempt + ' find=' + $findOk + ' button_id=' + $btnId + ' edit_id=' + $editId + ' set_value=' + $thisTypeOk + '(' + $svMethod + ') invoke=' + $thisInvokeOk + '(' + $invMethod + ') marker=' + $thisMarkerOk + ' tainted=' + $thisTainted)
             if ($findOk -and $typeOk -and $thisInvokeOk -and $thisMarkerOk -and (-not $thisTainted)) {
                 $verdict = 'True'
