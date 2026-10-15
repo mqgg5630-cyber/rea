@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 3 on session branch arena/84877cdd-rea. Round 2 proved link probe + E:\\AccioWork discovery but failed computer-use again (window found, controls invisible to raw .NET UIA - the backend race fix did not help, so it never was a race). Round 3 swaps t2 to the PROVEN windows-computer-use UIA backend recipe that produced WCU_UIA_INVOKE_OK=True on this laptop in git-pull-arena round 249, with a diagnostics tree dump if the backend path regresses.",
+  "description": "rea x git-sync v2.8.1 - round 4 on session branch arena/84877cdd-rea. Round 3 revealed the real failure mode: the raw-UIA pre-check gated out the proven windows-computer-use backend, and a human at the keyboard raced the centered TopMost test window (marker written while raw UIA never saw the window). Round 4 lets the backend be the window finder (no raw-UIA gate), docks a small non-TopMost labelled window, retries once with a fresh title, and rejects human pre-clicks (tainted markers).",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=3\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=3\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=3\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=4\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=4\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=4\\b"
   }
 }

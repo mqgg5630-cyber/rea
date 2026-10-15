@@ -1,8 +1,8 @@
 # 最近一轮同步回执（agent -> 分支）
 
-- 时间：2026-10-15 06:55 UTC
+- 时间：2026-10-15 07:03 UTC
 - 分支：`arena/84877cdd-rea`
-- 本轮助手提交：fix: round 3 - drive the smoke with the proven windows-computer-use UIA backend (r249 recipe), diagnostics tree dump on the raw-UIA fallback
+- 本轮助手提交：fix: round 4 - backend is the window finder (no raw-UIA gate), corner-docked labelled window, 2 attempts, tainted-marker rejection
 - 本轮改动文件：
    M code/tasks/manifest.json
    M code/tasks/t2_computer_use_smoke.ps1
