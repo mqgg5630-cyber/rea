@@ -1,7 +1,7 @@
 ﻿# Accio app.asar symbol scan (read-only, stage 2 of the replication)
 
-SYMBOL_ROUND=14
-time_local=2026-10-15 16:31:36 +08:00
+SYMBOL_ROUND=16
+time_local=2026-10-15 16:43:25 +08:00
 host=LAPTOP-R77M5D6M
 blob_base=459088 header_json_bytes=459072 files_indexed=1689
 scan_targets=out/main/index.js(1565.4KB), out/main/gateway-worker.js(13225KB), out/main/workflow-worker.js(813.5KB), out/renderer/assets/app-store-DrbR9uhK.js(957.4KB), out/renderer/assets/index-9G-wWL3i.js(772.2KB)
