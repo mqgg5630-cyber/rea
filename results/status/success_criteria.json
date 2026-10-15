@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 5 on session branch arena/84877cdd-rea. Round 4's multi-word title shattered on Start-Process -ArgumentList quoting so the backend substring match never hit, and outside clicks kept arriving before the backend. Round 5 bakes title+challenge into the app script (zero quoting surface), arms the button only after the backend set_value-types the per-attempt challenge (outside clicks become no-ops), retries find for 22 s, and rejects tainted markers.",
+  "description": "rea x git-sync v2.8.1 - round 6 on session branch arena/84877cdd-rea. Round 5 proved the whole backend drive works (find/set_value/invoke all True, zero outside interference) but the marker never landed. Round 6 makes the click handler always write marker|boxtext (the file is the diagnostic), forces the ValuePattern set_value path, adds a backend read-back of the typed challenge, and logs every method used, so the receipt pinpoints the last broken link instead of a bare False.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -23,8 +23,8 @@
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=5\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=5\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=5\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=6\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=6\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=6\\b"
   }
 }

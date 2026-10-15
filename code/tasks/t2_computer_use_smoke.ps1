@@ -101,8 +101,10 @@ if ($sessionId -eq 0) {
 
     # the private test window, written fresh per attempt with the title and
     # the challenge marker BAKED IN (no command-line arguments at all).
-    # The button only fires when the box text equals the baked marker - a
-    # human click without the backend-typed challenge is a harmless no-op.
+    # The click handler ALWAYS writes (marker + "|" + current box text), so
+    # the file content is itself the diagnostic: an outside click yields
+    # "marker|<whatever the box holds>" and never counts, while the backend's
+    # challenge-armed click must yield exactly "marker|marker".
     function New-TestAppScript([string]$Path, [string]$Title, [string]$Marker, [string]$OutFile) {
         $lines = @(
             '$ErrorActionPreference = ''Continue''',
@@ -135,7 +137,7 @@ if ($sessionId -eq 0) {
             '$btn.Height = 40',
             ('$marker = ' + (ConvertTo-PsLiteral $Marker)),
             ('$outFile = ' + (ConvertTo-PsLiteral $OutFile)),
-            '$btn.Add_Click({ if ($box.Text -eq $marker) { [System.IO.File]::WriteAllText($outFile, $marker, (New-Object System.Text.UTF8Encoding($false))); $form.Close() } })',
+            '$btn.Add_Click({ [System.IO.File]::WriteAllText($outFile, ($marker + ''|'' + $box.Text), (New-Object System.Text.UTF8Encoding($false))); $form.Close() })',
             '$timer = New-Object System.Windows.Forms.Timer',
             '$timer.Interval = 50000',
             '$timer.Add_Tick({ $timer.Stop(); $form.Close() })',
@@ -184,7 +186,7 @@ if ($sessionId -eq 0) {
         $attemptsUsed = $attempt
         $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $title = 'REA UIA self test ' + $stamp
-        $marker = 'REA_CU_' + $stamp + '_' + (Get-Random -Minimum 1000 -Maximum 9999)
+        $marker = 'REACU' + ($stamp -replace '[^0-9]', '') + (Get-Random -Minimum 1000 -Maximum 9999)
         $workDir = Join-Path ([System.IO.Path]::GetTempPath()) ('rea-cu-' + $stamp + '-a' + $attempt)
         New-Item -ItemType Directory -Force -Path $workDir | Out-Null
         $appScript = Join-Path $workDir 'cu_test_window.ps1'
@@ -218,43 +220,63 @@ if ($sessionId -eq 0) {
             }
 
             # arm the button by typing the challenge into the box via set_value
+            # (ValuePattern only - no keyboard fallback), then READ IT BACK
+            # through the backend so the receipt shows exactly what the box holds
             $thisTypeOk = $false
+            $readbackOk = $false
+            $svMethod = ''
             $editId = ''
             if ($findOk) {
                 $findEdit = Invoke-Wcu 'find' ([pscustomobject]@{ scope = 'active_window'; windowTitle = $title; activate = $true; query = ''; controlType = 'Edit'; maxDepth = 6; maxResults = 5 })
                 try { if ($findEdit.ok -and $findEdit.results.Count -gt 0) { $editId = [string]$findEdit.results[0].id } } catch { }
                 if ($editId) {
-                    $sv = Invoke-Wcu 'set_value' ([pscustomobject]@{ elementId = $editId; value = $marker; windowTitle = $title; activate = $true })
+                    $sv = Invoke-Wcu 'set_value' ([pscustomobject]@{ elementId = $editId; value = $marker; fallbackType = $false; windowTitle = $title; activate = $true })
                     $thisTypeOk = [bool]$sv.ok
+                    try { $svMethod = [string]$sv.method } catch { }
                     if (-not $thisTypeOk) { $detail = 'set_value(challenge) returned not-ok' }
+                    # read-back: the same find carries the current value
+                    $rb = Invoke-Wcu 'find' ([pscustomobject]@{ scope = 'active_window'; windowTitle = $title; activate = $true; query = ''; controlType = 'Edit'; maxDepth = 6; maxResults = 5 })
+                    $rbValue = ''
+                    try { if ($rb.ok -and $rb.results.Count -gt 0) { $rbValue = [string]$rb.results[0].value } } catch { }
+                    $readbackOk = ($rbValue -eq $marker)
+                    Add-ReportLine ('CU_ATTEMPT' + $attempt + ' readback ok=' + $readbackOk + ' box_len=' + $rbValue.Length + ' marker_len=' + $marker.Length)
                 } else {
                     $detail = 'no Edit control found via the backend'
                 }
             } elseif (-not $detail) { $detail = 'backend could not find the Write Marker button in the test window' }
-            $typeOk = $thisTypeOk
+            $typeOk = $thisTypeOk -and $readbackOk
 
-            # invoke only when armed; then expect the exact challenge marker
+            # invoke only when armed; then expect exactly "marker|marker"
             $thisInvokeOk = $false
             $thisMarkerOk = $false
-            if ($findOk -and $thisTypeOk -and (-not (Test-Path -LiteralPath $markerFile))) {
+            $invMethod = ''
+            $markerContent = ''
+            if ($findOk -and $typeOk -and (-not (Test-Path -LiteralPath $markerFile))) {
                 $inv = Invoke-Wcu 'invoke' ([pscustomobject]@{ elementId = $btnId; fallbackClick = $true; windowTitle = $title; activate = $true })
                 $thisInvokeOk = [bool]($inv -and $inv.ok)
+                try { $invMethod = [string]$inv.method } catch { }
                 if ($thisInvokeOk) {
                     $waitUntil = (Get-Date).AddSeconds(12)
                     while ((-not (Test-Path -LiteralPath $markerFile)) -and ((Get-Date) -lt $waitUntil)) {
                         Start-Sleep -Milliseconds 300
                     }
                     if (Test-Path -LiteralPath $markerFile) {
-                        $thisMarkerOk = (([System.IO.File]::ReadAllText($markerFile)) -eq $marker)
-                        if (-not $thisMarkerOk -and -not $detail) { $detail = 'marker file contents differ from the challenge' }
-                    } elseif (-not $detail) { $detail = 'invoke reported ok but no marker appeared' }
+                        $markerContent = [System.IO.File]::ReadAllText($markerFile)
+                        $thisMarkerOk = ($markerContent -eq ($marker + '|' + $marker))
+                        if (-not $thisMarkerOk) {
+                            $boxSide = ''
+                            if ($markerContent.StartsWith($marker + '|')) { $boxSide = $markerContent.Substring($marker.Length + 1) }
+                            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' marker_content_box_side_len=' + $boxSide.Length + ' equals_marker=' + ($boxSide -eq $marker))
+                            if (-not $detail) { $detail = 'click happened but the box did not hold the challenge (see box_side)' }
+                        }
+                    } elseif (-not $detail) { $detail = 'invoke reported ok but no marker file appeared' }
                 } elseif (-not $detail) { $detail = 'invoke returned not-ok' }
-            } elseif ($findOk -and $thisTypeOk -and (Test-Path -LiteralPath $markerFile)) {
+            } elseif ($findOk -and $typeOk -and (Test-Path -LiteralPath $markerFile)) {
                 $detail = 'marker existed before the backend invoked (tainted by an outside click)'
             }
             if ($thisInvokeOk) { $invokeOk = $true }
-            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' find=' + $findOk + ' button_id=' + $btnId + ' edit_id=' + $editId + ' set_value=' + $thisTypeOk + ' invoke=' + $thisInvokeOk + ' marker=' + $thisMarkerOk + ' tainted=' + $thisTainted)
-            if ($findOk -and $thisTypeOk -and $thisInvokeOk -and $thisMarkerOk -and (-not $thisTainted)) {
+            Add-ReportLine ('CU_ATTEMPT' + $attempt + ' find=' + $findOk + ' button_id=' + $btnId + ' edit_id=' + $editId + ' set_value=' + $thisTypeOk + '(' + $svMethod + ') invoke=' + $thisInvokeOk + '(' + $invMethod + ') marker=' + $thisMarkerOk + ' tainted=' + $thisTainted)
+            if ($findOk -and $typeOk -and $thisInvokeOk -and $thisMarkerOk -and (-not $thisTainted)) {
                 $verdict = 'True'
                 $markerOk = $true
             }
@@ -307,7 +329,7 @@ if ($sessionId -eq 0) {
                 if ($invokeOk) {
                     $waitUntil = (Get-Date).AddSeconds(12)
                     while ((-not (Test-Path -LiteralPath $markerFile)) -and ((Get-Date) -lt $waitUntil)) { Start-Sleep -Milliseconds 300 }
-                    if ((Test-Path -LiteralPath $markerFile) -and (([System.IO.File]::ReadAllText($markerFile)) -eq $marker)) {
+                    if ((Test-Path -LiteralPath $markerFile) -and (([System.IO.File]::ReadAllText($markerFile)) -eq ($marker + '|' + $marker))) {
                         $verdict = 'True'
                         $markerOk = $true
                     }
