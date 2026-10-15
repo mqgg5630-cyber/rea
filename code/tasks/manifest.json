@@ -1,0 +1,9 @@
+{
+  "note": "rea x git-sync task runner: map a handshake round number to task scripts in code/tasks. They run ON THE LOCAL MACHINE inside code/local_check.ps1 section 4 (each one as its own child powershell.exe; stdout lands in the round receipt results/status/check_rN_<stamp>.txt; a non-zero exit fails the round). Only the CURRENT round runs; older entries stay for the audit trail. Agent flow for a new local job: write code/tasks/tN_<name>.ps1 (ASCII-only, Write-Output, results under results/), list it under the NEXT round number here, update results/status/success_criteria.json, then run skills/git-sync/scripts/agent-handsfree.sh --sync \"...\" --request \"verify: ...\" --timeout auto.",
+  "rounds": {
+    "1": [
+      "t1_link_probe.ps1",
+      "t2_computer_use_smoke.ps1"
+    ]
+  }
+}

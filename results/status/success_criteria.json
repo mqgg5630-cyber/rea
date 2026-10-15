@@ -1,0 +1,26 @@
+{
+  "description": "rea x git-sync v2.8.1 (installed from mqgg5630-cyber/git-pull-arena arena/01a0ff69) - round 1 link proof. The skills (git-sync + computer-use + cloud-interop) are on arena/1bfdc2ed-rea, and the user's Windows watcher has pulled the branch, EXECUTED code/tasks/t1_link_probe.ps1 and t2_computer_use_smoke.ps1 on the real machine (pull -> run -> push), and pushed both receipts back. 'Local' means that machine's scheduled watcher - never a sandbox folder.",
+  "require_files": [
+    "watch.ps1",
+    "auth.ps1",
+    "bootstrap.ps1",
+    "skills/git-sync/VERSION",
+    "skills/git-sync/sync.config.json",
+    "skills/computer-use/SKILL.md",
+    "skills/cloud-interop/SKILL.md",
+    "code/local_check.ps1",
+    "code/tasks/manifest.json",
+    "code/tasks/t1_link_probe.ps1",
+    "code/tasks/t2_computer_use_smoke.ps1",
+    "results/link/LINK_PROBE.md",
+    "results/computer_use/CU_SMOKE.md"
+  ],
+  "require_contains": {
+    "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
+    "results/computer_use/CU_SMOKE.md": "COMPUTER_USE_SMOKE_OK=True"
+  },
+  "require_regex": {
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=1\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=1\\b"
+  }
+}
