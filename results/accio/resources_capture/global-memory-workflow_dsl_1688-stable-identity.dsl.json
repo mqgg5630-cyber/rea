@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "agentwork.rpa.atomic.v1",
+  "name": "1688 stable merchant identity probe",
+  "description": "Read-only merchant-card probe for a stable company identity.",
+  "defaults": {
+    "timeoutMs": 20000,
+    "retries": 0,
+    "continueOnError": true,
+    "stepGapMs": 2500
+  },
+  "steps": [
+    { "id": "wait_for_merchant_card", "action": "waitTimeout", "ms": 8000 },
+    {
+      "id": "read_final_page_url",
+      "action": "readPageUrl",
+      "outputKey": "stable_identity_page_url",
+      "onError": "continue"
+    },
+    {
+      "id": "read_merchant_identity_link",
+      "action": "queryAll",
+      "containerSelector": "a[href*='corp.1688.com/page/index.htm'][href*='memberId=']",
+      "fields": {
+        "text": { "text": true, "trim": true },
+        "href": { "attr": "href", "trim": true }
+      },
+      "limit": 4,
+      "outputKey": "merchant_identity_links",
+      "onError": "continue"
+    }
+  ]
+}

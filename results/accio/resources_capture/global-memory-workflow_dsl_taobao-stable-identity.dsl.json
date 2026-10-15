@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "agentwork.rpa.atomic.v1",
+  "name": "Qianniu stable merchant identity probe",
+  "description": "Read-only shop-center probe for a stable shop identity.",
+  "defaults": {
+    "timeoutMs": 20000,
+    "retries": 0,
+    "continueOnError": true,
+    "stepGapMs": 2500
+  },
+  "steps": [
+    { "id": "wait_for_shop_center", "action": "waitTimeout", "ms": 8000 },
+    {
+      "id": "read_final_page_url",
+      "action": "readPageUrl",
+      "outputKey": "stable_identity_page_url",
+      "onError": "continue"
+    },
+    {
+      "id": "read_page_body",
+      "action": "readText",
+      "target": [{ "by": "css", "value": "body", "nth": 0 }],
+      "readMode": "innerText",
+      "trim": true,
+      "outputKey": "page_body",
+      "onError": "continue"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+﻿# Extract index (round 12) 
+- OK node_modules/better-sqlite3/lib/index.js | 0.1 KB | sha12=82DB11C4EE43 | redacted=False
+- OK node_modules/@esbuild/win32-x64/package.json | 0.4 KB | sha12=4A63B84FA105 | redacted=False
+- OK node_modules/sqlite-vec-windows-x64/package.json | 0.4 KB | sha12=193CF87C337D | redacted=False
+- OK node_modules/@napi-rs/canvas-win32-x64-msvc/package.json | 0.6 KB | sha12=22D97571A976 | redacted=False
+- OK node_modules/bindings/package.json | 0.6 KB | sha12=A87721FE406E | redacted=False
+- OK node_modules/koffi/package.json | 0.7 KB | sha12=411214295299 | redacted=False
+- OK node_modules/playwright-core/index.js | 0.7 KB | sha12=A58FB2CEC429 | redacted=False
+- OK node_modules/sqlite-vec/package.json | 0.7 KB | sha12=160A3C3431AA | redacted=False
+- OK node_modules/playwright-core/cli.js | 0.8 KB | sha12=F1C4075AEF11 | redacted=False
+- OK node_modules/patchright-core/cli.js | 0.8 KB | sha12=F1C4075AEF11 | redacted=False
+- OK node_modules/@img/sharp-win32-x64/package.json | 0.8 KB | sha12=778A81AF264B | redacted=False
+- OK node_modules/playwright-core/package.json | 0.9 KB | sha12=07C47543631F | redacted=False
+- OK node_modules/node-pty/package.json | 0.9 KB | sha12=700103D92F88 | redacted=False
+- OK node_modules/better-sqlite3/package.json | 0.9 KB | sha12=8C3051989AC5 | redacted=False
+- OK node_modules/patchright-core/package.json | 1 KB | sha12=931ADA4C7D95 | redacted=False
+- OK node_modules/playwright-core/index.mjs | 1 KB | sha12=3D36E2132D3C | redacted=False
+- OK node_modules/patchright-core/index.mjs | 1 KB | sha12=3D36E2132D3C | redacted=False
+- OK node_modules/patchright-core/index.js | 1.1 KB | sha12=DCA9D1E7D21C | redacted=False
+- OK node_modules/sqlite-vec/index.cjs | 1.5 KB | sha12=3B8911045F1E | redacted=False
+- OK node_modules/sqlite-vec/index.mjs | 1.6 KB | sha12=FD18DA1FABB5 | redacted=False
+- OK package.json | 1.7 KB | sha12=F0533C7EA566 | redacted=False
+- OK node_modules/node-pty/lib/index.js | 2 KB | sha12=C1B82C92C4C6 | redacted=False
+- OK node_modules/@napi-rs/canvas/package.json | 3.1 KB | sha12=253EA5B550B1 | redacted=False
+- OK node_modules/esbuild/package.json | 3.8 KB | sha12=65081558D956 | redacted=False

@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "version": "0.34.4",
+  "appExecutable": "Accio.exe",
+  "files": [
+    {
+      "path": "Accio.exe",
+      "size": 224088112,
+      "sha256": "e09339fc95eea8e00f7e413f35a4f50ab00cea06b6c2dde731d39fb01ea5ca3f"
+    },
+    {
+      "path": "resources/app.asar",
+      "size": 121683226,
+      "sha256": "115dfc0f9295f2953c9c3503c11df7be1aa502b9cf2d0389675327cf0978d382"
+    }
+  ]
+}

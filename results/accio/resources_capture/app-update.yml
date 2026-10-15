@@ -1,0 +1,7 @@
+provider: generic
+url: https://work-download.accio-ai.com/package/
+channel: beta-win
+updaterCacheDirName: accio-updater
+useMultipleRangeRequest: false
+publisherName:
+  - CN="ALIBABA (CHINA) NETWORK TECHNOLOGY CO.,LTD.", O="ALIBABA (CHINA) NETWORK TECHNOLOGY CO.,LTD.", L=杭州市, S=浙江省, C=CN, SERIALNUMBER=91330100716105852F, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.1=杭州高新技术产业开发区, OID.1.3.6.1.4.1.311.60.2.1.2=浙江省, OID.1.3.6.1.4.1.311.60.2.1.3=CN

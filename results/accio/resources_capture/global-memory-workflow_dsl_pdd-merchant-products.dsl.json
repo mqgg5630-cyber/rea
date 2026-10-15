@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "agentwork.rpa.atomic.v1",
+  "name": "Pinduoduo managed merchant products probe",
+  "description": "Read-only single-page product-list probe for an authenticated Pinduoduo seller Profile.",
+  "defaults": {
+    "timeoutMs": 25000,
+    "retries": 0,
+    "continueOnError": true,
+    "stepGapMs": 2500
+  },
+  "steps": [
+    {
+      "id": "wait_for_product_list",
+      "action": "waitTimeout",
+      "ms": 8000
+    },
+    {
+      "id": "read_title",
+      "action": "readText",
+      "target": [{ "by": "css", "value": "title", "nth": 0 }],
+      "readMode": "innerText",
+      "trim": true,
+      "outputKey": "page_title",
+      "onError": "continue"
+    },
+    {
+      "id": "read_page_body",
+      "action": "readText",
+      "target": [{ "by": "css", "value": "body", "nth": 0 }],
+      "readMode": "innerText",
+      "trim": true,
+      "outputKey": "page_body",
+      "onError": "continue"
+    },
+    {
+      "id": "read_product_links",
+      "action": "queryAll",
+      "containerSelector": "a[href*='/goods/'],a[href*='goods_id=']",
+      "fields": {
+        "text": { "text": true, "trim": true },
+        "href": { "attr": "href", "trim": true }
+      },
+      "limit": 120,
+      "outputKey": "product_links",
+      "onError": "continue"
+    }
+  ]
+}

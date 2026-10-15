@@ -1,0 +1,23 @@
+{
+  "version": "0.7.1",
+  "platforms": {
+    "darwin-arm64": {
+      "url": "https://work-download.accio.com/downloads/mac/arm64/0.7.1/pre-install-darwin-arm64.tar.gz",
+      "cnUrl": "https://work-download.accio-ai.com/downloads/mac/arm64/0.7.1/pre-install-darwin-arm64.tar.gz",
+      "sha256": "d8cac0a16f80b48af79a343dc31a117b2c50cfa235c99b7ede512ccddc94619e",
+      "archiveType": "tar.gz"
+    },
+    "darwin-x64": {
+      "url": "https://work-download.accio.com/downloads/mac/x64/0.7.1/pre-install-darwin-x64.tar.gz",
+      "cnUrl": "https://work-download.accio-ai.com/downloads/mac/x64/0.7.1/pre-install-darwin-x64.tar.gz",
+      "sha256": "64cdc857cf5df4fb96bccaa34f6c04e5e8226e319f9a685ac255127f9b8ef2b6",
+      "archiveType": "tar.gz"
+    },
+    "win32-x64": {
+      "url": "https://work-download.accio.com/downloads/win/x64/0.7.1/pre-install-win-x64.zip",
+      "cnUrl": "https://work-download.accio-ai.com/downloads/win/x64/0.7.1/pre-install-win-x64.zip",
+      "sha256": "c9f84def6254dcbdf345dcba5495c77d15ea496438d1e1df7de718ce8cf20181",
+      "archiveType": "zip"
+    }
+  }
+}

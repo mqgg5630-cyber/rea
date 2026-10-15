@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "agentwork.rpa.atomic.v1",
+  "name": "Doudian managed merchant profile probe",
+  "description": "Read-only merchant-home probe for an authenticated managed Profile Browser.",
+  "defaults": {
+    "timeoutMs": 20000,
+    "retries": 0,
+    "continueOnError": true,
+    "stepGapMs": 2500
+  },
+  "steps": [
+    {
+      "id": "wait_for_merchant_home",
+      "action": "waitTimeout",
+      "ms": 8000
+    },
+    {
+      "id": "read_title",
+      "action": "readText",
+      "target": [
+        {
+          "by": "css",
+          "value": "title",
+          "nth": 0
+        }
+      ],
+      "readMode": "innerText",
+      "trim": true,
+      "outputKey": "page_title",
+      "onError": "continue"
+    },
+    {
+      "id": "read_meta_description",
+      "action": "readAttribute",
+      "target": [
+        {
+          "by": "css",
+          "value": "meta[name='description']",
+          "nth": 0
+        }
+      ],
+      "attribute": "content",
+      "outputKey": "meta_description",
+      "onError": "continue"
+    },
+    {
+      "id": "read_page_body",
+      "action": "readText",
+      "target": [
+        {
+          "by": "css",
+          "value": "body",
+          "nth": 0
+        }
+      ],
+      "readMode": "innerText",
+      "trim": true,
+      "outputKey": "page_body",
+      "onError": "continue"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+﻿# Resources capture (round 12) 
+- OK app-update.yml | 0.5 KB
+- OK install-monitor-manifest.json | 0.4 KB
+- OK remote-tools.json | 1.1 KB
+- OK ..\install-channel.json | 0 KB
+- OK chrome-extension\accio-browser-relay\background.js | 13 KB
+- OK chrome-extension\accio-browser-relay\content-script.js | 2.1 KB
+- OK chrome-extension\accio-browser-relay\manifest.json | 1.5 KB
+- OK chrome-extension\accio-browser-relay\README.md | 7.4 KB
+- OK iab-guard-extension\guard.js | 0.5 KB
+- OK iab-guard-extension\manifest.json | 0.3 KB
+- OK global-memory-workflow\dsl\1688-merchant-profile.dsl.json | 1.6 KB
+- OK global-memory-workflow\dsl\1688-stable-identity.dsl.json | 0.9 KB
+- OK global-memory-workflow\dsl\doudian-stable-identity.dsl.json | 0.8 KB
+- OK global-memory-workflow\dsl\doudian-store-profile.dsl.json | 1.4 KB
+- OK global-memory-workflow\dsl\jd-merchant-profile.dsl.json | 1.2 KB
+- OK global-memory-workflow\dsl\jd-stable-identity.dsl.json | 0.8 KB
+- OK global-memory-workflow\dsl\pdd-merchant-products.dsl.json | 1.3 KB
+- OK global-memory-workflow\dsl\pdd-stable-identity.dsl.json | 0.8 KB
+- OK global-memory-workflow\dsl\taobao-stable-identity.dsl.json | 0.8 KB
+- OK global-memory-workflow\dsl\taobao-store-profile.dsl.json | 1.4 KB
+- OK wiki-skills\merchant-wiki-compiler\requirements.txt | 0 KB
+- OK wiki-skills\merchant-wiki-compiler\SKILL.md | 17.5 KB
+- OK accio-mcp-cli\accio-mcp.mjs | 144.9 KB
