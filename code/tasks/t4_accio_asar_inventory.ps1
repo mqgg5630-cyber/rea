@@ -96,64 +96,53 @@ try {
     $head = New-Object byte[] 64
     [void]$fs.Read($head, 0, 64)
     Add-ReportLine ('head_hex=' + ([System.BitConverter]::ToString($head)))
-    $lenBuf = New-Object byte[] 4
-    [Array]::Copy($head, 0, $lenBuf, 0, 4)
-    $A = [System.BitConverter]::ToUInt32($lenBuf, 0)
-    [Array]::Copy($head, 4, $lenBuf, 0, 4)
-    $B = [System.BitConverter]::ToUInt32($lenBuf, 0)
-    $u64 = [System.BitConverter]::ToUInt64($head, 0)
     $asciiHead = ''
     foreach ($hb in $head) {
         if ($hb -ge 32 -and $hb -lt 127) { $asciiHead += [char]$hb } else { $asciiHead += '.' }
     }
     Add-ReportLine ('head_ascii=' + $asciiHead)
-    Add-ReportLine ('u32@0=' + $A + ' u32@4=' + $B + ' u64@0=' + $u64)
-    $cands = @()
-    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$B;       base = [uint64](8 + $B) })
-    $cands += ,([pscustomobject]@{ jsonOff = 4; jsonLen = [int64]$A;       base = [uint64](4 + $A) })
-    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]($A - 4); base = [uint64](4 + $A) })
-    if ($u64 -gt 16 -and $u64 -lt 67108864) {
-        $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$u64; base = [uint64](8 + $u64) })
-    }
-    $seen = @{}
+    # read the first 8 u32 words; chromium-Pickle nests length words, so the
+    # JSON can start at 4/8/12/16/20 with its length in the preceding word
+    $words = @()
+    for ($w = 0; $w -lt 8; $w++) { $words += [System.BitConverter]::ToUInt32($head, $w * 4) }
+    Add-ReportLine ('u32words=' + ($words -join ','))
+    $marker = [System.Text.Encoding]::UTF8.GetBytes('{"files"')
+    $baseCands = New-Object System.Collections.Generic.List[uint64]
     $probeLog = @()
-    foreach ($cd in $cands) {
+    foreach ($off in @(4, 8, 12, 16, 20)) {
         if ($headerJson) { break }
-        $key = [string]$cd.jsonOff + '_' + [string]$cd.jsonLen
-        if ($seen.Contains($key)) { continue }
-        $seen[$key] = $true
-        if ($cd.jsonLen -le 16 -or $cd.jsonLen -gt 67108864) { $probeLog += ($key + '=skip-len'); continue }
+        $lenIdx = ($off - 4) / 4
+        $cdLen = [int64]$words[$lenIdx]
+        if ($cdLen -le 16 -or $cdLen -gt 67108864) { $probeLog += ('off' + $off + '=skip-len(' + $cdLen + ')'); continue }
         try {
-            $jb = New-Object byte[] $cd.jsonLen
-            [void]$fs.Seek([int64]$cd.jsonOff, [System.IO.SeekOrigin]::Begin)
+            $probeBytes = New-Object byte[] 9
+            [void]$fs.Seek([int64]$off, [System.IO.SeekOrigin]::Begin)
+            [void]$fs.Read($probeBytes, 0, 9)
+            $probeTxt = [System.Text.Encoding]::UTF8.GetString($probeBytes)
+            if (-not $probeTxt.StartsWith('{"files"')) { $probeLog += ('off' + $off + '=no-marker[' + ($probeTxt -replace '[^\x20-\x7E]', '.') + ']'); continue }
+            $jb = New-Object byte[] $cdLen
+            [void]$fs.Seek([int64]$off, [System.IO.SeekOrigin]::Begin)
             $rTot = 0
-            while ($rTot -lt $cd.jsonLen) {
-                $n = $fs.Read($jb, $rTot, ([int]($cd.jsonLen - $rTot)))
+            while ($rTot -lt $cdLen) {
+                $n = $fs.Read($jb, $rTot, ([int]($cdLen - $rTot)))
                 if ($n -le 0) { break }
                 $rTot += $n
             }
-            if ($rTot -ne $cd.jsonLen) { $probeLog += ($key + '=short-read'); continue }
+            if ($rTot -ne $cdLen) { $probeLog += ('off' + $off + '=short-read'); continue }
             $txt = [System.Text.Encoding]::UTF8.GetString($jb)
-            $trim = $txt.TrimStart()
-            if (-not $trim.StartsWith('{')) { $probeLog += ($key + '=not-json-start[' + ($trim.Substring(0, [Math]::Min(8, $trim.Length)) -replace '[^\x20-\x7E]', '.') + ']'); continue }
-            if ($trim.Length -lt 40 -or $trim.IndexOf('"files"') -lt 0 -or $trim.IndexOf('"files"') -gt 400) { $probeLog += ($key + '=no-files-key-near-start'); continue }
             $probe = $null
-            try { $probe = ($txt | ConvertFrom-Json) } catch { $probe = $null; $probeLog += ($key + '=json-threw') }
+            try { $probe = ($txt | ConvertFrom-Json) } catch { $probe = $null }
             if ($null -ne $probe -and ($probe.PSObject.Properties.Name -contains 'files')) {
                 $headerJson = $txt
-                $jsonLen = $cd.jsonLen
-                $blobBase = $cd.base
-            } elseif ($null -eq $probe) {
-                # ConvertFrom-Json can choke on very large headers - accept the
-                # structural hints instead and keep the raw text
-                $headerJson = $txt
-                $jsonLen = $cd.jsonLen
-                $blobBase = $cd.base
-                $probeLog += ($key + '=accepted-without-ps-parse')
+                $jsonLen = $cdLen
+                $probeLog += ('off' + $off + '=ACCEPT(len=' + $cdLen + ')')
+                foreach ($b in @([uint64]($off + $cdLen), [uint64](4 + $words[1]), [uint64](8 + $words[2]), [uint64](12 + $words[3]))) {
+                    if (-not $baseCands.Contains($b)) { $baseCands.Add($b) }
+                }
             } else {
-                $probeLog += ($key + '=parsed-but-no-files')
+                $probeLog += ('off' + $off + '=parse-failed')
             }
-        } catch { $probeLog += ($key + '=threw') }
+        } catch { $probeLog += ('off' + $off + '=threw') }
     }
     Add-ReportLine ('probe_log=' + ($probeLog -join ' '))
 } catch {
@@ -161,8 +150,8 @@ try {
 } finally {
     if ($fs) { $fs.Dispose() }
 }
-if (-not $headerJson) { Write-AsarFail 'header-probe' 'no header layout candidate parsed (checked pickled/bare variants)' }
-Add-ReportLine ('header_json_bytes=' + $jsonLen + ' blob_base=' + $blobBase)
+if (-not $headerJson) { Write-AsarFail 'header-probe' 'no header layout candidate parsed (see probe_log)' }
+Add-ReportLine ('header_json_bytes=' + $jsonLen)
 
 $root = $null
 try { $root = ($headerJson | ConvertFrom-Json) } catch {
@@ -217,6 +206,39 @@ foreach ($e in @($entries | Sort-Object path)) {
     $shown += 1
 }
 
+# ---------------- resolve the blob base empirically ----------------
+# the pickled header nests length words; rather than guess which word is the
+# size prefix, decode the first small JSON entry under each candidate base
+# and keep the one that yields clean UTF-8 starting with '{'
+$pkgEntry = $null
+foreach ($e in $entries) { if ($e.path -eq 'package.json') { $pkgEntry = $e; break } }
+if (-not $pkgEntry) {
+    foreach ($e in @($entries | Sort-Object size)) {
+        if ($e.path -match '\.json$' -and (-not $e.link) -and $e.size -gt 10) { $pkgEntry = $e; break }
+    }
+}
+$resolvedBase = $null
+if ($pkgEntry -and $baseCands.Count -gt 0) {
+    $fsb = $null
+    try {
+        $fsb = [System.IO.File]::OpenRead($asarPath)
+        foreach ($b in $baseCands) {
+            try {
+                $n = [int][Math]::Min([int64]$pkgEntry.size, 2048)
+                $bb = New-Object byte[] $n
+                [void]$fsb.Seek([int64]([uint64]$pkgEntry.offset + $b), [System.IO.SeekOrigin]::Begin)
+                $rr = $fsb.Read($bb, 0, $n)
+                $t = [System.Text.Encoding]::UTF8.GetString($bb, 0, $rr).TrimStart()
+                if ($t.StartsWith('{')) { $resolvedBase = $b; break }
+            } catch { }
+        }
+    } finally { if ($fsb) { $fsb.Dispose() } }
+}
+if ($null -eq $resolvedBase) {
+    if ($baseCands.Count -gt 0) { $resolvedBase = [uint64]$baseCands[0] } else { Write-AsarFail 'blob-base' 'no blob base candidates' }
+}
+Add-ReportLine ('blob_base=' + $resolvedBase + ' verified_with=' + $(if ($pkgEntry) { $pkgEntry.path } else { 'none' }))
+
 # ---------------- targeted small-text extraction ----------------
 $extractNotes = New-Object System.Collections.Generic.List[string]
 $wantRx = [regex]'(^|/)(package\.json|app-update\.yml|(.*[\/\\])?(main|preload|index|app|server|cli)\.(js|cjs|mjs|ts|json))$'
@@ -236,7 +258,7 @@ try {
             continue
         }
         try {
-            $off = [uint64]$e.offset + $blobBase
+            $off = [uint64]$e.offset + $resolvedBase
             $buf = New-Object byte[] $e.size
             [void]$fs2.Seek([int64]$off, [System.IO.SeekOrigin]::Begin)
             $rTot = 0

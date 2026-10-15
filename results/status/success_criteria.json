@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 11 on arena/84877cdd-rea. Round 10: every asar header-layout candidate was rejected. Round 11 reports the first 64 bytes (hex+ascii+u32/u64) and a per-candidate probe log, relaxes JSON validation for very large headers, and adds a u64-length candidate - ground truth instead of guesses.",
+  "description": "rea x git-sync v2.8.1 - round 12 on arena/84877cdd-rea. Round 11 hex-revealed the real header: nested chromium-Pickle words (u32w3=jsonLen, JSON at offset 16). Round 12 scans 8 u32 words with a {\"files\" byte-marker precheck at offsets 4..20 and resolves the blob base empirically by test-decoding package.json under each candidate base.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -29,9 +29,9 @@
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=11\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=11\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=11\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=11\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=12\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=12\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=12\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=12\\b"
   }
 }
