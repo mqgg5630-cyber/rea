@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 (installed from mqgg5630-cyber/git-pull-arena arena/01a0ff69) - round 1 link proof. The skills (git-sync + computer-use + cloud-interop) are on arena/1bfdc2ed-rea, and the user's Windows watcher has pulled the branch, EXECUTED code/tasks/t1_link_probe.ps1 and t2_computer_use_smoke.ps1 on the real machine (pull -> run -> push), and pushed both receipts back. 'Local' means that machine's scheduled watcher - never a sandbox folder.",
+  "description": "rea x git-sync v2.8.1 (from mqgg5630-cyber/git-pull-arena arena/01a0ff69) - round 2 on session branch arena/84877cdd-rea. Round 1 proved the pull->run->push link but failed the computer-use leg (CU window found, text box raced a single UIA FindFirst); round 2 re-runs the link probe, runs the retry-hardened computer-use smoke, and adds a read-only discovery of E:\\AccioWork so the agent can plan the unfinished replication task there. 'Local' means the user's Windows machine running the git-sync watcher on THIS branch - never a sandbox folder.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -12,15 +12,19 @@
     "code/tasks/manifest.json",
     "code/tasks/t1_link_probe.ps1",
     "code/tasks/t2_computer_use_smoke.ps1",
+    "code/tasks/t3_accio_discovery.ps1",
     "results/link/LINK_PROBE.md",
-    "results/computer_use/CU_SMOKE.md"
+    "results/computer_use/CU_SMOKE.md",
+    "results/accio/ACCIO_TREE.md"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
-    "results/computer_use/CU_SMOKE.md": "COMPUTER_USE_SMOKE_OK=True"
+    "results/computer_use/CU_SMOKE.md": "COMPUTER_USE_SMOKE_OK=True",
+    "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=1\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=1\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=2\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=2\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=2\\b"
   }
 }

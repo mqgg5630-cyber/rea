@@ -1,4 +1,4 @@
-# t2_computer_use_smoke.ps1 - round 1 computer-use self-test (safe: touches no user app).
+# t2_computer_use_smoke.ps1 - computer-use self-test (safe: touches no user app).
 #
 # Runs ON THE LOCAL MACHINE inside code\local_check.ps1 section 4.
 # 1. starts a tiny private WinForms test window in a child powershell
@@ -145,30 +145,61 @@ if ($sessionId -eq 0) {
         Add-ReportLine ('CU_WINDOW_FOUND=' + $windowFound)
 
         if ($windowFound) {
+            # Round 2 fix: a freshly shown WinForms window can take a moment to
+            # publish its controls to UIA. Round 1 did ONE FindFirst right after
+            # the window appeared and raced against it (CU_WINDOW_FOUND=True but
+            # CU_DETAIL="text box not found via UIA"). Find with retries now.
+
             # "type": ValuePattern on the text box, then read it back
             $editCond = New-Object System.Windows.Automation.PropertyCondition([System.Windows.Automation.AutomationElement]::AutomationIdProperty, 'MarkerText')
-            $edit = $win.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $editCond)
+            $editTypeCond = New-Object System.Windows.Automation.PropertyCondition([System.Windows.Automation.AutomationElement]::ControlTypeProperty, [System.Windows.Automation.ControlType]::Edit)
+            $edit = $null
+            $editDeadline = (Get-Date).AddSeconds(12)
+            while (($null -eq $edit) -and ((Get-Date) -lt $editDeadline) -and (-not $proc.HasExited)) {
+                try {
+                    $edit = $win.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $editCond)
+                    if ($null -eq $edit) {
+                        # fallback: the only Edit control in our private window
+                        $edit = $win.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $editTypeCond)
+                    }
+                } catch { $edit = $null }
+                if ($null -eq $edit) { Start-Sleep -Milliseconds 500 }
+            }
             if ($null -ne $edit) {
-                $valuePat = $edit.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
-                $valuePat.SetValue($typed)
-                Start-Sleep -Milliseconds 300
-                $typeOk = ([string]$valuePat.Current.Value -eq $typed)
+                try {
+                    $valuePat = $edit.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
+                    $valuePat.SetValue($typed)
+                    Start-Sleep -Milliseconds 400
+                    $typeOk = ([string]$valuePat.Current.Value -eq $typed)
+                    if (-not $typeOk -and -not $detail) { $detail = 'ValuePattern.SetValue did not stick' }
+                } catch {
+                    $detail = 'ValuePattern threw: ' + $_.Exception.Message
+                }
             } else {
-                $detail = 'text box not found via UIA'
+                $detail = 'text box not found via UIA after 12 s of retries (the window itself was found)'
             }
             Add-ReportLine ('CU_UIA_TYPE_OK=' + $typeOk)
 
-            # "click": InvokePattern on the button
+            # "click": InvokePattern on the button (with the same retries)
             $typeCond = New-Object System.Windows.Automation.PropertyCondition([System.Windows.Automation.AutomationElement]::ControlTypeProperty, [System.Windows.Automation.ControlType]::Button)
             $labelCond = New-Object System.Windows.Automation.PropertyCondition([System.Windows.Automation.AutomationElement]::NameProperty, 'Write Marker')
             $btnCond = [System.Windows.Automation.AndCondition]::new([System.Windows.Automation.Condition[]]@($typeCond, $labelCond))
-            $button = $win.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $btnCond)
+            $button = $null
+            $btnDeadline = (Get-Date).AddSeconds(12)
+            while (($null -eq $button) -and ((Get-Date) -lt $btnDeadline) -and (-not $proc.HasExited)) {
+                try { $button = $win.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $btnCond) } catch { $button = $null }
+                if ($null -eq $button) { Start-Sleep -Milliseconds 500 }
+            }
             if ($null -ne $button) {
-                $invokePat = $button.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
-                $invokePat.Invoke()
-                $invokeOk = $true
+                try {
+                    $invokePat = $button.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)
+                    $invokePat.Invoke()
+                    $invokeOk = $true
+                } catch {
+                    $detail = 'InvokePattern threw: ' + $_.Exception.Message
+                }
             } elseif (-not $detail) {
-                $detail = 'button not found via UIA'
+                $detail = 'button not found via UIA after 12 s of retries'
             }
             Add-ReportLine ('CU_UIA_INVOKE_OK=' + $invokeOk)
 
