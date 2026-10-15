@@ -1,5 +1,5 @@
 ﻿{
-    "round":  1,
+    "round":  2,
     "ok":  "False",
     "session_id":  1,
     "interactive":  true,
@@ -9,5 +9,5 @@
     "marker_ok":  false,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "text box not found via UIA"
+    "detail":  "text box not found via UIA after 12 s of retries (the window itself was found)"
 }
