@@ -1,0 +1,1083 @@
+check round 22 on LAPTOP-R77M5D6M - failed (exit 1)
+cmd: powershell -NoProfile -ExecutionPolicy Bypass -File code/local_check.ps1
+elapsed: 54s
+
+OK: all .ps1 files are ASCII-only
+OK: sync.config.json branch=arena/84877cdd-rea
+OK: sync.config.json branch matches HEAD (arena/84877cdd-rea)
+OK: root scripts identical to skills/git-sync/scripts
+OK: no drive-style variable typos ($var:)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+OK: every .ps1 parses
+   (gate ran via E:\hermes\git\bin\bash.exe [git])
+== accept 2a: silent push PROVEN (ls-remote + push --dry-run, prompts disabled)
+== accept 2b (fallback): one LONG-LIVED loop process - one brief flash per logon,
+   not per poll. For zero flash: admin PowerShell -> .\watch.ps1 -Unregister ;
+   .\watch.ps1 -Register -Headless   (or fix the launcher, see watch-*.log)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+== check_loop_summary PASSED
+== accept 2c: watcher closing lines verified (every exit path has its summary)
+== deliverables: (no deliverable/OFFICE_HASHES.json - package checks skipped)
+   SKIP 3h no Office deliverable declared in deliverable/OFFICE_HASHES.json - nothing to open
+== task r22: t1_link_probe.ps1
+# rea x git-sync link probe
+Executed ON THE LOCAL MACHINE by the git-sync watcher (code/local_check.ps1 section 4):
+the agent pushed this script, the watcher pulled it, ran it here, and pushes this file back.
+LINK_PROBE_ROUND=22
+time_local=2026-10-15 20:11:31 +08:00
+time_utc=2026-10-15 12:11:31
+host=LAPTOP-R77M5D6M
+os=Microsoft Windows 11 专业版 (build 26200)
+powershell=5.1.26100.8875
+session_id=1 interactive=True
+git=git version 2.54.0.windows.1
+repo_path=E:\0github\git-sync\rea-84877cdd
+remote=https://github.com/mqgg5630-cyber/rea.git
+config_branch=arena/84877cdd-rea
+head_branch=arena/84877cdd-rea branch_matches_config=True
+head=9a7cefe43 check: request round 22 (awaiting local check)
+watcher_task=git-sync-watch-rea-84877cdd state=Running mode=powershell loop
+LINK_PROBE_OK=True
+== link probe report: results/link/LINK_PROBE.md (ok=True)
+== task r22 t1_link_probe.ps1 ok (3s)
+== task r22: t2_computer_use_smoke.ps1
+# rea computer-use smoke (Windows UI Automation)
+CU_ROUND=22
+time_local=2026-10-15 20:11:32 +08:00
+host=LAPTOP-R77M5D6M
+CU_SESSION_ID=1 interactive=True
+CU_BACKEND_PRESENT=True path=E:\0mcp-agv-arena-optimized\github\windows-computer-use\plugins\windows-computer-use\scripts\windows-uia.ps1
+CU_HEALTH=True
+CU_ATTEMPT1 child_pid=66636
+CU_ATTEMPT1 child_alive=True child_win_title=Windows PowerShell
+CU_ATTEMPT1 readback ok=True box_len=23 marker_len=23
+  app_log| parent:launch pid_pending 20:11:36
+  app_log| start
+  app_log| shown
+  app_log| click box_len=23
+  app_log| wrote
+  app_log| exit
+CU_ATTEMPT1 find=True button_id=uia:active.2 edit_id=uia:active.1 set_value=True(ValuePattern) invoke=True(Invoke) marker=True tainted=False
+CU_BACKEND=windows-computer-use-uia
+CU_WINDOW_FOUND=True
+CU_UIA_TYPE_OK=True
+CU_UIA_INVOKE_OK=True
+CU_MARKER_OK=True
+CU_TAINTED_MARKER=False
+CU_ATTEMPTS=1
+screen=1536x864 screens=1
+lab_backends=windows-computer-use=True Windows-MCP=True pywinauto-mcp=True
+COMPUTER_USE_SMOKE_OK=True
+== computer-use report: results/computer_use/CU_SMOKE.md (ok=True backend=windows-computer-use-uia)
+== task r22 t2_computer_use_smoke.ps1 ok (18s)
+== task r22: t3_accio_discovery.ps1
+# AccioWork discovery (read-only)
+ACCIO_ROUND=22
+time_local=2026-10-15 20:11:50 +08:00
+host=LAPTOP-R77M5D6M
+target=E:\AccioWork
+ACCIO_FOUND=True
+## Top level (22 entries, directories first)
+- [dir ] locales (2026-10-12 16:15)
+- [dir ] resources (2026-10-12 16:15)
+- [file] Accio.exe 218836 KB (2026-10-11 16:52)
+- [file] chrome_100_percent.pak 113.4 KB (2026-10-11 16:52)
+- [file] chrome_200_percent.pak 183.2 KB (2026-10-11 16:52)
+- [file] d3dcompiler_47.dll 4630.4 KB (2026-10-11 16:52)
+- [file] dxcompiler.dll 25065 KB (2026-10-11 16:52)
+- [file] dxil.dll 1468.4 KB (2026-10-11 16:52)
+- [file] ffmpeg.dll 3024 KB (2026-10-11 16:52)
+- [file] icudtl.dat 10568.5 KB (2026-10-11 16:52)
+- [file] install-channel.json 0 KB (2026-10-12 16:15)
+- [file] libEGL.dll 510.5 KB (2026-10-11 16:52)
+- [file] libGLESv2.dll 7779 KB (2026-10-11 16:52)
+- [file] LICENSE.electron.txt 1.1 KB (2026-10-11 16:52)
+- [file] LICENSES.chromium.html 19019 KB (2026-10-11 16:52)
+- [file] resources.pak 6634.7 KB (2026-10-11 16:52)
+- [file] snapshot_blob.bin 333.3 KB (2026-10-11 16:52)
+- [file] Uninstall Accio.exe 518.1 KB (2026-10-11 16:51)
+- [file] v8_context_snapshot.bin 698.4 KB (2026-10-11 16:52)
+- [file] vk_swiftshader.dll 5492.5 KB (2026-10-11 16:52)
+- [file] vk_swiftshader_icd.json 0.1 KB (2026-10-11 16:52)
+- [file] vulkan-1.dll 932.5 KB (2026-10-11 16:52)
+## Files (recursive, depth<=4, cap 400)
+- Accio.exe | 218836 KB | 2026-10-11 16:52
+- chrome_100_percent.pak | 113.4 KB | 2026-10-11 16:52
+- chrome_200_percent.pak | 183.2 KB | 2026-10-11 16:52
+- d3dcompiler_47.dll | 4630.4 KB | 2026-10-11 16:52
+- dxcompiler.dll | 25065 KB | 2026-10-11 16:52
+- dxil.dll | 1468.4 KB | 2026-10-11 16:52
+- ffmpeg.dll | 3024 KB | 2026-10-11 16:52
+- icudtl.dat | 10568.5 KB | 2026-10-11 16:52
+- install-channel.json | 0 KB | 2026-10-12 16:15
+- libEGL.dll | 510.5 KB | 2026-10-11 16:52
+- libGLESv2.dll | 7779 KB | 2026-10-11 16:52
+- LICENSE.electron.txt | 1.1 KB | 2026-10-11 16:52
+- LICENSES.chromium.html | 19019 KB | 2026-10-11 16:52
+- locales\af.pak | 596.1 KB | 2026-10-11 16:52
+- locales\am.pak | 966.6 KB | 2026-10-11 16:52
+- locales\ar.pak | 1066.9 KB | 2026-10-11 16:52
+- locales\bg.pak | 1103.2 KB | 2026-10-11 16:52
+- locales\bn.pak | 1422.1 KB | 2026-10-11 16:52
+- locales\ca.pak | 671.2 KB | 2026-10-11 16:52
+- locales\cs.pak | 697.2 KB | 2026-10-11 16:52
+- locales\da.pak | 627 KB | 2026-10-11 16:52
+- locales\de.pak | 672.1 KB | 2026-10-11 16:52
+- locales\el.pak | 1213.9 KB | 2026-10-11 16:52
+- locales\en-GB.pak | 543.1 KB | 2026-10-11 16:52
+- locales\en-US.pak | 549 KB | 2026-10-11 16:52
+- locales\es.pak | 659 KB | 2026-10-11 16:52
+- locales\es-419.pak | 662.2 KB | 2026-10-11 16:52
+- locales\et.pak | 602.1 KB | 2026-10-11 16:52
+- locales\fa.pak | 996.3 KB | 2026-10-11 16:52
+- locales\fi.pak | 612.7 KB | 2026-10-11 16:52
+- locales\fil.pak | 695 KB | 2026-10-11 16:52
+- locales\fr.pak | 716.4 KB | 2026-10-11 16:52
+- locales\gu.pak | 1405.4 KB | 2026-10-11 16:52
+- locales\he.pak | 871.8 KB | 2026-10-11 16:52
+- locales\hi.pak | 1487.5 KB | 2026-10-11 16:52
+- locales\hr.pak | 671 KB | 2026-10-11 16:52
+- locales\hu.pak | 717.3 KB | 2026-10-11 16:52
+- locales\id.pak | 593 KB | 2026-10-11 16:52
+- locales\it.pak | 648.5 KB | 2026-10-11 16:52
+- locales\ja.pak | 791.5 KB | 2026-10-11 16:52
+- locales\kn.pak | 1612.5 KB | 2026-10-11 16:52
+- locales\ko.pak | 671.4 KB | 2026-10-11 16:52
+- locales\lt.pak | 729.9 KB | 2026-10-11 16:52
+- locales\lv.pak | 727.2 KB | 2026-10-11 16:52
+- locales\ml.pak | 1661.9 KB | 2026-10-11 16:52
+- locales\mr.pak | 1375.7 KB | 2026-10-11 16:52
+- locales\ms.pak | 624.8 KB | 2026-10-11 16:52
+- locales\nb.pak | 598.7 KB | 2026-10-11 16:52
+- locales\nl.pak | 623.5 KB | 2026-10-11 16:52
+- locales\pl.pak | 696.8 KB | 2026-10-11 16:52
+- locales\pt-BR.pak | 652.7 KB | 2026-10-11 16:52
+- locales\pt-PT.pak | 656.3 KB | 2026-10-11 16:52
+- locales\ro.pak | 681.4 KB | 2026-10-11 16:52
+- locales\ru.pak | 1129.5 KB | 2026-10-11 16:52
+- locales\sk.pak | 708.7 KB | 2026-10-11 16:52
+- locales\sl.pak | 679 KB | 2026-10-11 16:52
+- locales\sr.pak | 1044.4 KB | 2026-10-11 16:52
+- locales\sv.pak | 605.5 KB | 2026-10-11 16:52
+- locales\sw.pak | 640.6 KB | 2026-10-11 16:52
+- locales\ta.pak | 1653.3 KB | 2026-10-11 16:52
+- locales\te.pak | 1527.9 KB | 2026-10-11 16:52
+- locales\th.pak | 1282.7 KB | 2026-10-11 16:52
+- locales\tr.pak | 652 KB | 2026-10-11 16:52
+- locales\uk.pak | 1137.7 KB | 2026-10-11 16:52
+- locales\ur.pak | 981.5 KB | 2026-10-11 16:52
+- locales\vi.pak | 774.6 KB | 2026-10-11 16:52
+- locales\zh-CN.pak | 554.4 KB | 2026-10-11 16:52
+- locales\zh-TW.pak | 547.4 KB | 2026-10-11 16:52
+- resources.pak | 6634.7 KB | 2026-10-11 16:52
+- resources\accio-mcp-cli\accio-mcp.mjs | 144.9 KB | 2026-10-11 16:52
+- resources\accio-swap.exe | 450.5 KB | 2026-10-11 16:52
+- resources\app.asar | 118831.3 KB | 2026-10-11 16:52
+- resources\app-update.yml | 0.5 KB | 2026-10-11 16:52
+- resources\badge\badge-dot.png | 0.4 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\background.js | 13 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\content-script.js | 2.1 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\manifest.json | 1.5 KB | 2026-10-11 16:52
+- resources\chrome-extension\accio-browser-relay\README.md | 7.4 KB | 2026-10-11 16:52
+- resources\electron.ico | 352.6 KB | 2026-10-11 16:52
+- resources\elevate.exe | 115.5 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\1688-merchant-profile.dsl.json | 1.6 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\1688-stable-identity.dsl.json | 0.9 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\doudian-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\doudian-store-profile.dsl.json | 1.4 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\jd-merchant-profile.dsl.json | 1.2 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\jd-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\pdd-merchant-products.dsl.json | 1.3 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\pdd-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\taobao-stable-identity.dsl.json | 0.8 KB | 2026-10-11 16:52
+- resources\global-memory-workflow\dsl\taobao-store-profile.dsl.json | 1.4 KB | 2026-10-11 16:52
+- resources\iab-guard-extension\guard.js | 0.5 KB | 2026-10-11 16:52
+- resources\iab-guard-extension\manifest.json | 0.3 KB | 2026-10-11 16:52
+- resources\install-monitor-manifest.json | 0.4 KB | 2026-10-11 16:52
+- resources\pre-install\lark-cli-1.0.0-windows-amd64.zip | 5335.3 KB | 2026-10-11 16:52
+- resources\pre-install\node-v22.23.2-win-x64.zip | 34847.3 KB | 2026-10-11 16:52
+- resources\pre-install\PortableGit-2.44.0-64-bit.7z.exe | 60317.8 KB | 2026-10-11 16:52
+- resources\pre-install\python-3.12.2-full-amd64.zip | 14631.7 KB | 2026-10-11 16:52
+- resources\pre-install\win-x64.version | 0 KB | 2026-10-11 16:52
+- resources\pre-install\zip.exe | 183.2 KB | 2026-10-11 16:52
+- resources\profile-browser.ico | 352.6 KB | 2026-10-11 16:52
+- resources\remote-tools.json | 1.1 KB | 2026-10-11 16:52
+- resources\tray-icon.png | 0.3 KB | 2026-10-11 16:52
+- resources\tray-icon@2x.png | 0.7 KB | 2026-10-11 16:52
+- resources\tray-icon@3x.png | 1.1 KB | 2026-10-11 16:52
+- resources\tray-icon-dark.png | 0.3 KB | 2026-10-11 16:52
+- resources\tray-icon-dark@2x.png | 0.6 KB | 2026-10-11 16:52
+- resources\tray-icon-dark@3x.png | 0.9 KB | 2026-10-11 16:52
+- resources\tray-win.ico | 288.6 KB | 2026-10-11 16:52
+- resources\wiki-skills\merchant-wiki-compiler\requirements.txt | 0 KB | 2026-10-11 16:52
+- resources\wiki-skills\merchant-wiki-compiler\SKILL.md | 17.5 KB | 2026-10-11 16:52
+- snapshot_blob.bin | 333.3 KB | 2026-10-11 16:52
+- Uninstall Accio.exe | 518.1 KB | 2026-10-11 16:51
+- v8_context_snapshot.bin | 698.4 KB | 2026-10-11 16:52
+- vk_swiftshader.dll | 5492.5 KB | 2026-10-11 16:52
+- vk_swiftshader_icd.json | 0.1 KB | 2026-10-11 16:52
+- vulkan-1.dll | 932.5 KB | 2026-10-11 16:52
+doc_kinds=.exe=6 .pak=58 .dll=8 .dat=1 .json=16 .txt=2 .html=1 .mjs=1 .asar=1 .yml=1 .png=7 .js=3 .md=2 .ico=3 .zip=3 .version=1 .bin=2
+files_listed=116 top_dirs=2 truncated=False
+ACCIO_PROBE_OK=True
+== accio report: results/accio/ACCIO_TREE.md (found=True)
+== task r22 t3_accio_discovery.ps1 ok (2s)
+== task r22: t4_accio_asar_inventory.ps1
+# Accio app.asar inventory (read-only, stage 1 of the replication)
+ASAR_ROUND=22
+time_local=2026-10-15 20:11:52 +08:00
+host=LAPTOP-R77M5D6M
+target=E:\AccioWork\resources\app.asar
+asar_bytes=121683226
+asar_sha256=115DFC0F9295F2953C9C3503C11DF7BE1AA502B9CF2D0389675327CF0978D382
+head_hex=04-00-00-00-48-01-07-00-44-01-07-00-40-01-07-00-7B-22-66-69-6C-65-73-22-3A-7B-22-6E-6F-64-65-5F-6D-6F-64-75-6C-65-73-22-3A-7B-22-66-69-6C-65-73-22-3A-7B-22-6E-6F-64-65-2D-70-74-79-22-3A-7B-22
+head_ascii=....H...D...@...{"files":{"node_modules":{"files":{"node-pty":{"
+u32words=4,459080,459076,459072,1768301179,577987948,1847753530,1600480367
+probe_log=off4=skip-len(4) off8=no-marker[D...@...{] off12=no-marker[@...{"fil] off16=ACCEPT(len=459072)
+header_json_bytes=459072
+files_indexed=1689
+ext_counts=.js=1325 .woff2=123 (none)=107 .ttf=20 .woff=20 .json=18 .css=16 .png=14 .dll=13 .node=8 .license=5 .svg=5 .html=4 .exe=3 .mjs=3 .webp=2 .wasm=1 .dat=1 .cjs=1
+## largest entries
+- node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node | 26655 KB
+- node_modules/@img/sharp-win32-x64/lib/libvips-42.dll | 18512 KB
+- out/renderer/assets/vendor-heavy-visual-BPHOfTE7.js | 14929 KB
+- out/main/gateway-worker.js | 13225 KB
+- node_modules/@esbuild/win32-x64/esbuild.exe | 11397 KB
+- node_modules/@napi-rs/canvas-win32-x64-msvc/icudtl.dat | 10222.9 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/SecurityGuardSDK64.dll | 7202.5 KB
+- out/renderer/assets/vendor-doc-tools-CYEzv1FB.js | 4871.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ThreatSieveSDK64.dll | 3485 KB
+- out/main/chunks/typescript-FboYfpS_.js | 3432.2 KB
+- out/main/chunks/gw-typescript-DPTBZ1NK.js | 3367.2 KB
+- node_modules/playwright-core/lib/coreBundle.js | 3345.3 KB
+- node_modules/patchright-core/lib/coreBundle.js | 3191.2 KB
+- out/main/chunks/server-kYViXUdN.js | 3165.5 KB
+- node_modules/playwright-core/lib/utilsBundle.js | 3163.4 KB
+- node_modules/patchright-core/lib/utilsBundle.js | 3020.9 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/NetCore.dll | 2468 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/AliSafeProxy.dll | 2429.5 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/AliSafePath64.dll | 2351.5 KB
+- node_modules/better-sqlite3/build/Release/better_sqlite3.node | 1873.5 KB
+- out/main/chunks/dist-DG5vTYXk.js | 1751.7 KB
+- out/main/chunks/gw-src-DxHZuhLu.js | 1632.3 KB
+- node_modules/koffi/build/koffi/win32_x64/koffi.node | 1574.5 KB
+- out/main/index.js | 1565.4 KB
+- out/main/chunks/gw-pdfjs-D1Fi2tdh.js | 1565.3 KB
+- out/main/chunks/gw-feishu-Dlccla_g.js | 1539.3 KB
+- out/main/chunks/gw-dist-Dzv2Dtka.js | 1531.5 KB
+- out/main/chunks/pdfjs-VxYDiFbm.js | 1529.5 KB
+- out/main/chunks/feishu-L5Fb3mbM.js | 1514.5 KB
+- out/main/chunks/src-D277CVwV.js | 1237.4 KB
+- node_modules/node-pty/prebuilds/win32-x64/conpty/OpenConsole.exe | 1121.5 KB
+- out/main/chunks/dist-CsUi1_1K.js | 1099.7 KB
+- out/main/chunks/gw-dist-BUihbPH2.js | 1097.6 KB
+- out/renderer/assets/app-store-DrbR9uhK.js | 957.4 KB
+- out/renderer/assets/dist-BDfKC1JR.js | 885.5 KB
+- out/main/chunks/gw-xlsx-CCrhC5sY.js | 848.5 KB
+- out/main/workflow-worker.js | 813.5 KB
+- out/renderer/assets/index-9G-wWL3i.js | 772.2 KB
+- out/renderer/assets/dist-BqqTThka.js | 751.7 KB
+- out/renderer/assets/vendor-markdown-DZU3K3O2.js | 730 KB
+## first paths (cap 400)
+- node_modules/@esbuild/win32-x64/esbuild.exe | 11397 KB
+- node_modules/@esbuild/win32-x64/package.json | 0.4 KB
+- node_modules/@img/sharp-win32-x64/lib/libvips-42.dll | 18512 KB
+- node_modules/@img/sharp-win32-x64/lib/libvips-cpp.dll | 360.5 KB
+- node_modules/@img/sharp-win32-x64/lib/sharp-win32-x64.node | 412 KB
+- node_modules/@img/sharp-win32-x64/package.json | 0.8 KB
+- node_modules/@img/sharp-win32-x64/versions.json | 0.6 KB
+- node_modules/@napi-rs/canvas/geometry.js | 18.9 KB
+- node_modules/@napi-rs/canvas/index.js | 5.7 KB
+- node_modules/@napi-rs/canvas/js-binding.js | 12.5 KB
+- node_modules/@napi-rs/canvas/load-image.js | 5.6 KB
+- node_modules/@napi-rs/canvas/node-canvas.js | 11.6 KB
+- node_modules/@napi-rs/canvas/package.json | 3.1 KB
+- node_modules/@napi-rs/canvas-win32-x64-msvc/icudtl.dat | 10222.9 KB
+- node_modules/@napi-rs/canvas-win32-x64-msvc/package.json | 0.6 KB
+- node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node | 26655 KB
+- node_modules/@phoenix-common/security-guard/prebuild/win32-x64/security_guard.node | 324 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/AliSafePath64.dll | 2351.5 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/AliSafeProxy.dll | 2429.5 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/NetCore.dll | 2468 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/02ec4c71f5479b186c370314aa93c4ea | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/09c4452bf247fbedd32cbdd84ad66e33 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/0a467f1ec894c9346cdc4c028953441f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/0dad33c8d821be7415abb9227cd1d252 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/0f34871016a108c06c2ba54d4c2af5e4 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/12109472f17daa2eed1aeabe9551f577 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/143d03c344166f6a43d74754459f8e5f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/1768e8633e3635ba707ec34ad0774091 | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/19a6bac158d29321ce10d6b3115afe69 | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/1b9d3c85626120402edde1dfa6d04904 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/1cf2db693d144f164b5e0ed2a81b70a5 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/1db6dbb7cf1086312d3e814c536afade | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/1fbbfe106036d9f52afa4264e4a340b5 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/211826bb1de7e4fc7972a82bb60a839c | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/21eb3cb49053af84278e20902489ce14 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/224c39dbe4c5df62b28e322613b0f3aa | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/22ea992127ddb5a7ceeaeb04f75b8068 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/230d1ef81bc7b0a46993d633af91cdeb | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/24905e7de88ec196300bcffd16c98e50 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/26d58adf8def1c5374998bbc6f82aeae | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/2e354d8c7f35b6b53a2d41a496615cb4 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/2e3e81359e111447c92ffaa5c84fc2eb | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/2e751cc5fc686833d18cd6aa56fde3d1 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/30efdfb1702fa7f4e2c6c5ec260f8ce1 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/31ea9c8079106812f9680963c496df34 | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/37d60d284ae238d83fc61d1fe79adc8b | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/3e04d4faa3662828b97d417e706c3b7e | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/3e3497277844a6127695cdf8f6e14c04 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/43301e3545d5d12e78a544a885a29541 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/4365487e1811b18434f81c79016641bb | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/46374c2ae4efe0672a801e21596b4a2c | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/47ab50281bcd7cc5b9f37a3af930943f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/48f1681ab10c04b74cc4c95532cadd4f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/4bb938c98a751cf505364b96cc1c1129 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/4d0cccf7ef09302800e1d6546dd443a7 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/4e446c01000d5da50c28c79da3bb59e2 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5078f67cd570901a9b4348aecdd8e2af | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5125166799b15fdeefbdb9e5b43dae04 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/52822b14d8345255c4094b9cec60c84f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5871776decd95d2a2a94a18af106a9dc | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5b0bb7d95a22a3f2eee9f3a3c08a39c4 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5eb41054b2b0728ad1102a5849765db1 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/5eb42113340cea11c3c665bb461f693d | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/613b921613711e09f54b007bc8bf5cbf | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/61b28a251b0b5578e628c6171531ee81 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/61f01621c739eade9bce2876f9fa1640 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/6a864f1d3e2fcf5eaae383ecdcb4a899 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/7295df09b918c522650904ab45394e52 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/79840666a15aeb4fde8309674698100e | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/7a5ec1604d6c24f83333121e869debf4 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/7b2b248a7ef318fa7d517ab74d73bd38 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/818fa46ad96963314fb2f420fbcb3582 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/823b022422594596d72c42c772c99fda | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/82a9dba5a49ca19c08303105b0a08cfb | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/831a356aefa5cfe77a633e1a7b2a8333 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/8649867b012adcbf7e78d178cdd92cbf | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/87bf77ad1be2103aae2ec0f284da3571 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/885133bb8abbcaf2444a40f81c575858 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/89a8aa9445afeb88f056b7a10971bac6 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/8ad026b610d70580d11ce6b80f73892e | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/8cb67884d3d4aa41b865d75af9df338c | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/8e96bde1051e2176bb3a58ddf4d6cdc4 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/91ab17ad7272209fd3e7be9698c368fc | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/92e804e3d7fe80d02b06cce72131ccf0 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/972f4eca887b6d07228a289bd6d1d150 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/9b4a33130a80c81392e2cb6e89f5f803 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/9c50217f68a2ae50eacf0d98649aa0f6 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/9d40cf4bea7a574204154fcf8c139c9d | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/a30473d268133cc76b82a734103e2995 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/a5615b9f5133b72d0afc7b7666966577 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/a664cf75d6eca0bbe39f43f6d086139d | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/a78dcc4947350c83346a9ce707ee0326 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/a847aceb07ddcd43f1771f6a8fa01a85 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/acdf761e1c5ed7d73c29daa7722f1b7d | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/adf9d894b36df578fddc2dce3941b12c | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/afba6d9b7052f49bcb6260509cce0b20 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/b5f3d90bc90d986e153a8cf3eed4fae7 | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/b8b0b171e6e7542e01cfe9ff7ccc843f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/b9ed7fa60c264d82b12f63e37eb1a513 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/ba306d4cc501eaa90da21740b8e363e2 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/c18083eb66641d7cfa4392309cb6c563 | 207.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/c8d3e11698e6818fede306446d0b9d79 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/c94a04bc70f73b18ae636325e84d223e | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/cc7d6f3d83e593d785f36dc02e1c114d | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/cd1529e0345d9afa4e90dbdf59a45376 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/ce617a74283521c63ef037750970f72f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/d32d10dcc025deefb28af3f9ecc82d55 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/d6461542fba1f21cdeef83fb136fdebe | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/dc980d278c91bb804dbe6fc95a4a0226 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/dcc8d2360315e811eb8f55de0312bd46 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/dd3f06d83f3d3e6248e289089c68d683 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/e1972a55334f8ea06e98d87a8f67b846 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/e3bbc3e28d29ac7381b5c120ba00ba3e | 196.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/e6f269e752d4c9668792c4b00ed19ad4 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/e732c503bd50564ca8cf43a0666353a3 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/ec3db44bb2f35af96c194b03b5327d78 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/edbb2586cd8a3de7c93d4080bff3e980 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f014965df3a42632d8535feb96d74926 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f0af96e137ac9519769852edfc9cbcaf | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f3e6cc6bc31af884929a1eb32d20491a | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f61c3f0e99d6fb74dd211c5b96377cac | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f87e4ee165e29d71a704d610f6cc7727 | 0.1 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/f92572aa6c9f370ccb90ff1a90649794 | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ps/fb3a2752f31b33d0cded64f2d398d25f | 90.7 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/Report.dll | 523.5 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/SecurityGuardSDK64.dll | 7202.5 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/ThreatSieveSDK64.dll | 3485 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/vcruntime140.dll | 117.6 KB
+- node_modules/@phoenix-common/security-guard/resources/x64/vcruntime140_1.dll | 46.1 KB
+- node_modules/better-sqlite3/build/Release/better_sqlite3.node | 1873.5 KB
+- node_modules/better-sqlite3/lib/database.js | 4.1 KB
+- node_modules/better-sqlite3/lib/index.js | 0.1 KB
+- node_modules/better-sqlite3/lib/methods/aggregate.js | 1.9 KB
+- node_modules/better-sqlite3/lib/methods/backup.js | 2.3 KB
+- node_modules/better-sqlite3/lib/methods/function.js | 1.4 KB
+- node_modules/better-sqlite3/lib/methods/inspect.js | 0.2 KB
+- node_modules/better-sqlite3/lib/methods/pragma.js | 0.5 KB
+- node_modules/better-sqlite3/lib/methods/serialize.js | 0.6 KB
+- node_modules/better-sqlite3/lib/methods/table.js | 7 KB
+- node_modules/better-sqlite3/lib/methods/transaction.js | 2.7 KB
+- node_modules/better-sqlite3/lib/methods/wrappers.js | 1.1 KB
+- node_modules/better-sqlite3/lib/sqlite-error.js | 0.7 KB
+- node_modules/better-sqlite3/lib/util.js | 0.3 KB
+- node_modules/better-sqlite3/package.json | 0.9 KB
+- node_modules/bindings/bindings.js | 2.9 KB
+- node_modules/bindings/package.json | 0.6 KB
+- node_modules/esbuild/bin/esbuild | 9.1 KB
+- node_modules/esbuild/lib/main.js | 94.9 KB
+- node_modules/esbuild/package.json | 3.8 KB
+- node_modules/koffi/build/koffi/win32_x64/koffi.node | 1574.5 KB
+- node_modules/koffi/index.js | 20.4 KB
+- node_modules/koffi/indirect.js | 18.1 KB
+- node_modules/koffi/package.json | 0.7 KB
+- node_modules/node-pty/lib/conpty_console_list_agent.js | 0.7 KB
+- node_modules/node-pty/lib/eventEmitter2.js | 1.6 KB
+- node_modules/node-pty/lib/index.js | 2 KB
+- node_modules/node-pty/lib/interfaces.js | 0.2 KB
+- node_modules/node-pty/lib/shared/conout.js | 0.3 KB
+- node_modules/node-pty/lib/terminal.js | 7.3 KB
+- node_modules/node-pty/lib/types.js | 0.2 KB
+- node_modules/node-pty/lib/unixTerminal.js | 13.1 KB
+- node_modules/node-pty/lib/utils.js | 1.5 KB
+- node_modules/node-pty/lib/windowsConoutConnection.js | 6 KB
+- node_modules/node-pty/lib/windowsPtyAgent.js | 12.1 KB
+- node_modules/node-pty/lib/windowsTerminal.js | 7.7 KB
+- node_modules/node-pty/lib/worker/conoutSocketWorker.js | 0.8 KB
+- node_modules/node-pty/package.json | 0.9 KB
+- node_modules/node-pty/prebuilds/win32-x64/conpty.node | 305 KB
+- node_modules/node-pty/prebuilds/win32-x64/conpty/conpty.dll | 107 KB
+- node_modules/node-pty/prebuilds/win32-x64/conpty/OpenConsole.exe | 1121.5 KB
+- node_modules/node-pty/prebuilds/win32-x64/conpty_console_list.node | 131.5 KB
+- node_modules/node-pty/prebuilds/win32-x64/pty.node | 296 KB
+- node_modules/node-pty/prebuilds/win32-x64/winpty.dll | 250 KB
+- node_modules/node-pty/prebuilds/win32-x64/winpty-agent.exe | 300.5 KB
+- node_modules/patchright-core/browsers.json | 1.9 KB
+- node_modules/patchright-core/cli.js | 0.8 KB
+- node_modules/patchright-core/index.js | 1.1 KB
+- node_modules/patchright-core/index.mjs | 1 KB
+- node_modules/patchright-core/lib/bootstrap.js | 3 KB
+- node_modules/patchright-core/lib/coreBundle.js | 3191.2 KB
+- node_modules/patchright-core/lib/entry/oopBrowserDownload.js | 0.1 KB
+- node_modules/patchright-core/lib/package.js | 2.1 KB
+- node_modules/patchright-core/lib/serverRegistry.js | 241.3 KB
+- node_modules/patchright-core/lib/serverRegistry.js.LICENSE | 18.2 KB
+- node_modules/patchright-core/lib/utilsBundle.js | 3020.9 KB
+- node_modules/patchright-core/lib/utilsBundle.js.LICENSE | 105.3 KB
+- node_modules/patchright-core/lib/xdg-open | 25.2 KB
+- node_modules/patchright-core/package.json | 1 KB
+- node_modules/playwright-core/browsers.json | 1.7 KB
+- node_modules/playwright-core/cli.js | 0.8 KB
+- node_modules/playwright-core/index.js | 0.7 KB
+- node_modules/playwright-core/index.mjs | 1 KB
+- node_modules/playwright-core/lib/bootstrap.js | 3.4 KB
+- node_modules/playwright-core/lib/coreBundle.js | 3345.3 KB
+- node_modules/playwright-core/lib/entry/oopBrowserDownload.js | 0.1 KB
+- node_modules/playwright-core/lib/package.js | 2.1 KB
+- node_modules/playwright-core/lib/serverRegistry.js | 241.3 KB
+- node_modules/playwright-core/lib/serverRegistry.js.LICENSE | 18.2 KB
+- node_modules/playwright-core/lib/utilsBundle.js | 3163.4 KB
+- node_modules/playwright-core/lib/utilsBundle.js.LICENSE | 119.4 KB
+- node_modules/playwright-core/lib/webp_codec.LICENSE | 8.6 KB
+- node_modules/playwright-core/lib/webp_codec.wasm | 552.1 KB
+- node_modules/playwright-core/lib/xdg-open | 31.7 KB
+- node_modules/playwright-core/package.json | 0.9 KB
+- node_modules/sharp/lib/index.js | 107.2 KB
+- node_modules/sharp/package.json | 7.4 KB
+- node_modules/sqlite-vec/index.cjs | 1.5 KB
+- node_modules/sqlite-vec/index.mjs | 1.6 KB
+- node_modules/sqlite-vec/package.json | 0.7 KB
+- node_modules/sqlite-vec-windows-x64/package.json | 0.4 KB
+- node_modules/sqlite-vec-windows-x64/vec0.dll | 282.5 KB
+- out/main/chunks/adm-zip-CbD1WW1w.js | 0.1 KB
+- out/main/chunks/adm-zip-CIZhZzGH.js | 34.4 KB
+- out/main/chunks/adopt-migration-B_3Hs9OJ.js | 0.8 KB
+- out/main/chunks/adopt-migration-CIqNsIvQ.js | 0.2 KB
+- out/main/chunks/agent-external-report-B0F8BmpW.js | 0.2 KB
+- out/main/chunks/agent-external-report-JU5NKUEB.js | 3.2 KB
+- out/main/chunks/agent-install-DMa9yp0G.js | 4.5 KB
+- out/main/chunks/agent-skill-manager-BGJrOrXm.js | 0.3 KB
+- out/main/chunks/agent-skill-manager-DK3AAHPJ.js | 6 KB
+- out/main/chunks/agent-store-LWS4JLOE.js | 129.6 KB
+- out/main/chunks/agent-store-PpZbJbeU.js | 0.3 KB
+- out/main/chunks/api-BBU8BGjP.js | 0.1 KB
+- out/main/chunks/api-BiUUqNUz.js | 27.7 KB
+- out/main/chunks/api-D4-n_rUj.js | 0.2 KB
+- out/main/chunks/api-DKcL4C2I.js | 2.8 KB
+- out/main/chunks/api-upload-B465jW7Z.js | 1 KB
+- out/main/chunks/automation-conversation-gc-Cwdg-wis.js | 2.8 KB
+- out/main/chunks/axios-DiGTd35T.js | 83.9 KB
+- out/main/chunks/builtin-accio-CPfNOkor.js | 0.2 KB
+- out/main/chunks/builtin-accio-DmnnWaRH.js | 8.5 KB
+- out/main/chunks/capture-YMtwyhCy.js | 14.1 KB
+- out/main/chunks/cdp-discovery-CUXPAP34.js | 3.9 KB
+- out/main/chunks/cdp-discovery-DEOGapiM.js | 0.2 KB
+- out/main/chunks/cdp-errors-Cyd-mlUq.js | 0.4 KB
+- out/main/chunks/channel-adapter-Hfr3WqCG.js | 340 KB
+- out/main/chunks/cli-runner-Cni0Znd-.js | 2.6 KB
+- out/main/chunks/cli-runner-m2G5_-IE.js | 0.2 KB
+- out/main/chunks/config-BNXqhO7X.js | 0.2 KB
+- out/main/chunks/config-CfyoWeWd.js | 1.5 KB
+- out/main/chunks/config-TrS8sI7h.js | 286.4 KB
+- out/main/chunks/connection-supervisor-D3C9VdVt.js | 15.8 KB
+- out/main/chunks/connectivity-monitor-S2DCpU-L.js | 1.7 KB
+- out/main/chunks/const-BL1X4gMh.js | 3.5 KB
+- out/main/chunks/conversation-index-CGh5mvM9.js | 9.8 KB
+- out/main/chunks/conversation-sink-consistency-BRwUE0mg.js | 6.8 KB
+- out/main/chunks/conversation-store-CGcRjCmv.js | 21.4 KB
+- out/main/chunks/cri-cdp-connection-D11lFyG8.js | 0.2 KB
+- out/main/chunks/cri-cdp-connection-Di3x_Sge.js | 0.2 KB
+- out/main/chunks/cri-cdp-connection-UpjmGep-.js | 11.9 KB
+- out/main/chunks/cri-protocol-zMZRHSbC.js | 10.7 KB
+- out/main/chunks/cri-target-session-8aXuLUtT.js | 547.9 KB
+- out/main/chunks/darwin-openat-Bc7g1O5o.js | 1.1 KB
+- out/main/chunks/dingtalk-Bo4tdooD.js | 63.5 KB
+- out/main/chunks/discord-BhIgBHNE.js | 0.5 KB
+- out/main/chunks/discord-C7mi93VD.js | 35.5 KB
+- out/main/chunks/disk-inventory-report-EF_lJ1sr.js | 11.6 KB
+- out/main/chunks/dist-B8DOrMFr.js | 70.1 KB
+- out/main/chunks/dist-BNzLFjjJ.js | 205.8 KB
+- out/main/chunks/dist-BPvvl9hq.js | 0.3 KB
+- out/main/chunks/dist-CsUi1_1K.js | 1099.7 KB
+- out/main/chunks/dist-DG5vTYXk.js | 1751.7 KB
+- out/main/chunks/dist-Dh7fs-Vp.js | 6.5 KB
+- out/main/chunks/dist-DxT2b9gu.js | 417.5 KB
+- out/main/chunks/dist-EVW0S2Up.js | 9.8 KB
+- out/main/chunks/dns-bypass-CoIYmhTU.js | 1.8 KB
+- out/main/chunks/dns-probe-9TLG5wGR.js | 1.6 KB
+- out/main/chunks/downloader-BGUlhp6m.js | 0.2 KB
+- out/main/chunks/downloader-DpAEYbrU.js | 1.2 KB
+- out/main/chunks/download-with-retry-CMSSHbXO.js | 5.3 KB
+- out/main/chunks/error-code-DMVuSpEN.js | 1.9 KB
+- out/main/chunks/error-code-DzttKIfK.js | 0.6 KB
+- out/main/chunks/errors-zoPKlHHF.js | 1.6 KB
+- out/main/chunks/esm-w5YYfbTW.js | 7.4 KB
+- out/main/chunks/feature-flag-D50cd-tY.js | 2.5 KB
+- out/main/chunks/feishu-L5Fb3mbM.js | 1514.5 KB
+- out/main/chunks/form_data-DPJg0_g1.js | 160.1 KB
+- out/main/chunks/frontmatter-DlTzl0M7.js | 112 KB
+- out/main/chunks/gateway-adapter-BrWMmB5U.js | 33.5 KB
+- out/main/chunks/group-member-directory-BkLdcLCl.js | 3.3 KB
+- out/main/chunks/gw-account-skills-q0VjGe-l.js | 1.5 KB
+- out/main/chunks/gw-adk-gateway-client-B_kF2Reo.js | 0.1 KB
+- out/main/chunks/gw-admission-scheduler-O_LgpJDu.js | 1.3 KB
+- out/main/chunks/gw-adm-zip-DGP2HVdK.js | 0.1 KB
+- out/main/chunks/gw-adopt-migration-BBZ50tFV.js | 0.1 KB
+- out/main/chunks/gw-agent-7c9YkayX.js | 0.1 KB
+- out/main/chunks/gw-agent-external-report-Buw_VAQ0.js | 0.1 KB
+- out/main/chunks/gw-agent-report-backfill-Cdi77xRP.js | 5.7 KB
+- out/main/chunks/gw-agent-skill-manager-BX475GJZ.js | 0.1 KB
+- out/main/chunks/gw-agent-store-Tx5XTxJX.js | 0.1 KB
+- out/main/chunks/gw-agent-target-Cq8VRSmv.js | 0.5 KB
+- out/main/chunks/gw-api-BQnODEyD.js | 0.1 KB
+- out/main/chunks/gw-api-DjhksB6t.js | 0.1 KB
+- out/main/chunks/gw-api-jsHCYTDt.js | 0.1 KB
+- out/main/chunks/gw-api-upload-DAfOqgPS.js | 0.9 KB
+- out/main/chunks/gw-automation-conversation-gc-BQEURAkB.js | 2.6 KB
+- out/main/chunks/gw-axios-CnDqO1PV.js | 68.3 KB
+- out/main/chunks/gw-branch-index-HMGOt51j.js | 0.4 KB
+- out/main/chunks/gw-browser-runtime-lifecycle-BMtBzKTX.js | 0.1 KB
+- out/main/chunks/gw-builtin-accio-CbQNsxbQ.js | 0.1 KB
+- out/main/chunks/gw-capture-Dsb4y1zd.js | 14.2 KB
+- out/main/chunks/gw-cdp-discovery-DMqLAVEg.js | 0.1 KB
+- out/main/chunks/gw-chat-field-completion-BfdalouP.js | 3.3 KB
+- out/main/chunks/gw-chat-send-query-handler-CGGtxw2q.js | 2.4 KB
+- out/main/chunks/gw-chat-turn-client-authority-MpPAkGZj.js | 0.3 KB
+- out/main/chunks/gw-chat-turn-submission-runtime-DfwMr_-x.js | 11.5 KB
+- out/main/chunks/gw-chromium-downloader-CiWh8aOh.js | 0.1 KB
+- out/main/chunks/gw-chunked-exec-PB7h91w1.js | 0.7 KB
+- out/main/chunks/gw-client-D9zbiwPc.js | 0.1 KB
+- out/main/chunks/gw-cli-runner-DB-rlBt5.js | 0.1 KB
+- out/main/chunks/gw-collaboration-cascade-14N2vrCA.js | 0.1 KB
+- out/main/chunks/gw-config-BIHerXfQ.js | 0.9 KB
+- out/main/chunks/gw-config-CfMstPHW.js | 0.1 KB
+- out/main/chunks/gw-config-D5Ly8uqq.js | 0.1 KB
+- out/main/chunks/gw-conversation-DnjjqqEI.js | 0.1 KB
+- out/main/chunks/gw-conversation-index-CB-8MbVo.js | 0.1 KB
+- out/main/chunks/gw-conversation-sink-consistency-reMA37eA.js | 6.2 KB
+- out/main/chunks/gw-coordinator-agent-BjgbWTqw.js | 0.1 KB
+- out/main/chunks/gw-cri-cdp-connection-CjZ3Srsx.js | 10.3 KB
+- out/main/chunks/gw-cri-cdp-connection-CzWiUyYW.js | 0.2 KB
+- out/main/chunks/gw-cri-cdp-connection-DWMQ-07x.js | 0.2 KB
+- out/main/chunks/gw-cri-target-session-DUG0IUfO.js | 545.8 KB
+- out/main/chunks/gw-darwin-openat-BcWxbM3v.js | 1.1 KB
+- out/main/chunks/gw-debug-session-history-D7SB3oAE.js | 3.6 KB
+- out/main/chunks/gw-dingtalk-BjKV0t25.js | 61.7 KB
+- out/main/chunks/gw-discord-Ddp7CRF1.js | 0.1 KB
+- out/main/chunks/gw-disk-inventory-report-DQxgmqkw.js | 11.4 KB
+- out/main/chunks/gw-dist-BUihbPH2.js | 1097.6 KB
+- out/main/chunks/gw-dist-BWK-8njF.js | 417.6 KB
+- out/main/chunks/gw-dist-By9B9rs3.js | 205.3 KB
+- out/main/chunks/gw-dist-C-yM85En.js | 6.8 KB
+- out/main/chunks/gw-dist-Dg8fLqYI.js | 154.9 KB
+- out/main/chunks/gw-dist-DzSVTRVl.js | 70 KB
+- out/main/chunks/gw-dist-Dzv2Dtka.js | 1531.5 KB
+- out/main/chunks/gw-dns-probe-BihC93pI.js | 1.6 KB
+- out/main/chunks/gw-downloader-CNySOf1T.js | 0.1 KB
+- out/main/chunks/gw-error-mapping-CQZ7nF4j.js | 0.8 KB
+- out/main/chunks/gw-errors-Dq4MW7rk.js | 1.1 KB
+- out/main/chunks/gw-esm-tL0-s6sZ.js | 7.4 KB
+- out/main/chunks/gw-export-DdWxtwxm.js | 2 KB
+- out/main/chunks/gw-factory-BsFnvPO4.js | 1 KB
+- out/main/chunks/gw-feishu-Dlccla_g.js | 1539.3 KB
+- out/main/chunks/gw-follow-redirects-Bj9ciUjq.js | 14.8 KB
+- out/main/chunks/gw-fork-runtime-session-Cwla0csS.js | 3.8 KB
+- out/main/chunks/gw-function-tools-B8y5HVhO.js | 0.1 KB
+- out/main/chunks/gw-global-memory-cloud-contract-smoke-CyDHTBnt.js | 1.9 KB
+- out/main/chunks/gw-group-member-directory-CeA1t6XP.js | 72.2 KB
+- out/main/chunks/gw-host-materialization-CxV_UeVD.js | 6.4 KB
+- out/main/chunks/gw-http-chat-turn-scope-Dm_FqSpo.js | 0.6 KB
+- out/main/chunks/gw-ico-decoder-CxUdBlZg.js | 6.3 KB
+- out/main/chunks/gw-icon-decorator.macos-Dj7umYiT.js | 0.5 KB
+- out/main/chunks/gw-icon-decorator.windows-BVGKq0s-.js | 2.6 KB
+- out/main/chunks/gw-imdebug-BnkjcGha.js | 19.1 KB
+- out/main/chunks/gw-index.cjs-CRINLKx0.js | 24.1 KB
+- out/main/chunks/gw-install-baseline-DLlJSogp.js | 0.1 KB
+- out/main/chunks/gw-install-ChlYkTte.js | 0.2 KB
+- out/main/chunks/gw-installed-browsers-KONv_wrY.js | 0.1 KB
+- out/main/chunks/gw-installer-nCN6y7uz.js | 0.1 KB
+- out/main/chunks/gw-jsonc-D-1GUZF_.js | 0.1 KB
+- out/main/chunks/gw-jsx-ast-editor--_y4o2Aq.js | 310.5 KB
+- out/main/chunks/gw-lib-B1fYsEff.js | 96.2 KB
+- out/main/chunks/gw-lib-CsYD26l4.js | 55.7 KB
+- out/main/chunks/gw-lib-DHIivhTl.js | 0.1 KB
+- out/main/chunks/gw-lib-Dqx8wnpD.js | 0.5 KB
+- out/main/chunks/gw-linux-C5wYZvVd.js | 36.5 KB
+- out/main/chunks/gw-loader-B1qlCRIe.js | 0.1 KB
+- out/main/chunks/gw-load-tool-registry-BSsQrJFy.js | 0.1 KB
+- out/main/chunks/gw-local-store-DTd9YXN0.js | 0.2 KB
+- out/main/chunks/gw-log-analyzer-CWuTVYzK.js | 0.1 KB
+- out/main/chunks/gw-macos-BIqJ9-Ho.js | 0.3 KB
+- out/main/chunks/gw-mcp-proxy-caller-Bb9Da04r.js | 2.8 KB
+- out/main/chunks/gw-message-Db-yRzQY.js | 0.3 KB
+- out/main/chunks/gw-msg-archive-DBUqTeke.js | 0.1 KB
+- out/main/chunks/gw-package-wM2YyVxj.js | 0.1 KB
+- out/main/chunks/gw-pack-artifact-q3TRKbG1.js | 0.1 KB
+- out/main/chunks/gw-page-target-cdp-connection-DIIA-dJd.js | 6.1 KB
+- out/main/chunks/gw-pairings-manager-GrvwrXhe.js | 17.2 KB
+- out/main/chunks/gw-paths-DAJjo_QD.js | 0.2 KB
+- out/main/chunks/gw-pdf-CW4Qn0BS.js | 396.5 KB
+- out/main/chunks/gw-pdfjs-D1Fi2tdh.js | 1565.3 KB
+- out/main/chunks/gw-plugin-contributed-tools-BHGEJPOH.js | 0.1 KB
+- out/main/chunks/gw-plugin-scoped-connected-accounts-BT9_oGRm.js | 0.1 KB
+- out/main/chunks/gw-profile-llm-host-COpHVRaa.js | 29.8 KB
+- out/main/chunks/gw-profile-llm-host-DSW82nR3.js | 0.1 KB
+- out/main/chunks/gw-profile-recovery-B6YAM5zX.js | 0.3 KB
+- out/main/chunks/gw-proxy-route-D1chT_I4.js | 0.1 KB
+- out/main/chunks/gw-public-dns-Bbk57wW1.js | 0.1 KB
+- out/main/chunks/gw-pusher-DS-IyWei.js | 143.1 KB
+- out/main/chunks/gw-rc-source-store-ChhFqyKb.js | 0.1 KB
+- out/main/chunks/gw-registry-BnoEiZHd.js | 0.2 KB
+- out/main/chunks/gw-remote-chat-adapter-CIzLUB25.js | 2.7 KB
+- out/main/chunks/gw-remote-chat-handler-RSSnv6_x.js | 3.8 KB
+- out/main/chunks/gw-remote-control-BOpcywRZ.js | 0.2 KB
+- out/main/chunks/gw-remote-D8kggosp.js | 0.1 KB
+- out/main/chunks/gw-renderer-index-Bn3AJPDX.js | 0.1 KB
+- out/main/chunks/gw-resolve-inbound-connect-id-BpNYfvBo.js | 0.1 KB
+- out/main/chunks/gw-rlab-async-persist-DZGV0U5o.js | 2.2 KB
+- out/main/chunks/gw-rlab-model-router--wDcTB8Q.js | 1.6 KB
+- out/main/chunks/gw-rlab-reflection-funnel-CKoFKt0I.js | 1.6 KB
+- out/main/chunks/gw-run-id-D3Aa-G0M.js | 0.1 KB
+blob_base=459088 verified_with=package.json
+## extract (<=256 KB entry points, redacted; total 27.2 KB in 24 files)
+## resources capture (23 files)
+ACCIO_ASAR_OK=True
+== asar inventory: results/accio/ASAR_TREE.md (files=1689, extract=24, resources=23)
+== task r22 t4_accio_asar_inventory.ps1 ok (4s)
+== task r22: t5_accio_symbolscan.ps1
+# Accio app.asar symbol scan (read-only, stage 2 of the replication)
+SYMBOL_ROUND=22
+time_local=2026-10-15 20:11:56 +08:00
+host=LAPTOP-R77M5D6M
+blob_base=459088 header_json_bytes=459072 files_indexed=1689
+scan_targets=out/main/index.js(1565.4KB), out/main/gateway-worker.js(13225KB), out/main/workflow-worker.js(813.5KB), out/renderer/assets/app-store-DrbR9uhK.js(957.4KB), out/renderer/assets/index-9G-wWL3i.js(772.2KB)
+## out/main/index.js (1565.4 KB)
+  chars=1577094
+  ipc_main_channels (1):
+    win:invoke open-markdown-file:ready startup:get-disk-space-status startup:open-storage-settings startup:quit-for-disk-space app:get-version app:get-device-id my-apps-assets:${g} slot-iframe-cache:register slot-iframe-cache:unregister slot-iframe-cache:clear app:export-html-to-pdf app:capture-main-window vm:select-folder simulator:open-window simulator:send-message main-window:is-active notify:task-complete notify:badge-mark-unread notify:badge-clear notify:badge-clear-all browser-preview:toolbar-ready browser-preview:open browser-preview:toolbar-action browser-preview:send-to-conversation browser-preview:register-close-hook browser-preview:close-ready browser-preview:request-close browser-preview:open-external browser-preview:get-locale iab:open iab:switch iab:close iab:navigate iab:go-back iab:go-forward iab:reload iab:set-bounds iab:set-visible iab:set-owner iab:list-all unify-gray:get-snapshot unify-gray:refresh app:startup-preload-signal canvas:set-design-paste-active agent-island:publish-snapshot agent-island:sync-availability agent-island:get-display-options agent-island:focus-target agent-island:perform-action agent-island:renderer-ready password-vault:is-available password-vault:list password-vault:get-storage-path password-vault:reveal-storage-file password-vault:create password-vault:update password-vault:remove store-auth:get-mode store-auth:list-platforms store-auth:list-stores store-auth:export-stores store-auth:import-stores store-registry:list-preferences store-registry:update-preferences ecommerce-data:update-times ecommerce-data:list-stores ecommerce-data:list-store-products ecommerce-data:list-stores-with-data ecommerce-data:inventory-products ecommerce-data:query-competitors ecommerce-data:cancel-query ecommerce-data:list-sources ecommerce-data:query-source ecommerce-data:query store-auth:chrome-status store-auth:chrome-version-status store-auth:register-and-start store-auth:update-url store-auth:start store-auth:complete store-auth:cancel store-auth:remove app:get-microphone-access-status app:request-microphone-access app:open-microphone-privacy-settings app:open-notification-settings startup:get-graphics-safe-mode-status startup:restart-in-graphics-safe-mode startup:exit-graphics-safe-mode startup:ack-graphics-safe-mode-prompt app:get-network-startup-diagnostics install-monitor:ui app:get-startup-init-context app:complete-startup-telemetry-context app:get-package-region app:get-auth-shell-hint app:get-current-space-context app:get-prefetched-activation app:set-ali1688-sgcookie app:get-access-token dialog:select-folder dialog:select-file dialog:select-file-or-folder app:update-install-data app:quit app:delete-install-channel-file app:get-platform app:consume-renderer-crash-recovered gateway:consume-pending-fatals gateway:ack-fatals app:menu-labels browser-preview:set-locale dev:trigger-crash-debug-action dev:quit-app-for-cold-start dev:consume-cold-start-reset-state workspace:watch-start workspace:watch-stop app:set-native-theme app:settle-native-theme app:set-keep-system-awake app:open-about-window app:prewarm-about-window app:open-help-center-window app:close-help-center-window app:set-help-center-document-window-expanded app:prewarm-help-center-window app:open-support-chat-window app:close-support-chat-window app:prewarm-support-chat-window app:set-agent-replying-state app:get-keep-system-awake window:minimize window:maximize window:unmaximize window:close window:is-maximized window:get-bounds window:move-by window:set-size window:set-fullscreen window:set-auth-layout-mode window:set-always-on-top window:get-always-on-top window:focus dev:toggle-debug-panel dev:open-connector-debug-panel dev:open-plugin-docs-panel dev:open-mcp-debug-panel dev:mcp-app-debug-event
+  renderer_send_channels (1):
+    iab:show-requested iab:tabs-changed browser-preview:deliver app:deep-link app:startup-telemetry-completed support-chat:iframe-fail-load auth:recovery-changed auth:status-changed auth:login-failed auth:login-timeout windows-material:changed windows-material:status-changed speech:warmup app:main-window-activated window:fullscreen-changed app:default-workspace-path app:network-startup-diagnostics canvas:native-image-paste unify-gray:push-snapshot agent-island:action settings:updated conversation:focus support-chat:click-session-update dev:mcp-app-debug-events search:open-in-messages app:update-available app:update-progress app:update-downloaded open-markdown-file open-in-cowork system:resume browser-preview:locale-changed startup:graphics-crash-storm
+  mcp_tool_names (1):
+  process_env_keys (1):
+    ECOMCTL_DATA_HOME NODE_ENV FAST_BUILD GATEWAY_BASE_URL DEBUG HTTPS_PROXY HTTP_PROXY ALL_PROXY BUN_ENV VITEST HOME GATEWAY_PORT LOCALAPPDATA WS_NO_BUFFER_UTIL WS_NO_UTF_8_VALIDATE XDG_DATA_DIRS PATH DISPLAY WAYLAND_DISPLAY BROWSER ELECTRON_RENDERER_URL DESKTOP_HMR_ENABLED DESKTOP_DEV_STARTUP_FOCUS NO_PROXY TELEGRAM_PROXY_URL SESSIONNAME PROGRAMFILES ELECTRON_REMOTE_DEBUGGING_PORT BUN_TEST LOCAL_BROWSER_SNAPSHOT_DIFF_PRUNING_ENABLED
+  external_hosts (1):
+    gateway.1688.com pre-gateway.1688.com aipro.alibaba.com localhost pre-www.accio.com phoenix-gw.alibaba.com www.accio.com pre-phoenix-gw.alibaba-inc.com phoenix-gw-vps-test.alibaba.com 127.0.0.1 registry.npmjs.org registry.anpm.alibaba-inc.com h-ut-acciowork.alibaba.com git-lfs.github.com www.accio-ai.com pre-www.accio-ai.com ah7am0wjds-default-cn.rum.aliyuncs.com api.telegram.org www.accio-work.com
+  spawned_binaries (1):
+    PRAGMA query_only = ON; BEGIN
+  custom_protocols (1):
+    aw-market skill-app
+  worker_creation contexts (1):
+    > 
+  webpreferences contexts (1):
+    > ideBrowserWindowOptions:{parent:aT??void 0,width:e,height:t,webPreferences:{partition:yT,contextIsolation:!0,sandbox:!0,nodeIntegration:!1}}}}return e(r),{action:"deny"}}}function OT(e,t,r){const n=e.webContents,s=hT.get(n)??{};if(s.attache !1,fullscreenable:!1,maximizable:!1,parent:e.parent??void 0,webPreferences:{session:a,sandbox:!0,contextIsolation:!0,nodeIntegration:!1}});!function t(r){c.add(r);const n=r.webContents;n.setWindowOpenHandler(({url:e})=>h()&&o(e)?{action:"al 0,height:600,fullscreen:!1,fullscreenable:!1,maximizable:!1,webPreferences:{session:a,sandbox:!0,contextIsolation:!0,nodeIntegration:!1,preload:void 0}}}:{action:"deny"}),n.on("did-create-window",e=>t(e)),n.on("will-navigate",(e,t)=>{h()&&o .setWindowButtonVisibility(!1),cT=mT?new p.WebContentsView({webPreferences:{preload:NT("browser/toolbar"),sandbox:!1,contextIsolation:!0,nodeIntegration:!1}}):null,lT=new p.WebContentsView({webPreferences:{preload:NT("browser/content"),sand ion:!0,nodeIntegration:!1}}):null,lT=new p.WebContentsView({webPreferences:{preload:NT("browser/content"),sandbox:!1,contextIsolation:!0,nodeIntegration:!1,session:CT()}}),cT&&aT.contentView.addChildView(cT),aT.contentView.addChildView(lT), ;const t=new p.BrowserWindow({show:!1,width:1280,height:900,webPreferences:{partition:e.partition,nodeIntegration:!1,contextIsolation:!0,sandbox:!0,backgroundThrottling:!1}});return fR.add(t),t.once("closed",()=>fR.delete(t)),t.webContents.
+  userdata_paths contexts (1):
+    > otstrap",$O="whatsapp-cams-demo",UO={userDataPath:()=>p.app.getPath("userData"),isDev:()=>yt.dev,isPackaged:()=>p.app.isPackaged,onBeforeQuit:e=>{p.app.once("will-quit",()=>{e()})},fetch:async function(e,t){if("manual"!==t?.redirect)return  0,databasePath:"darwin"===process.platform?(0,y.join)(p.app.getPath("userData"),"ut"):void 0},this.status={enabled:this.enabled&&c,ready:!1,platform:process.platform,reason:this.enabled?c?void 0:"windows_reserved_disabled":"unsupported_plat ome"),"Library","Accio"),"external-tools"):(0,y.join)(p.app.getPath("userData"),"external-tools")}function lF(){let e=p.app.getVersion();try{const t="win32"===(0,v.platform)()?yt.dev?(0,y.resolve)(nF,"..","..","..","..","assets","win","pre- ull}catch{return null}}function mF(){return(0,y.join)(p.app.getPath("userData"),"pre-install")}function gF(){const e=fF(),t=mF();return e?(0,y.join)(t,e):t}function yF(e,t){const r=[[(0,y.join)(e,"python.exe"),(0,y.join)(e,"python3.exe")]]; 0,force:!0}))}}catch{}}(o,r,e);try{const e=(0,y.join)(p.app.getPath("userData"),"pre-install-done");(0,g.existsSync)(e)&&(0,g.rmSync)(e)}catch{}return e?.("Dependencies installation complete."),!0}var bF=["accio-mcp-cli.cmd","accio-mcp-cli" ome"),currentAppData:e.getPath("appData"),currentUserData:e.getPath("userData")});t.home&&e.setPath("home",t.home),t.appData&&((0,g.mkdirSync)(t.appData,{recursive:!0}),e.setPath("appData",t.appData)),t.userData&&((0,g.mkdirSync)(t.userData
+  db_and_memory contexts (1):
+    > lve("better-sqlite3/package.json")),"build","Release-node","better_sqlite3.node");return(0,g.existsSync)(e)?e:null}catch{return null}}();let n;try{const n=await import("better-sqlite3");return new(n.default??n)(e,{...t,...r?{nativeBinding:r
+  agent_runtime_signals contexts (1):
+    > okens?{cachedInputTokens:e.cachedInputTokens}:{},...null!=e.systemPromptEstimatedTokens?{systemPromptEstimatedTokens:e.systemPromptEstimatedTokens}:{},...null!=e.historyEstimatedTokens?{historyEstimatedTokens:e.historyEstimatedTokens}:{},.. chedInputTokens}:{},...null!=e.systemPromptEstimatedTokens?{systemPromptEstimatedTokens:e.systemPromptEstimatedTokens}:{},...null!=e.historyEstimatedTokens?{historyEstimatedTokens:e.historyEstimatedTokens}:{},...null!=e.currentTurnEstimated .systemPromptEstimatedTokens?{systemPromptEstimatedTokens:e.systemPromptEstimatedTokens}:{},...null!=e.historyEstimatedTokens?{historyEstimatedTokens:e.historyEstimatedTokens}:{},...null!=e.currentTurnEstimatedTokens?{currentTurnEstimatedTo er",displayName:"瀛?Agent 鎻愮ず璇嶅洖璇诲け璐?,description:"蹇収 lazy 鍒嗗眰瑁佹帀 systemPrompt 鍚庢寜璺緞鍥炶澶辫触锛涢潪闆跺嵆鎰忓懗鐫€鏈?subAgent 浠ョ┖鎻愮ず璇嶆敞鍐?,slotFields:["surface","pluginId","errorCode","sampleRate"],utEventId:"19999"},initCircuitReplay:{type:"plugin.system.init_circuit_re Tokens","outputTokens","cachedInputTokens","cacheHitRatio","systemPromptEstimatedTokens","historyEstimatedTokens","currentTurnEstimatedTokens","toolDefinitionsEstimatedTokens","skillCount","pluginCount","toolCount","toolUtf8Bytes","systemPr ns","skillCount","pluginCount","toolCount","toolUtf8Bytes","systemPromptUtf8Bytes","reminderUtf8Bytes","staticContextUtf8Bytes","identityUtf8Bytes","memoryDataUtf8Bytes","reflectionMemoryUtf8Bytes","environmentUtf8Bytes","skillUtf8Bytes","p
+## out/main/gateway-worker.js (13225 KB)
+  chars=13187102
+  ipc_main_channels (1):
+  renderer_send_channels (1):
+  mcp_tool_names (1):
+    list notify_user browser_act browser_rpa_login browser_rpa_run store_auth_gateway discover_store_accounts skill present_files dashboard_report competitor_report competitor_monitor_list weekly_report mcp_call bash browser_rpa_get_spec
+  process_env_keys (1):
+    ECOMCTL_DATA_HOME NODE_ENV FAST_BUILD GATEWAY_BASE_URL HOME DEBUG HTTPS_PROXY HTTP_PROXY ALL_PROXY BUN_ENV VITEST VITE_UPLOAD_BIZ_CODE VITE_UPLOAD_URL GATEWAY_PORT NODE_DEBUG IGNORE_TEST_WIN32 WS_NO_BUFFER_UTIL WS_NO_UTF_8_VALIDATE LOCAL_BROWSER_SNAPSHOT_DIFF_PRUNING_ENABLED SHELL PWSH_PATH PATH CODEX_LINUX_SANDBOX_EXE TEMP TMP TMPDIR PATHEXT BUF_BIGINT_DISABLE GRPC_NODE_VERBOSITY GRPC_VERBOSITY GRPC_NODE_TRACE GRPC_TRACE GRPC_SSL_CIPHER_SUITES GRPC_DEFAULT_SSL_ROOTS_FILE_PATH GRPC_NODE_USE_ALTERNATIVE_RESOLVER GRPC_EXPERIMENTAL_ENABLE_OUTLIER_DETECTION ACCIO_GATEWAY_URL ADK_EMPID LOG_LEVEL CDP_USER_DATA_DIR LOCALAPPDATA APPDATA WINDIR PHOENIX_SECURITY_GUARD_APPKEY MEDIA_IMAGE_REST MEDIA_CATALOG HAPPYHORSE_ACCESS_TOKEN HAPPYHORSE_GATEWAY_BASE MCP_SERVER_NAME MCP_TRANSPORT COMPOSIO_API_KEY TESTING_TAR_FAKE_PLATFORM USER __FAKE_PLATFORM__ __FAKE_FS_O_FILENAME__ GIT_ASKPASS NO_PROXY MCP_TOOLS_REFRESH_WAIT_MS VITE_LOG_UPLOAD_URL NPM_CONFIG_REGISTRY NPM_CONFIG_USERCONFIG NPM_CONFIG_GLOBALCONFIG GLOBAL_MEMORY_E2E_DIAGNOSTICS PHOENIX_IMAGE_AGENT_CONFIG_URL LOCAL_SESSION_PERSISTENCE_ENABLED LANG LC_ALL LANGUAGE WECOM_CLI_CONFIG_DIR EMBEDDING_BASE_URL EMBEDDING_MODEL VPS_GATEWAY_SANDBOX_KIND_TAG GATEWAY_HOST UV_THREADPOOL_SIZE
+  external_hosts (1):
+    aipro.alibaba.com pre-phoenix-gw.alibaba-inc.com pre-test-phoenix-gw.alibaba-inc.com pre-de-phoenix-gw.alibaba-inc.com pre-sg-phoenix-gw.alibaba-inc.com pre-us-phoenix-gw.alibaba-inc.com localhost pre-www.accio.com phoenix-gw.alibaba.com www.accio.com phoenix-gw-vps-test.alibaba.com 127.0.0.1 github.com api.ydc-index.io www.w3.org www.ibm.com www.baidu.com www.google.com www.bing.com html.duckduckgo.com duckduckgo.com image-search.ydc-index.io cn.bing.com ilinkai.weixin.qq.com novac2c.cdn.weixin.qq.com grpc.io www.apache.org connectivitycheck.gstatic.com cp.cloudflare.com connect.rom.miui.com s.alicdn.com iai.alibaba-inc.com rlab.alibaba-inc.com example.com app.example.com post.alibaba.com s.1688.com www.instagram.com www.linkedin.com www.tiktok.com ads.us.tiktok.com ads-useast2a.tiktok.com ads.tiktok.com www.amazon.com trends.google.com www.temu.com mms.pinduoduo.com registry.npmjs.org registry.npmmirror.com placeholder.local wares-jdm.jd.com qn.taobao.com www.taobao.com login.taobao.com work.1688.com fxg.jinritemai.com jdsz.jd.com csp.aliexpress.com geocoding-api.open-meteo.com api.open-meteo.com archive-api.open-meteo.com wttr.in ipapi.co ip-api.com reallyfreegeoip.org placeholder.invalid open.alibaba.com learn.microsoft.com guide.fireflies.ai cloud.higgsfield.ai developers.facebook.com open.feishu.cn www.shopify.com developers.tiktok.com doc.tldv.io www.todoist.com developer.x.com docs.x.com developers.wrike.com developer.xero.com detail.1688.com dev.shopify.com apps.shopify.com yourstore.myshopify.com m.media-amazon.com amazon.com local.accio.invalid cdn.example.com oss.example.com sc02.alicdn.com discord.com support-dev.discord.com oapi.dingtalk.com accounts.feishu.cn us-rlab.alibaba-inc.com img.alicdn.com accio.com alisite-mobile.alibaba.com shop.jd.com corp.1688.com invalid.example pre-selleragent.1688.com selleragent.1688.com host.invalid locize.com www.i18next.com react.dev dns.alidns.com px.effirst.com px-intl.ucweb.com px.wpk.quark.cn erpx.effirst.com api.dingtalk.com phoenix-server-logstore.us-east-1.log.aliyuncs.com phoenix-gateway-china.cn-hangzhou.log.aliyuncs.com
+  spawned_binaries (1):
+    PRAGMA busy_timeout = 3000 ALTER TABLE messages ADD COLUMN recall_count INTEGER NOT NULL DEFAULT 0 ALTER TABLE messages ADD COLUMN last_recall_at INTEGER ALTER TABLE messages ADD COLUMN source TEXT NOT NULL DEFAULT  ALTER TABLE messages ADD COLUMN ingress_type TEXT ALTER TABLE messages ADD COLUMN start_line INTEGER NOT NULL DEFAULT 0 ALTER TABLE messages ADD COLUMN end_line INTEGER NOT NULL DEFAULT 0 DELETE FROM messages WHERE source =  PRAGMA journal_mode = WAL PRAGMA foreign_keys = ON PRAGMA wal_checkpoint(TRUNCATE) PRAGMA synchronous = NORMAL PRAGMA auto_vacuum = INCREMENTAL DROP TABLE IF EXISTS  PRAGMA incremental_vacuum(1000) BEGIN COMMIT ROLLBACK 
+CREATE TABLE IF NOT EXISTS upload_queue (
+  seq         INTEGER PRIMARY KEY,
+  envelope   BEGIN IMMEDIATE PRAGMA busy_timeout = 0 
+    PRAGMA busy_timeout = 5000;
+    CREATE TABLE IF NOT EXISTS video_submission_tombstone ALTER TABLE video_submission_tombstones ADD COLUMN fallback_key TEXT ALTER TABLE video_submission_tombstones ADD COLUMN intent_provider TEXT 
+    CREATE TABLE IF NOT EXISTS video_submission_tombstone_aliases (
+      alias_key TEXT  PRAGMA synchronous = FULL 
+PRAGMA foreign_keys = ON;
+PRAGMA journal_mode = WAL;
+PRAGMA busy_timeout = 5000;
+CREATE  PRAGMA query_only = ON CREATE TABLE ${AKn(n.view_name,!0)} (
+  custom_protocols (1):
+  worker_creation contexts (1):
+    > 
+  webpreferences contexts (1):
+    > 
+  userdata_paths contexts (1):
+    > 
+  db_and_memory contexts (1):
+    > lve(`better-sqlite3/package.json`)),`build`,`Release-node`,`better_sqlite3.node`);return(0,y.existsSync)(e)?e:null}catch{return null}}async function Rc(e,t={}){if(yhe){let{Database:n}=await import(`bun:sqlite`);return xhe(new n(e,t.readonly ,t=process.arch,n=e===`win32`?`windows`:e,r=bhe[e]??`so`,i=`sqlite-vec-${n}-${t}`,a=`vec0.${r}`,o=process.resourcesPath;if(o)return(0,g.join)(o,`app.asar.unpacked`,`node_modules`,i,a);let s=(0,h.createRequire)(require(`url`).pathToFileURL(_ require(`url`).pathToFileURL(__filename).href);try{let e=s(`sqlite-vec`);if(typeof e.getLoadablePath==`function`)return e.getLoadablePath()}catch{}return s.resolve(`${i}/${a}`)}J();const zc=q(`SessionIndexStore:disk-space`),whe=.03;var Bc=c let t=Che();hv.info(`[DIAG] initVec: Electron mode, loading sqlite-vec from ${t}`),e.loadExtension(t)}else{let t=this.loadSqliteVecModule();if(t?.load)hv.info(`[DIAG] initVec: loading sqlite-vec via sqliteVec.load(db)`),t.load(e);else{let t liteVecModule();if(t?.load)hv.info(`[DIAG] initVec: loading sqlite-vec via sqliteVec.load(db)`),t.load(e);else{let t=Che();hv.info(`[DIAG] initVec: fallback loading sqlite-vec from ${t}`),e.loadExtension(t)}}hv.info(`[DIAG] initVec: sqlite- ;else{let t=Che();hv.info(`[DIAG] initVec: fallback loading sqlite-vec from ${t}`),e.loadExtension(t)}}hv.info(`[DIAG] initVec: sqlite-vec loaded successfully`);let n=this.embeddingFn.dimensions,r=` CREATE VIRTUAL TABLE IF NOT EXISTS messag
+  agent_runtime_signals contexts (1):
+    > stant`,content:e??void 0,messageType:t?`tool_call`:`normal`,toolCalls:t,metadata:{},ext:{},...n}},toolResult(e,t,n,r=!1,i){return{id:(0,m.randomUUID)(),timestamp:Yn(),role:`tool`,content:n,messageType:`tool_result`,toolCallId:e,name:t,metad ).slice(0,16)}var Nr=o((()=>{}));function Pr(e,t,n){let r=t.toolCalls??[],i=r.map((e,t)=>({tc:e,index:t})).filter(({tc:e})=>!e.name||!e.id).map(({tc:e,index:t})=>({index:t,hasId:!!e.id,hasName:!!e.name,idPreview:Fr(e.id),namePreview:Fr(e.na yield c;return}let e=this.validateChunk(c);if(!e)continue;e.toolCalls?.length&&(r=!0);let t=s.length,l=s+(e.content??``),u=e.content&&!r?vr(l):void 0;if(u){let r=l.slice(t,Math.max(t,u.stablePrefixEnd));r&&(n=!0,yield{...e,content:r,finishR odelName)}}isValidResponse(e){return!!(e.content?.trim()||e.toolCalls?.length)}sanitizeMessages(e){let t=br(e);return t.quarantinedCount>0&&this.log.warn(`LLMGuard: quarantined ${t.quarantinedCount} repetitive assistant message(s) before mo gth}, repeatCount=${t.repeatCount})`)}validateChunk(e){if(e.toolCalls?.length){let t=e.toolCalls.filter(e=>e.name&&e.id);if(t.length!==e.toolCalls.length){let n=e.toolCalls.length-t.length,r=Pr(this.modelName,e,t.length);this.log.warn(`[LLM tCount})`)}validateChunk(e){if(e.toolCalls?.length){let t=e.toolCalls.filter(e=>e.name&&e.id);if(t.length!==e.toolCalls.length){let n=e.toolCalls.length-t.length,r=Pr(this.modelName,e,t.length);this.log.warn(`[LLMGuard][malformed_tool_call_
+## out/main/workflow-worker.js (813.5 KB)
+  chars=813113
+  ipc_main_channels (1):
+  renderer_send_channels (1):
+  mcp_tool_names (1):
+  process_env_keys (1):
+    PHOENIX_LOCAL_AGENT NEWTON_WF_CALLTOOL_CONCURRENCY HOME USERPROFILE
+  external_hosts (1):
+    json-schema.org
+  spawned_binaries (1):
+            CREATE TABLE IF NOT EXISTS schema_version (
+                version INTEGER N 
+            CREATE TABLE IF NOT EXISTS context_messages (
+                id TEXT NOT NUL 
+            CREATE INDEX IF NOT EXISTS idx_context_messages_agent_seq
+                ON  
+            CREATE TABLE IF NOT EXISTS agent_metadata (
+                agent_id TEXT NOT 
+            CREATE TABLE IF NOT EXISTS summaries (
+                agent_id TEXT NOT NULL 
+            CREATE TABLE IF NOT EXISTS checkpoints (
+                workspace_dir TEXT N 
+            CREATE TABLE IF NOT EXISTS notes (
+                id INTEGER PRIMARY KEY AUT 
+            CREATE INDEX IF NOT EXISTS idx_notes_workspace_module
+                ON note 
+            CREATE TABLE IF NOT EXISTS task_items (
+                id TEXT NOT NULL,
+            CREATE INDEX IF NOT EXISTS idx_task_items_workspace_status
+                ON 
+            CREATE TABLE IF NOT EXISTS task_checkpoints (
+                workspace_dir T 
+            CREATE TABLE IF NOT EXISTS schedule (
+                id              TEXT    
+            CREATE INDEX IF NOT EXISTS idx_schedule_enabled
+                ON schedule(e 
+            CREATE INDEX IF NOT EXISTS idx_schedule_channel_agent
+                ON sche 
+            CREATE INDEX IF NOT EXISTS idx_schedule_next_trigger
+                ON sched 
+            CREATE TABLE IF NOT EXISTS schedule_execution (
+                id            
+            CREATE INDEX IF NOT EXISTS idx_execution_schedule_id
+                ON sched 
+            CREATE INDEX IF NOT EXISTS idx_execution_status
+                ON schedule_e 
+            CREATE INDEX IF NOT EXISTS idx_execution_start_time
+                ON schedu 
+            ALTER TABLE schedule ADD COLUMN prompt_attachments TEXT
+            CREATE TABLE IF NOT EXISTS schedule_execution_v3 (
+                id         
+            INSERT INTO schedule_execution_v3
+                (id, execution_id, schedule DROP TABLE schedule_execution ALTER TABLE schedule_execution_v3 RENAME TO schedule_execution 
+            CREATE TABLE IF NOT EXISTS sessions (
+                id          TEXT    PRI CREATE INDEX IF NOT EXISTS idx_sessions_updated_at ON sessions(updated_at) CREATE INDEX IF NOT EXISTS idx_sessions_pinned ON sessions(pinned) 
+            CREATE TABLE IF NOT EXISTS documents (
+                id          TEXT    PR CREATE INDEX IF NOT EXISTS idx_documents_updated_at ON documents(updated_at) 
+            CREATE TABLE IF NOT EXISTS channel_sessions (
+                from_channel TE 
+            CREATE TABLE IF NOT EXISTS channel_executions (
+                execution_id  CREATE INDEX IF NOT EXISTS idx_channel_executions_session ON channel_executions(session_id CREATE INDEX IF NOT EXISTS idx_channel_executions_status ON channel_executions(status) ALTER TABLE sessions ADD COLUMN channel TEXT NOT NULL DEFAULT  
+            CREATE TABLE IF NOT EXISTS todo_lists (
+                id TEXT PRIMARY KEY,
+            CREATE INDEX IF NOT EXISTS idx_todo_session ON todo_lists(session_id)
+            CREATE TABLE IF NOT EXISTS ccr_blobs (
+                hash TEXT PRIMARY KEY, 
+            CREATE INDEX IF NOT EXISTS idx_ccr_last_access ON ccr_blobs(last_access_at)
+            ALTER TABLE schedule_execution ADD COLUMN route_session_id TEXT
+            CREATE TABLE IF NOT EXISTS loop_events (
+                id            INTEGE 
+            CREATE INDEX IF NOT EXISTS idx_loop_events_date ON loop_events(date)
+            CREATE INDEX IF NOT EXISTS idx_loop_events_wf ON loop_events(workflow_code)
+            CREATE INDEX IF NOT EXISTS idx_loop_events_origin ON loop_events(skill_origin 
+            CREATE TABLE IF NOT EXISTS loop_daily (
+                date          TEXT    
+            CREATE TABLE IF NOT EXISTS goals (
+                id                      TE CREATE INDEX IF NOT EXISTS idx_goals_session ON goals(session_id) CREATE INDEX IF NOT EXISTS idx_goals_lifecycle ON goals(lifecycle_status) CREATE INDEX IF NOT EXISTS idx_goals_status ON goals(status) 
+            CREATE TABLE IF NOT EXISTS goal_transitions (
+                id INTEGER PRIM CREATE INDEX IF NOT EXISTS idx_goal_transitions_goal_id ON goal_transitions(goal_id) 
+            CREATE TABLE IF NOT EXISTS goal_entity_scopes (
+                id            CREATE INDEX IF NOT EXISTS idx_goal_entity_scopes_goal ON goal_entity_scopes(goal_id) 
+            CREATE TABLE IF NOT EXISTS goal_metric_specs (
+                id             CREATE INDEX IF NOT EXISTS idx_goal_metric_specs_goal ON goal_metric_specs(goal_id) 
+            CREATE TABLE IF NOT EXISTS goal_metric_snapshots (
+                id         
+            CREATE INDEX IF NOT EXISTS idx_goal_snapshot_metric_time
+                ON g 
+            CREATE INDEX IF NOT EXISTS idx_goal_metric_snapshots_goal_metric
+            CREATE TABLE IF NOT EXISTS goal_plan_revisions (
+                goal_id      
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_goal_plan_revision
+                ON g 
+            CREATE TABLE IF NOT EXISTS goal_policy_revisions (
+                goal_id    
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_goal_policy_revision
+                ON 
+            CREATE TABLE IF NOT EXISTS goal_tasks (
+                id                  T CREATE INDEX IF NOT EXISTS idx_goal_tasks_goal_plan ON goal_tasks(goal_id, plan_revision) 
+            CREATE TABLE IF NOT EXISTS goal_triggers (
+                id                 
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_goal_trigger_idempotency
+            CREATE INDEX IF NOT EXISTS idx_goal_trigger_due
+                ON goal_trigg 
+            CREATE TABLE IF NOT EXISTS goal_runs (
+                id              TEXT   CREATE INDEX IF NOT EXISTS idx_goal_runs_goal ON goal_runs(goal_id) CREATE INDEX IF NOT EXISTS idx_goal_runs_status ON goal_runs(status) 
+            CREATE TABLE IF NOT EXISTS goal_task_runs (
+                id                CREATE INDEX IF NOT EXISTS idx_goal_task_runs_run ON goal_task_runs(goal_run_id) CREATE UNIQUE INDEX IF NOT EXISTS idx_goal_task_runs_idempotency ON goal_task_runs(idempot 
+            CREATE TABLE IF NOT EXISTS goal_evaluations (
+                id              CREATE INDEX IF NOT EXISTS idx_goal_evaluations_goal ON goal_evaluations(goal_id, created_ CREATE INDEX IF NOT EXISTS idx_goal_evaluations_goal_time ON goal_evaluations(goal_id, tim 
+            CREATE TABLE IF NOT EXISTS goal_confirmation_requests (
+                id    
+            CREATE INDEX IF NOT EXISTS idx_goal_confirmation_pending
+                ON g 
+            CREATE TABLE IF NOT EXISTS goal_events (
+                id              INTE CREATE INDEX IF NOT EXISTS idx_goal_events_goal ON goal_events(goal_id, created_at DESC) 
+            CREATE TABLE IF NOT EXISTS goal_observations (
+                id TEXT PRIMAR 
+            CREATE INDEX IF NOT EXISTS idx_goal_observations_goal_time
+                ON 
+            CREATE INDEX IF NOT EXISTS idx_goal_observations_goal_consumed
+            CREATE INDEX IF NOT EXISTS idx_goal_observations_source
+                ON go ALTER TABLE ${n} ADD COLUMN ${i} 
+            CREATE TABLE IF NOT EXISTS goal_qualitative_specs (
+                goal_id   
+            CREATE TABLE IF NOT EXISTS goal_evidence_snapshots (
+                id       
+            CREATE INDEX IF NOT EXISTS idx_goal_evidence_goal_time
+                ON goa 
+            CREATE TABLE IF NOT EXISTS message_feedback (
+                id          INT 
+            CREATE INDEX IF NOT EXISTS idx_message_feedback_session
+                ON me ALTER TABLE ${n} ADD COLUMN plan_revision INTEGER 
+                UPDATE ${n}
+                SET plan_revision = COALESCE(
+                CREATE INDEX IF NOT EXISTS idx_goal_evidence_goal_time
+            ON goal_evidence_snapsh ALTER TABLE goal_qualitative_specs RENAME TO goal_qualitative_specs_v16 
+                CREATE TABLE goal_qualitative_specs (
+                    goal_id         
+                INSERT INTO goal_qualitative_specs (
+                    goal_id, plan_re DROP TABLE goal_qualitative_specs_v16 CREATE INDEX IF NOT EXISTS idx_goal_metric_specs_revision ON goal_metric_specs(goal_id, pl CREATE INDEX IF NOT EXISTS idx_goal_snapshots_revision ON goal_metric_snapshots(goal_id, p CREATE INDEX IF NOT EXISTS idx_goal_evaluations_revision ON goal_evaluations(goal_id, plan CREATE INDEX IF NOT EXISTS idx_goal_evidence_revision ON goal_evidence_snapshots(goal_id,  
+            CREATE TABLE IF NOT EXISTS goal_correction_cycles (
+                id        CREATE INDEX IF NOT EXISTS idx_goal_correction_cycles_goal_revision
+            ON goal_co CREATE UNIQUE INDEX IF NOT EXISTS idx_goal_correction_cycles_fingerprint
+            ON go 
+            CREATE TABLE IF NOT EXISTS goal_runtime_bindings (
+                session_id CREATE INDEX IF NOT EXISTS idx_goal_runtime_bindings_goal
+            ON goal_runtime_bind CREATE INDEX IF NOT EXISTS idx_goal_runtime_bindings_status
+            ON goal_runtime_bi 
+                DELETE FROM goal_triggers
+                WHERE trigger_type =  DELETE FROM ${n} 
+            CREATE TABLE IF NOT EXISTS skill_evaluation_cooldown (
+                agent_ ALTER TABLE goal_evaluations ADD COLUMN capture_outcomes_json TEXT ALTER TABLE goal_runtime_bindings ADD COLUMN ${n} ${r} 
+            CREATE TABLE IF NOT EXISTS requirement_restate_snapshots (
+                id 
+            CREATE INDEX IF NOT EXISTS idx_requirement_restate_session
+                ON
+  custom_protocols (1):
+  worker_creation contexts (1):
+    > 
+  webpreferences contexts (1):
+    > 
+  userdata_paths contexts (1):
+    > 
+  db_and_memory contexts (1):
+    > 
+  agent_runtime_signals contexts (1):
+    > nds:n(i.maxRounds,()=>10),model:i.model,hasSystemPrompt:!!i.systemPrompt,phaseTitle:t.currentPhaseTitle,phaseIndex:t.currentPhaseIndex})),u({type:`agent_start`,agentLabel:o,agentTitle:s,agentPrompt:i.task,agentState:`start`,phaseTitle:t.cur title:i.title,tools:i.tools,maxRounds:n(i.maxRounds,()=>10),systemPrompt:i.systemPrompt,model:i.model,skills:a.map(e=>e.name)}}));let c=i.onEvent,{result:p,metrics:m}=Oe(await e.subTaskRunner({...i,label:n(i.label,()=>o),...a.length>0?{skil ools:i.tools,maxRounds:n(i.maxRounds,()=>10),systemPrompt:i.systemPrompt,model:i.model,skills:a.map(e=>e.name)}}));let c=i.onEvent,{result:p,metrics:m}=Oe(await e.subTaskRunner({...i,label:n(i.label,()=>o),...a.length>0?{skills:a}:{},onEven :`markdown`}),f},subTaskRunner:async e=>{let a=e,{onEvent:o,systemPrompt:s,model:c,skills:l,maxRounds:u,...d}=a,f=r===`newton-skill-workflow-v1`?{...d,systemPrompt:s,model:c,skills:l,maxRounds:u}:d,p=(0,n.randomUUID)(),m=a.title??a.label??` ,maxRounds:u,...d}=a,f=r===`newton-skill-workflow-v1`?{...d,systemPrompt:s,model:c,skills:l,maxRounds:u}:d,p=(0,n.randomUUID)(),m=a.title??a.label??`SubTask`,h=r===`newton-skill-workflow-v1`;h&&i(p,m,`start`);let g;try{g=await t.invoke(`sub
+## out/renderer/assets/app-store-DrbR9uhK.js (957.4 KB)
+  chars=979107
+  ipc_main_channels (1):
+  renderer_send_channels (1):
+  mcp_tool_names (1):
+  process_env_keys (1):
+  external_hosts (1):
+    localhost
+  spawned_binaries (1):
+  custom_protocols (1):
+  worker_creation contexts (1):
+    > 
+  webpreferences contexts (1):
+    > 
+  userdata_paths contexts (1):
+    > 
+  db_and_memory contexts (1):
+    > 
+  agent_runtime_signals contexts (1):
+    > ttachments)&&e.attachments.length>0}function __(e){return(e.tool_calls??[]).map(t=>typeof t.id=="string"?t.id.trim():"").filter(Boolean)}function mB(e){return e.role!=="assistant"||e.rowId||Array.isArray(e.tool_calls)&&e.tool_calls.length>0 mB(e){return e.role!=="assistant"||e.rowId||Array.isArray(e.tool_calls)&&e.tool_calls.length>0?!1:typeof e.content=="string"&&e.content.trim()==="Thinking..."}function pB(e,t){return t?!1:typeof e=="string"&&e.trim()==="Thinking..."}functio role!=="assistant"||e.rowId||Array.isArray(e.tool_calls)&&e.tool_calls.length>0?!1:typeof e.content=="string"&&e.content.trim()==="Thinking..."}function pB(e,t){return t?!1:typeof e=="string"&&e.trim()==="Thinking..."}function w_(e){return! hB(e,t){return!1}function cp(e,t,n){return!(!DC(e,t)||!n&&e.tool_calls?.length&&!bi(e)||n&&ZI(e,t,n))}function IB(e,t,n,s){if(t.role!=="assistant")return{messages:e,changed:!1,removedCount:0};if(!(n||t.messageId||t.uniqueId||t.clientId))ret y(e.attachments)&&e.attachments.length>0?!0:Array.isArray(e.tool_calls)&&e.tool_calls.length>0}function ZI(e,t,n){if(!n||e.role!=="assistant"||t.role!=="assistant"||e.messageId!==n)return!1;const s=__(t);if(s.length>0){const a=new Set(__(e) )&&e.attachments.length>0?!0:Array.isArray(e.tool_calls)&&e.tool_calls.length>0}function ZI(e,t,n){if(!n||e.role!=="assistant"||t.role!=="assistant"||e.messageId!==n)return!1;const s=__(t);if(s.length>0){const a=new Set(__(e));return s.some
+## out/renderer/assets/index-9G-wWL3i.js (772.2 KB)
+  chars=760787
+  ipc_main_channels (1):
+  renderer_send_channels (1):
+  mcp_tool_names (1):
+  process_env_keys (1):
+  external_hosts (1):
+    www.w3.org 127.0.0.1 www.accio-ai.com localhost px.effirst.com px-intl.ucweb.com px.wpk.quark.cn erpx.effirst.com g.alicdn.com accio-work-pc.local.dev accio-work-pc.local.prod www.accio.com
+  spawned_binaries (1):
+  custom_protocols (1):
+  worker_creation contexts (1):
+    > 
+  webpreferences contexts (1):
+    > 
+  userdata_paths contexts (1):
+    > 
+  db_and_memory contexts (1):
+    > 
+  agent_runtime_signals contexts (1):
+    > er",displayName:"瀛?Agent 鎻愮ず璇嶅洖璇诲け璐?,description:"蹇収 lazy 鍒嗗眰瑁佹帀 systemPrompt 鍚庢寜璺緞鍥炶澶辫触锛涢潪闆跺嵆鎰忓懗鐫€鏈?subAgent 浠ョ┖鎻愮ず璇嶆敞鍐?,slotFields:["surface","pluginId","errorCode","sampleRate"],utEventId:"19999"},initCircuitReplay:{type:"plugin.system.init_circuit_re del":"Model","agentDetail.thinking":"Thinking","agentDetail.systemPrompt":"System Prompt","agentDetail.workspace":"Workspace","agentDetail.template":"Template","addAgent.editMember":"Edit Member","addAgent.addAgent":"Add agent","addAgent.ed
+ACCIO_SYMBOL_OK=True
+== symbol scan: results/accio/SYMBOL_SCAN.md (targets=5)
+== task r22 t5_accio_symbolscan.ps1 ok (4s)
+== task r22: t6_deliverable_verify.ps1
+COMPUTERNAME=LAPTOP-R77M5D6M
+cwd=E:\0github\git-sync\rea-84877cdd
+repoRoot=E:\0github\git-sync\rea-84877cdd
+phase=t6-deliverable-verify
+DELIVERABLE_OK=True
+DELIVERABLE_SHA256=6CCD59C803F06C7597313859C510A012EEEEF2116D4F3ECF382344B73BFD3DAD
+DELIVERABLE_ROUND=14
+== task r22 t6_deliverable_verify.ps1 ok (2s)
+== task r22: t7_hotcase_verify.ps1
+COMPUTERNAME=LAPTOP-R77M5D6M
+repoRoot=E:\0github\git-sync\rea-84877cdd
+phase=t7-hotcase-verify
+deliverable/hotcase/HOTCASE_REPLICA.pptx sha256=3FBEC9770BA58E2D290B717E34F0CDE090F4C7174DEBFDDF0BF9EC1A3492779E match=True
+deliverable/hotcase/HOTCASE_REPLICA.pdf sha256=40FF6D1D1114017F403AD93BFA0848F55683B273A2C00AC90F9C37C5F161192B match=True
+HOTCASE_OK=True
+HOTCASE_ROUND=1
+== task r22 t7_hotcase_verify.ps1 ok (2s)
+== task r22: t8_hotcase_v2_verify.ps1
+COMPUTERNAME=LAPTOP-R77M5D6M
+repoRoot=E:\0github\git-sync\rea-84877cdd
+phase=t8-hotcase-v2-verify
+deliverable/hotcase/HOTCASE_VISUAL_V2.pptx match=True
+deliverable/hotcase/HOTCASE_VISUAL_V2.pdf match=True
+HOTCASE_V2_OK=True
+HOTCASE_V2_ROUND=2
+== task r22 t8_hotcase_v2_verify.ps1 ok (2s)
+== task r22: t9_hotcase_v3_verify.ps1
+COMPUTERNAME=LAPTOP-R77M5D6M
+repoRoot=E:\0github\git-sync\rea-84877cdd
+phase=t9-hotcase-v3-verify
+FAIL: hash mismatch or missing
+   [FAIL] task exited 1 (1s)
+== accept 2d: hands-free auto_pull/auto_push present in watch.ps1
+== success criteria: results/status/success_criteria.json
+   rea x git-sync v2.8.1 - round 22 on arena/84877cdd-rea. V3 deck: ONE case x TEN standard 1688 set images (main/detail/factory-strength/reviews/customization/usage/scene/selling-point/specs/packaging) with crisp PIL-composed Chinese callouts on-image; verified laptop-side by t9 via git download + sha256 receipt.
+   OK   exists: watch.ps1 (84094 B)
+   OK   exists: auth.ps1 (33980 B)
+   OK   exists: bootstrap.ps1 (5765 B)
+   OK   exists: skills/git-sync/VERSION (6 B)
+   OK   exists: skills/git-sync/sync.config.json (2151 B)
+   OK   exists: skills/computer-use/SKILL.md (3537 B)
+   OK   exists: skills/cloud-interop/SKILL.md (2869 B)
+   OK   exists: code/local_check.ps1 (30377 B)
+   OK   exists: code/tasks/manifest.json (4945 B)
+   OK   exists: code/tasks/t1_link_probe.ps1 (5571 B)
+   OK   exists: code/tasks/t2_computer_use_smoke.ps1 (24530 B)
+   OK   exists: code/tasks/t3_accio_discovery.ps1 (5433 B)
+   OK   exists: results/link/LINK_PROBE.md (819 B)
+   OK   exists: results/computer_use/CU_SMOKE.md (1049 B)
+   OK   exists: results/accio/ACCIO_TREE.md (8465 B)
+   OK   exists: code/tasks/t4_accio_asar_inventory.ps1 (16956 B)
+   OK   exists: results/accio/ASAR_TREE.md (31801 B)
+   OK   exists: results/accio/asar_index.json (279881 B)
+   OK   exists: results/accio/ASAR_EXTRACT_INDEX.md (2217 B)
+   OK   exists: results/accio/RESOURCES_CAPTURE.md (1431 B)
+   OK   exists: code/tasks/t5_accio_symbolscan.ps1 (11797 B)
+   OK   exists: results/accio/SYMBOL_SCAN.md (33833 B)
+   OK   exists: code/tasks/t6_deliverable_verify.ps1 (3553 B)
+   OK   exists: deliverable/ACCIO_REPLICATION.md (12153 B)
+   OK   exists: results/status/expected_deliverable.json (243 B)
+   OK   exists: results/deliverable/DELIVERABLE_VERIFY.md (595 B)
+   OK   exists: code/tasks/t7_hotcase_verify.ps1 (3832 B)
+   OK   exists: deliverable/hotcase/HOTCASE_REPLICA.pptx (6712571 B)
+   OK   exists: deliverable/hotcase/HOTCASE_REPLICA.pdf (8369435 B)
+   OK   exists: deliverable/hotcase/README.md (2157 B)
+   OK   exists: results/hotcase/HOTCASE_VERIFY.md (536 B)
+   OK   exists: results/status/expected_hotcase.json (387 B)
+   OK   exists: code/tasks/t8_hotcase_v2_verify.ps1 (3352 B)
+   OK   exists: deliverable/hotcase/HOTCASE_VISUAL_V2.pptx (20316631 B)
+   OK   exists: deliverable/hotcase/HOTCASE_VISUAL_V2.pdf (25092151 B)
+   OK   exists: deliverable/hotcase/img2/shoe_hero_v2.png (1856555 B)
+   OK   exists: deliverable/hotcase/img2/shoe_scene.png (3008287 B)
+   OK   exists: deliverable/hotcase/img2/shoe_sku.png (1677343 B)
+   OK   exists: deliverable/hotcase/img2/bottle_hero_v2.png (1541796 B)
+   OK   exists: deliverable/hotcase/img2/bottle_scene.png (2620006 B)
+   OK   exists: deliverable/hotcase/img2/tote_before.png (2696032 B)
+   OK   exists: deliverable/hotcase/img2/tote_hero_v2.png (1535168 B)
+   OK   exists: deliverable/hotcase/img2/tote_scene.png (2870423 B)
+   OK   exists: results/hotcase/HOTCASE_V2_VERIFY.md (563 B)
+   OK   exists: results/status/expected_hotcase_v2.json (348 B)
+   OK   exists: code/tasks/t9_hotcase_v3_verify.ps1 (3352 B)
+   OK   exists: deliverable/hotcase/HOTCASE_SET10_V3.pptx (4061071 B)
+   OK   exists: deliverable/hotcase/HOTCASE_SET10_V3.pdf (5172281 B)
+   OK   exists: deliverable/hotcase/img3/final/m1.png (1754153 B)
+   OK   exists: deliverable/hotcase/img3/final/m2.png (1284684 B)
+   OK   exists: deliverable/hotcase/img3/final/m3.png (1705892 B)
+   OK   exists: deliverable/hotcase/img3/final/m4.png (379145 B)
+   OK   exists: deliverable/hotcase/img3/final/m5.png (1483791 B)
+   OK   exists: deliverable/hotcase/img3/final/m6.png (1509370 B)
+   OK   exists: deliverable/hotcase/img3/final/m7.png (2102565 B)
+   OK   exists: deliverable/hotcase/img3/final/m8.png (1400402 B)
+   OK   exists: deliverable/hotcase/img3/final/m9.png (830264 B)
+   OK   exists: deliverable/hotcase/img3/final/m10.png (1760925 B)
+   OK   exists: results/hotcase/HOTCASE_V3_VERIFY.md (321 B)
+   OK   exists: results/status/expected_hotcase_v3.json (361 B)
+   OK   contains results/link/LINK_PROBE.md <- LINK_PROBE_OK=True
+   OK   contains results/computer_use/CU_SMOKE.md <- COMPUTER_USE_SMOKE_OK=True
+   OK   contains results/accio/ACCIO_TREE.md <- ACCIO_PROBE_OK=True
+   OK   contains results/accio/ASAR_TREE.md <- ACCIO_ASAR_OK=True
+   OK   contains results/accio/SYMBOL_SCAN.md <- ACCIO_SYMBOL_OK=True
+   OK   contains results/deliverable/DELIVERABLE_VERIFY.md <- DELIVERABLE_OK=True
+   OK   contains results/hotcase/HOTCASE_VERIFY.md <- HOTCASE_OK=True
+   OK   contains results/hotcase/HOTCASE_V2_VERIFY.md <- HOTCASE_V2_OK=True
+   FAIL DOES NOT contain in results/hotcase/HOTCASE_V3_VERIFY.md: HOTCASE_V3_OK=True
+   OK   regex results/link/LINK_PROBE.md
+   OK   regex results/computer_use/CU_SMOKE.md
+   OK   regex results/accio/ACCIO_TREE.md
+   OK   regex results/accio/ASAR_TREE.md
+   OK   regex results/accio/SYMBOL_SCAN.md
+   OK   regex results/deliverable/DELIVERABLE_VERIFY.md
+   OK   regex results/hotcase/HOTCASE_VERIFY.md
+   OK   regex results/hotcase/HOTCASE_V2_VERIFY.md
+   OK   regex results/hotcase/HOTCASE_V3_VERIFY.md
