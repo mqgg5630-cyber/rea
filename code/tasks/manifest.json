@@ -163,6 +163,28 @@
       "t7_hotcase_verify.ps1",
       "t8_hotcase_v2_verify.ps1",
       "t9_hotcase_v3_verify.ps1"
+    ],
+    "24": [
+      "t1_link_probe.ps1",
+      "t2_computer_use_smoke.ps1",
+      "t3_accio_discovery.ps1",
+      "t4_accio_asar_inventory.ps1",
+      "t5_accio_symbolscan.ps1",
+      "t6_deliverable_verify.ps1",
+      "t7_hotcase_verify.ps1",
+      "t8_hotcase_v2_verify.ps1",
+      "t10_hotcase_v4_verify.ps1"
+    ],
+    "25": [
+      "t1_link_probe.ps1",
+      "t2_computer_use_smoke.ps1",
+      "t3_accio_discovery.ps1",
+      "t4_accio_asar_inventory.ps1",
+      "t5_accio_symbolscan.ps1",
+      "t6_deliverable_verify.ps1",
+      "t7_hotcase_verify.ps1",
+      "t8_hotcase_v2_verify.ps1",
+      "t10_hotcase_v4_verify.ps1"
     ]
   }
 }
