@@ -1,14 +1,15 @@
 ﻿{
-    "round":  3,
+    "round":  4,
     "ok":  "False",
-    "backend":  "raw-dotnet-uia",
+    "backend":  "windows-computer-use-uia",
     "session_id":  1,
     "interactive":  true,
     "window_found":  false,
-    "uia_type_ok":  false,
     "uia_invoke_ok":  false,
-    "marker_ok":  true,
+    "marker_ok":  false,
+    "preclick":  false,
+    "attempts":  2,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "test window not visible to UIA (locked screen or session transition?)"
+    "detail":  "wcu could not activate the test window"
 }
