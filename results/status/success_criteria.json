@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 12 on arena/84877cdd-rea. Round 11 hex-revealed the real header: nested chromium-Pickle words (u32w3=jsonLen, JSON at offset 16). Round 12 scans 8 u32 words with a {\"files\" byte-marker precheck at offsets 4..20 and resolves the blob base empirically by test-decoding package.json under each candidate base.",
+  "description": "rea x git-sync v2.8.1 - round 13 on arena/84877cdd-rea. Stage 2 of the Accio replication: token-level symbol scan of the minified asar bundles (main entry / 13MB gateway worker / workflow worker / renderer core): IPC channel names, MCP tools, env keys, external hosts, spawned binaries, agent-runtime signals - deduped lists and short redacted context windows, never the megabyte bodies.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -20,18 +20,22 @@
     "results/accio/ASAR_TREE.md",
     "results/accio/asar_index.json",
     "results/accio/ASAR_EXTRACT_INDEX.md",
-    "results/accio/RESOURCES_CAPTURE.md"
+    "results/accio/RESOURCES_CAPTURE.md",
+    "code/tasks/t5_accio_symbolscan.ps1",
+    "results/accio/SYMBOL_SCAN.md"
   ],
   "require_contains": {
     "results/link/LINK_PROBE.md": "LINK_PROBE_OK=True",
     "results/computer_use/CU_SMOKE.md": "COMPUTER_USE_SMOKE_OK=True",
     "results/accio/ACCIO_TREE.md": "ACCIO_PROBE_OK=True",
-    "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True"
+    "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True",
+    "results/accio/SYMBOL_SCAN.md": "ACCIO_SYMBOL_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=12\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=12\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=12\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=12\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=13\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=13\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=13\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=13\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=13\\b"
   }
 }
