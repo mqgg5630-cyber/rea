@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 19 on arena/84877cdd-rea. V2 visual-optimization special deck: 1688 product-image design across three real product lines (shoe charms / insulated bottle / canvas tote), network sample + AI-restyled hero shots, full 5-slot image sets, QC checklist and prompt assets; verified laptop-side by t8 via git download + sha256 receipt.",
+  "description": "rea x git-sync v2.8.1 - round 19 on arena/84877cdd-rea. V2 visual-optimization special deck: 1688 product-image design across three real product lines (shoe charms / insulated bottle / canvas tote), network sample + AI-restyled hero shots, full 5-slot image sets, QC checklist and prompt assets; verified laptop-side by t8 via git download + sha256 receipt. (Fix: v1 PDF restored to its hash-pinned canonical bytes; deliverables marked binary in .gitattributes to stop eol renormalization flip-flop.)",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -58,13 +58,13 @@
     "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=19\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=19\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=19\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=19\\b",
-    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=19\\b",
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=20\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=20\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=20\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=20\\b",
+    "results/accio/SYMBOL_SCAN.md": "SYMBOL_ROUND=20\\b",
     "results/deliverable/DELIVERABLE_VERIFY.md": "DELIVERABLE_ROUND=14\\b",
     "results/hotcase/HOTCASE_VERIFY.md": "HOTCASE_ROUND=1\\b",
-    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=2\\b"
+    "results/hotcase/HOTCASE_V2_VERIFY.md": "HOTCASE_V2_ROUND=20\\b"
   }
 }
