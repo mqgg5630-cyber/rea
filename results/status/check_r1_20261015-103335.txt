@@ -1,0 +1,85 @@
+check round 1 on LAPTOP-R77M5D6M - failed (exit 1)
+cmd: powershell -NoProfile -ExecutionPolicy Bypass -File code/local_check.ps1
+elapsed: 31s
+
+OK: all .ps1 files are ASCII-only
+OK: sync.config.json branch=arena/1bfdc2ed-rea
+OK: sync.config.json branch matches HEAD (arena/1bfdc2ed-rea)
+OK: root scripts identical to skills/git-sync/scripts
+OK: no drive-style variable typos ($var:)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+OK: every .ps1 parses
+   (gate ran via E:\hermes\git\bin\bash.exe [git])
+== accept 2a: silent push PROVEN (ls-remote + push --dry-run, prompts disabled)
+== accept 2b (fallback): one LONG-LIVED loop process - one brief flash per logon,
+   not per poll. For zero flash: admin PowerShell -> .\watch.ps1 -Unregister ;
+   .\watch.ps1 -Register -Headless   (or fix the launcher, see watch-*.log)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+== check_loop_summary PASSED
+== accept 2c: watcher closing lines verified (every exit path has its summary)
+== deliverables: (no deliverable/OFFICE_HASHES.json - package checks skipped)
+   SKIP 3h no Office deliverable declared in deliverable/OFFICE_HASHES.json - nothing to open
+== task r1: t1_link_probe.ps1
+# rea x git-sync link probe
+Executed ON THE LOCAL MACHINE by the git-sync watcher (code/local_check.ps1 section 4):
+the agent pushed this script, the watcher pulled it, ran it here, and pushes this file back.
+LINK_PROBE_ROUND=1
+time_local=2026-10-15 10:33:53 +08:00
+time_utc=2026-10-15 02:33:53
+host=LAPTOP-R77M5D6M
+os=Microsoft Windows 11 专业版 (build 26200)
+powershell=5.1.26100.8875
+session_id=1 interactive=True
+git=git version 2.54.0.windows.1
+repo_path=E:\0github\git-sync\rea-1bfdc2ed
+remote=https://github.com/mqgg5630-cyber/rea.git
+config_branch=arena/1bfdc2ed-rea
+head_branch=arena/1bfdc2ed-rea branch_matches_config=True
+head=a80757479 check: request round 1 (awaiting local check)
+watcher_task=git-sync-watch-rea-1bfdc2ed state=Running mode=powershell loop
+LINK_PROBE_OK=True
+== link probe report: results/link/LINK_PROBE.md (ok=True)
+== task r1 t1_link_probe.ps1 ok (3s)
+== task r1: t2_computer_use_smoke.ps1
+# rea computer-use smoke (Windows UI Automation)
+CU_ROUND=1
+time_local=2026-10-15 10:33:55 +08:00
+host=LAPTOP-R77M5D6M
+CU_SESSION_ID=1 interactive=True
+CU_WINDOW_FOUND=True
+CU_UIA_TYPE_OK=False
+CU_UIA_INVOKE_OK=False
+CU_MARKER_OK=False
+CU_DETAIL=text box not found via UIA
+screen=1536x864 screens=1
+lab_backends=windows-computer-use=True Windows-MCP=True pywinauto-mcp=True
+COMPUTER_USE_SMOKE_OK=False
+== computer-use report: results/computer_use/CU_SMOKE.md (ok=False)
+[FAIL] computer-use smoke: the UIA find/type/click chain did not complete - see CU_DETAIL
+   [FAIL] task exited 1 (12s)
+== accept 2d: hands-free auto_pull/auto_push present in watch.ps1
+== success criteria: results/status/success_criteria.json
+   rea x git-sync v2.8.1 (installed from mqgg5630-cyber/git-pull-arena arena/01a0ff69) - round 1 link proof. The skills (git-sync + computer-use + cloud-interop) are on arena/1bfdc2ed-rea, and the user's Windows watcher has pulled the branch, EXECUTED code/tasks/t1_link_probe.ps1 and t2_computer_use_smoke.ps1 on the real machine (pull -> run -> push), and pushed both receipts back. 'Local' means that machine's scheduled watcher - never a sandbox folder.
+   OK   exists: watch.ps1 (84094 B)
+   OK   exists: auth.ps1 (33980 B)
+   OK   exists: bootstrap.ps1 (5765 B)
+   OK   exists: skills/git-sync/VERSION (6 B)
+   OK   exists: skills/git-sync/sync.config.json (2151 B)
+   OK   exists: skills/computer-use/SKILL.md (3537 B)
+   OK   exists: skills/cloud-interop/SKILL.md (2869 B)
+   OK   exists: code/local_check.ps1 (30377 B)
+   OK   exists: code/tasks/manifest.json (797 B)
+   OK   exists: code/tasks/t1_link_probe.ps1 (5571 B)
+   OK   exists: code/tasks/t2_computer_use_smoke.ps1 (11187 B)
+   OK   exists: results/link/LINK_PROBE.md (817 B)
+   OK   exists: results/computer_use/CU_SMOKE.md (420 B)
+   OK   contains results/link/LINK_PROBE.md <- LINK_PROBE_OK=True
+   FAIL DOES NOT contain in results/computer_use/CU_SMOKE.md: COMPUTER_USE_SMOKE_OK=True
+   OK   regex results/link/LINK_PROBE.md
+   OK   regex results/computer_use/CU_SMOKE.md
