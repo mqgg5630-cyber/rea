@@ -1,15 +1,16 @@
 ﻿{
-    "round":  4,
+    "round":  5,
     "ok":  "False",
     "backend":  "windows-computer-use-uia",
     "session_id":  1,
     "interactive":  true,
-    "window_found":  false,
-    "uia_invoke_ok":  false,
+    "window_found":  true,
+    "uia_type_ok":  true,
+    "uia_invoke_ok":  true,
     "marker_ok":  false,
-    "preclick":  false,
+    "tainted_marker":  false,
     "attempts":  2,
     "screen":  "1536x864 screens=1",
     "lab_backends":  "windows-computer-use=True Windows-MCP=True pywinauto-mcp=True",
-    "detail":  "wcu could not activate the test window"
+    "detail":  "invoke reported ok but no marker appeared"
 }

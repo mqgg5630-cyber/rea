@@ -1,9 +1,9 @@
 {
-  "round": 5,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-15 07:18:33",
-  "local_updated": null,
-  "host": "",
-  "note": "verify: rea x git-sync round 5 - challenge-armed computer-use smoke (please do not click the self-closing test window), link + accio re-probe"
+    "round":  5,
+    "arena_state":  "awaiting_check",
+    "local_state":  "failed",
+    "arena_updated":  "2026-10-15 07:18:33",
+    "local_updated":  "2026-10-15 15:20:13",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "verify: rea x git-sync round 5 - challenge-armed computer-use smoke (please do not click the self-closing test window), link + accio re-probe"
 }
