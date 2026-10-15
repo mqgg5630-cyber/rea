@@ -1,5 +1,5 @@
 {
-  "description": "rea x git-sync v2.8.1 - round 9 on arena/84877cdd-rea: the replication task for E:\\AccioWork begins. The link/computer-use/discovery legs are proven (round 8 accepted). Round 9 keeps them as a regression net and adds stage 1 of the replication: a pure-PowerShell parse of resources\\app.asar (no node needed), full path index, entry-point extraction (<=256 KB, secret-shape redacted) and the small resources-side files (browser relay, workflow DSLs, wiki skill, updater config) that define the replication surface.",
+  "description": "rea x git-sync v2.8.1 - round 10 on arena/84877cdd-rea. Round 9 died on a header-layout assumption ([u32 bufLen][u32 jsonLen] vs bare [u32 jsonLen] asar writers); round 10 auto-probes the layout candidates and every failure stage now reports ACCIO_ASAR_OK=False with a visible detail instead of a silent exit.",
   "require_files": [
     "watch.ps1",
     "auth.ps1",
@@ -29,9 +29,9 @@
     "results/accio/ASAR_TREE.md": "ACCIO_ASAR_OK=True"
   },
   "require_regex": {
-    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=9\\b",
-    "results/computer_use/CU_SMOKE.md": "CU_ROUND=9\\b",
-    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=9\\b",
-    "results/accio/ASAR_TREE.md": "ASAR_ROUND=9\\b"
+    "results/link/LINK_PROBE.md": "LINK_PROBE_ROUND=10\\b",
+    "results/computer_use/CU_SMOKE.md": "CU_ROUND=10\\b",
+    "results/accio/ACCIO_TREE.md": "ACCIO_ROUND=10\\b",
+    "results/accio/ASAR_TREE.md": "ASAR_ROUND=10\\b"
   }
 }

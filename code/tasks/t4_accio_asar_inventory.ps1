@@ -76,37 +76,72 @@ try { $sha = (Get-FileHash -LiteralPath $asarPath -Algorithm SHA256).Hash } catc
 Add-ReportLine ('asar_bytes=' + $asarLen)
 Add-ReportLine ('asar_sha256=' + $sha)
 
-# ---------------- parse the asar header ----------------
-$fs = [System.IO.File]::OpenRead($asarPath)
+# ---------------- parse the asar header (layout auto-probe) ----------------
+# asar writers differ: chromium-pickle wraps the JSON string with its own
+# length prefix ([u32 bufLen=jsonLen+4][u32 jsonLen][json]), bare writers just
+# do [u32 jsonLen][json]. Probe the candidates and keep the one whose payload
+# starts with '{' AND parses AND yields a .files tree.
+function Write-AsarFail([string]$Stage, [string]$Message) {
+    Add-ReportLine 'ACCIO_ASAR_OK=False'
+    Add-ReportLine ('detail=stage ' + $Stage + ': ' + $Message)
+    Set-Content -LiteralPath $treeMd -Value $report -Encoding UTF8
+    exit 1
+}
+$headerJson = $null
+$jsonLen = 0
+$blobBase = [uint64]0
+$fs = $null
 try {
+    $fs = [System.IO.File]::OpenRead($asarPath)
     $lenBuf = New-Object byte[] 4
     [void]$fs.Read($lenBuf, 0, 4)
-    $headerBufLen = [System.BitConverter]::ToUInt32($lenBuf, 0)
-    $jsonLen = [int]($headerBufLen - 4)
-    [void]$fs.Read($lenBuf, 0, 4)   # jsonLen as stored inside the pickle
-    $jsonLenStored = [System.BitConverter]::ToUInt32($lenBuf, 0)
-    if ($jsonLenStored -ne $jsonLen) { throw ('header length mismatch: buf=' + $headerBufLen + ' json=' + $jsonLenStored) }
-    if ($jsonLen -gt 67108864) { throw ('header json unreasonably large: ' + $jsonLen) }
-    $jsonBuf = New-Object byte[] $jsonLen
-    $readTotal = 0
-    while ($readTotal -lt $jsonLen) {
-        $n = $fs.Read($jsonBuf, $readTotal, ($jsonLen - $readTotal))
-        if ($n -le 0) { throw 'short read on the asar header' }
-        $readTotal += $n
+    $A = [System.BitConverter]::ToUInt32($lenBuf, 0)
+    [void]$fs.Read($lenBuf, 0, 4)
+    $B = [System.BitConverter]::ToUInt32($lenBuf, 0)
+    $cands = @()
+    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]$B;     base = [uint64](8 + $B) })
+    if ([int64]$A -ne [int64]$B + 4 -and [int64]$A -ne [int64]$B) { $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]($A - 4); base = [uint64](4 + $A) }) }
+    $cands += ,([pscustomobject]@{ jsonOff = 4; jsonLen = [int64]$A;     base = [uint64](4 + $A) })
+    $cands += ,([pscustomobject]@{ jsonOff = 8; jsonLen = [int64]($A - 4); base = [uint64](4 + $A) })
+    $seen = @{}
+    foreach ($cd in $cands) {
+        if ($headerJson) { break }
+        $key = [string]$cd.jsonOff + '_' + [string]$cd.jsonLen
+        if ($seen.Contains($key)) { continue }
+        $seen[$key] = $true
+        if ($cd.jsonLen -le 16 -or $cd.jsonLen -gt 67108864) { continue }
+        try {
+            $jb = New-Object byte[] $cd.jsonLen
+            [void]$fs.Seek([int64]$cd.jsonOff, [System.IO.SeekOrigin]::Begin)
+            $rTot = 0
+            while ($rTot -lt $cd.jsonLen) {
+                $n = $fs.Read($jb, $rTot, ([int]($cd.jsonLen - $rTot)))
+                if ($n -le 0) { break }
+                $rTot += $n
+            }
+            if ($rTot -ne $cd.jsonLen) { continue }
+            $txt = [System.Text.Encoding]::UTF8.GetString($jb)
+            if (-not $txt.TrimStart().StartsWith('{')) { continue }
+            $probe = $null
+            try { $probe = ($txt | ConvertFrom-Json) } catch { $probe = $null }
+            if ($null -ne $probe -and ($probe.PSObject.Properties.Name -contains 'files')) {
+                $headerJson = $txt
+                $jsonLen = $cd.jsonLen
+                $blobBase = $cd.base
+            }
+        } catch { }
     }
-    $headerJson = [System.Text.Encoding]::UTF8.GetString($jsonBuf)
-    $blobBase = [uint64](4 + $headerBufLen)
+} catch {
+    Write-AsarFail 'header-read' $_.Exception.Message
 } finally {
-    $fs.Dispose()
+    if ($fs) { $fs.Dispose() }
 }
+if (-not $headerJson) { Write-AsarFail 'header-probe' 'no header layout candidate parsed (checked pickled/bare variants)' }
 Add-ReportLine ('header_json_bytes=' + $jsonLen + ' blob_base=' + $blobBase)
 
 $root = $null
 try { $root = ($headerJson | ConvertFrom-Json) } catch {
-    Add-ReportLine 'ACCIO_ASAR_OK=False'
-    Add-ReportLine ('detail=header JSON parse failed: ' + $_.Exception.Message)
-    Set-Content -LiteralPath $treeMd -Value $report -Encoding UTF8
-    exit 1
+    Write-AsarFail 'header-json' $_.Exception.Message
 }
 
 # ---------------- walk the tree into a flat index ----------------
@@ -254,28 +289,32 @@ Add-ReportLine ('## resources capture (' + $resCaptured + ' files)')
 Add-ReportLine ''
 Add-ReportLine 'ACCIO_ASAR_OK=True'
 
-Set-Content -LiteralPath $treeMd -Value $report -Encoding UTF8
-Set-Content -LiteralPath $extractMd -Value (@('# Extract index (round ' + $round + ')', '') + $extractNotes.ToArray()) -Encoding UTF8
-Set-Content -LiteralPath $resMd -Value (@('# Resources capture (round ' + $round + ')', '') + $resNotes.ToArray()) -Encoding UTF8
+try {
+    Set-Content -LiteralPath $treeMd -Value $report -Encoding UTF8
+    Set-Content -LiteralPath $extractMd -Value (@('# Extract index (round ' + $round + ')', '') + $extractNotes.ToArray()) -Encoding UTF8
+    Set-Content -LiteralPath $resMd -Value (@('# Resources capture (round ' + $round + ')', '') + $resNotes.ToArray()) -Encoding UTF8
 
-$idxCap = 25000
-$idx = @()
-$idxTrunc = $false
-foreach ($e in $entries) {
-    if ($idx.Count -ge $idxCap) { $idxTrunc = $true; break }
-    $idx += @{ path = $e.path; size = $e.size }
+    $idxCap = 25000
+    $idx = @()
+    $idxTrunc = $false
+    foreach ($e in $entries) {
+        if ($idx.Count -ge $idxCap) { $idxTrunc = $true; break }
+        $idx += @{ path = $e.path; size = $e.size }
+    }
+    [ordered]@{
+        round = $round
+        asar = $asarPath
+        asar_bytes = $asarLen
+        sha256 = $sha
+        header_json_bytes = $jsonLen
+        file_count = $entries.Count
+        index_truncated = $idxTrunc
+        ext_counts = $extCounts
+        files = $idx
+    } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $indexJson -Encoding UTF8
+} catch {
+    Write-AsarFail 'write-reports' $_.Exception.Message
 }
-[ordered]@{
-    round = $round
-    asar = $asarPath
-    asar_bytes = $asarLen
-    sha256 = $sha
-    header_json_bytes = $jsonLen
-    file_count = $entries.Count
-    index_truncated = $idxTrunc
-    ext_counts = $extCounts
-    files = $idx
-} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $indexJson -Encoding UTF8
 
 Write-Output ('== asar inventory: results/accio/ASAR_TREE.md (files=' + $entries.Count + ', extract=' + $extracted + ', resources=' + $resCaptured + ')')
 exit 0
