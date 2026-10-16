@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "1688 店铺排名取数结果（Arena 案例管线消费格式）",
+  "type": "object",
+  "required": ["scope", "metrics"],
+  "properties": {
+    "_source": { "type": "string", "description": "accio_export / alibaba_open_platform / manual" },
+    "scope": {
+      "type": "object",
+      "required": ["owner", "category_id"],
+      "properties": {
+        "owner": { "type": "string" },
+        "trade": { "type": "string" },
+        "addressLevel": { "type": "integer", "enum": [0, 1, 2], "description": "0=全国 1=省 2=市" },
+        "category_id":   { "type": "integer" },
+        "category_name": { "type": "string" },
+        "metric":  { "type": "string", "description": "如 gmv_rank_shop" },
+        "window_days":  { "type": "integer" },
+        "window_weeks": { "type": "integer" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["rank_now", "rank_total"],
+      "properties": {
+        "rank_now":        { "type": "integer", "description": "当前名次" },
+        "rank_total":      { "type": "integer", "description": "有成交店铺总数" },
+        "rank_delta_90d":  { "type": "integer", "description": "近90天名次变化（升为正）" },
+        "turnover_weekly_gmv_wan": {
+          "type": "array", "items": { "type": ["number", "null"] },
+          "description": "近 12 周支付金额（万元），与 window_weeks 等长"
+        },
+        "rank_trend_90d": {
+          "type": "array", "items": { "type": ["integer", "null"] },
+          "description": "近 90 天每日名次序列，与 window_days 等长"
+        }
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "properties": {
+        "traffic_source_natural_pct": { "type": ["number", "null"], "description": "自然搜索流量占比%" },
+        "pay_conversion_pct":         { "type": ["number", "null"], "description": "支付转化率%" },
+        "rebuy_gmv_pct":              { "type": ["number", "null"], "description": "老客复购 GMV 占比%" },
+        "top_sku_gmv_pct":            { "type": ["number", "null"], "description": "王牌款 GMV 占比%" }
+      }
+    },
+    "head_table": {
+      "type": "array",
+      "description": "可选：类目头部店铺对照，字段 rank/shop/gmv_wan/leads30d/structure",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rank": {"type": "integer"}, "shop": {"type": "string"},
+          "gmv_wan": {"type": "number"}, "leads30d": {"type": "integer"},
+          "structure": {"type": "string"}
+        }
+      }
+    }
+  }
+}
