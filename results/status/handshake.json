@@ -1,9 +1,9 @@
-{
-  "round": 27,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-17 11:20:00",
-  "local_updated": "",
-  "host": "",
-  "note": "round 27: create test-succeeded txt on Windows Desktop via r27.sh; results-only pushback expected"
+﻿{
+    "round":  27,
+    "arena_state":  "awaiting_check",
+    "local_state":  "passed",
+    "arena_updated":  "2026-10-17 11:20:00",
+    "local_updated":  "2026-10-17 11:11:18",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "hpc_follow: round 27 passed on LAPTOP-R77M5D6M"
 }

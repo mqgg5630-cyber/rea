@@ -1,0 +1,3 @@
+desktop_file=/c/Users/文少/Desktop/测试成功.txt
+exists=yes
+bytes=146
