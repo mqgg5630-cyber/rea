@@ -1,9 +1,9 @@
-﻿{
-    "round":  28,
-    "arena_state":  "awaiting_check",
-    "local_state":  "failed",
-    "arena_updated":  "2026-10-17 11:32:00",
-    "local_updated":  "2026-10-17 15:06:10",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "hpc_follow: round 28 failed on LAPTOP-R77M5D6M"
+{
+  "round": 29,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-17 15:12:00",
+  "local_updated": "",
+  "host": "",
+  "note": "round 29: retry r28 - real Desktop is D: with localized name; convert path with pure bash (no cygpath), write test txt, remove wrong C: copy"
 }
