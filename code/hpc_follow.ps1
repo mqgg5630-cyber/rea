@@ -118,11 +118,11 @@ function Set-UnattendedGitEnv {
 
 function Invoke-Capture {
     # Run a process with a hard timeout; return @{rc; out}.
-    param([string]$File, [string[]]$Args, [string]$Cwd = '',
+    param([string]$File, [string[]]$ArgList, [string]$Cwd = '',
           [int]$TimeoutSec = 120, [hashtable]$ExtraEnv = @{})
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $File
-    $psi.Arguments = (($Args | ForEach-Object {
+    $psi.Arguments = (($ArgList | ForEach-Object {
         if ($_ -match '[\s"]') { '"' + ($_ -replace '"', '\"') + '"' } else { $_ }
     }) -join ' ')
     if ($Cwd) { $psi.WorkingDirectory = $Cwd }
@@ -148,7 +148,7 @@ function Invoke-Capture {
 function Invoke-Git {
     param([string]$RepoDir, [string[]]$GitArgs, [int]$TimeoutSec = 180)
     $all = @('-C', $RepoDir) + $GitArgs
-    return (Invoke-Capture -File 'git' -Args $all -TimeoutSec $TimeoutSec)
+    return (Invoke-Capture -File 'git' -ArgList $all -TimeoutSec $TimeoutSec)
 }
 
 function Test-AgentNote {
@@ -188,7 +188,7 @@ function Load-State {
 
 function Probe-Git([string]$RepoUrl) {
     Set-UnattendedGitEnv
-    $r = Invoke-Capture -File 'git' -Args @('ls-remote', '--heads', $RepoUrl) -TimeoutSec 60
+    $r = Invoke-Capture -File 'git' -ArgList @('ls-remote', '--heads', $RepoUrl) -TimeoutSec 60
     if ($r.rc -eq 0) { return @{ ok = $true; detail = 'ls-remote ok' } }
     $lines = @($r.out -split "`n" | Where-Object { $_.Trim() })
     $tail = if ($lines.Count) { $lines[$lines.Count - 1].Trim() } else { 'no output' }
@@ -201,7 +201,7 @@ function Ensure-Repo($Cfg) {
     $d = Get-RepoDir
     if (-not (Test-Path -LiteralPath (Join-Path $d '.git'))) {
         New-Item -ItemType Directory -Force -Path $d | Out-Null
-        $r = Invoke-Capture -File 'git' -Args @('init', '-q', $d)
+        $r = Invoke-Capture -File 'git' -ArgList @('init', '-q', $d)
         if ($r.rc -ne 0) { Write-FollowLog ('git init failed: ' + $r.out.Trim()); return $false }
         [void](Invoke-Git $d @('remote', 'add', 'origin', $Cfg.repo))
         [void](Invoke-Git $d @('config', 'user.name', 'hpc-follow'))
@@ -253,7 +253,7 @@ function Get-PendingRound([string]$D, [string]$Branch, $State) {
 
 function Find-BranchToServe([string]$D, $Cfg, $State) {
     Set-UnattendedGitEnv
-    $lr = Invoke-Capture -File 'git' -Args @('ls-remote', '--heads', $Cfg.repo) -TimeoutSec 60
+    $lr = Invoke-Capture -File 'git' -ArgList @('ls-remote', '--heads', $Cfg.repo) -TimeoutSec 60
     if ($lr.rc -ne 0) {
         $lines = @($lr.out -split "`n" | Where-Object { $_.Trim() })
         $head = if ($lines.Count) { $lines[0].Trim() } else { 'no output' }
@@ -315,7 +315,7 @@ function Serve-Round([string]$D, $Cfg, [string]$Branch, [int]$Round, $Hs) {
         return $receipt
     }
     $taskPath = Join-Path $D ('code/tasks/r{0}.sh' -f $Round)
-    $r = Invoke-Capture -File $bash -Args @($taskPath) -Cwd $D `
+    $r = Invoke-Capture -File $bash -ArgList @($taskPath) -Cwd $D `
         -TimeoutSec ([int]$Cfg.timeout_min * 60) `
         -ExtraEnv @{ HPC_ROUND = [string]$Round; HPC_BRANCH = $Branch }
     $result = if ($r.rc -eq 0) { 'passed' } else { 'failed' }
@@ -474,7 +474,7 @@ function Invoke-Install {
     $cfg = Load-Config
     if ($Repo) { $cfg.repo = $Repo }
     if (-not $cfg.repo) {
-        $r = Invoke-Capture -File 'git' -Args @('remote', 'get-url', 'origin')
+        $r = Invoke-Capture -File 'git' -ArgList @('remote', 'get-url', 'origin')
         if ($r.rc -eq 0) { $cfg.repo = $r.out.Trim() }
     }
     if (-not $cfg.repo) {
