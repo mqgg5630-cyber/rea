@@ -1,9 +1,9 @@
 {
-  "round": 26,
-  "arena_state": "accepted",
-  "local_state": "passed",
-  "arena_updated": "2026-10-17 11:12:00",
-  "local_updated": "2026-10-17 11:05:55",
-  "host": "LAPTOP-R77M5D6M",
-  "note": "accepted: hpc_follow round 26 passed on LAPTOP-R77M5D6M (9149e51), results-only commit verified"
+  "round": 27,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-17 11:20:00",
+  "local_updated": "",
+  "host": "",
+  "note": "round 27: create test-succeeded txt on Windows Desktop via r27.sh; results-only pushback expected"
 }
