@@ -1,9 +1,9 @@
 {
-  "round": 29,
-  "arena_state": "accepted",
-  "local_state": "passed",
-  "arena_updated": "2026-10-17 15:30:00",
-  "local_updated": "2026-10-17 15:23:55",
-  "host": "LAPTOP-R77M5D6M",
-  "note": "accepted: round 29 passed (bcf447c); test txt on real D: desktop (162 bytes), wrong C: copy removed"
+  "round": 30,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-17 15:34:00",
+  "local_updated": "",
+  "host": "",
+  "note": "round 30: delete archived duplicate clones (clean+pushed+archived only), report freed MB"
 }
