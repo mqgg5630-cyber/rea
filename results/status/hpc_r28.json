@@ -1,0 +1,13 @@
+﻿{
+    "round":  28,
+    "branch":  "arena/84877cdd-rea",
+    "host":  "LAPTOP-R77M5D6M",
+    "started":  "2026-10-17 15:06:07",
+    "fetch_error":  null,
+    "agent":  "ssh-agent service: Stopped",
+    "task":  "code/tasks/r28.sh",
+    "result":  "failed",
+    "detail":  "task exit 1",
+    "exit_code":  1,
+    "finished":  "2026-10-17 15:06:10"
+}
