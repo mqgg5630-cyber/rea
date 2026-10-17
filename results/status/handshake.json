@@ -1,9 +1,9 @@
-﻿{
-    "round":  26,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-17 11:10:00",
-    "local_updated":  "2026-10-17 11:05:55",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "hpc_follow: round 26 passed on LAPTOP-R77M5D6M"
+{
+  "round": 26,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-17 11:12:00",
+  "local_updated": "2026-10-17 11:05:55",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "accepted: hpc_follow round 26 passed on LAPTOP-R77M5D6M (9149e51), results-only commit verified"
 }
