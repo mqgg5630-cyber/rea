@@ -1,9 +1,9 @@
 {
-  "round": 25,
-  "arena_state": "accepted",
-  "local_state": "passed",
-  "arena_updated": "2026-10-15 12:53:47",
-  "local_updated": "2026-10-15 20:52:59",
-  "host": "LAPTOP-R77M5D6M",
-  "note": "hands-free: criteria met"
+  "round": 26,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-17 11:10:00",
+  "local_updated": "",
+  "host": "",
+  "note": "round 26: hpc_follow end-to-end smoke (r26.sh via Git Bash on the Windows host, results-only push expected from LAPTOP-R77M5D6M)"
 }
