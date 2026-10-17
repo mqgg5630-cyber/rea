@@ -1,0 +1,5 @@
+desktop_win=D:\×ÀÃæ
+desktop_file=/d/×ÀÃæ/æµ‹è¯•æˆåŠŸ.txt
+exists=yes
+bytes=162
+wrong_c_copy_removed=yes
