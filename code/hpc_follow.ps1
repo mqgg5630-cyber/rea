@@ -247,7 +247,11 @@ function Get-PendingRound([string]$D, [string]$Branch, $State) {
     $sv = $State.served.PSObject.Properties[[string]$Branch]
     if ($sv -and $sv.Value.round -eq $hs.round -and
         $sv.Value.result -in @('passed', 'failed')) { return $null }
-    if (-not (Read-At $D $Branch ('code/tasks/r{0}.sh' -f $hs.round))) { return $null }
+    $taskRaw = Read-At $D $Branch ('code/tasks/r{0}.sh' -f $hs.round)
+    if (-not $taskRaw) {
+        Write-FollowLog ('candidate {0}: round {1} pending but task file unreadable' -f $Branch, $hs.round)
+        return $null
+    }
     return @{ round = [int]$hs.round; hs = $hs }
 }
 
@@ -270,6 +274,22 @@ function Find-BranchToServe([string]$D, $Cfg, $State) {
         if (-not $isPrefer -and $b -notlike $Cfg.branch_glob) { continue }
         if (-not (Fetch-Tip $D $b)) { continue }
         $p = Get-PendingRound $D $b $State
+        if (-not $p -and $isPrefer) {
+            # the preferred branch is the one we must never silently skip:
+            # record what the handshake at the fetched tip actually says
+            $rawDbg = Read-At $D $b $script:HandshakePath
+            if (-not $rawDbg) {
+                Write-FollowLog ('candidate {0}: no handshake at fetched tip' -f $b)
+            } else {
+                try {
+                    $dbg = $rawDbg | ConvertFrom-Json
+                    Write-FollowLog ('candidate {0}: not pending (round={1} arena_state={2} local_state={3})' -f
+                        $b, $dbg.round, $dbg.arena_state, $dbg.local_state)
+                } catch {
+                    Write-FollowLog ('candidate {0}: handshake unparsable: {1}' -f $b, $_.Exception.Message)
+                }
+            }
+        }
         if ($p) {
             $cands += [pscustomobject]@{ branch = $b; round = $p.round
                 hs = $p.hs; tip = (Get-TipTime $D $b); prefer = [bool]$isPrefer }
