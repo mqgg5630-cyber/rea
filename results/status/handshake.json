@@ -1,9 +1,9 @@
 {
-  "round": 30,
+  "round": 31,
   "arena_state": "awaiting_check",
   "local_state": "pending",
-  "arena_updated": "2026-10-17 15:34:00",
+  "arena_updated": "2026-10-17 15:45:00",
   "local_updated": "",
   "host": "",
-  "note": "round 30: delete archived duplicate clones (clean+pushed+archived only), report freed MB"
+  "note": "round 31: desktop txt written by PowerShell with unicode-codepoint name (r29 bash-written name likely mojibake on NTFS); also runs pending r30 cleanup"
 }
