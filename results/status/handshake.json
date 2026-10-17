@@ -1,9 +1,9 @@
-﻿{
-    "round":  27,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-17 11:20:00",
-    "local_updated":  "2026-10-17 11:11:18",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "hpc_follow: round 27 passed on LAPTOP-R77M5D6M"
+{
+  "round": 27,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-17 11:24:00",
+  "local_updated": "2026-10-17 11:11:18",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "accepted: round 27 passed on LAPTOP-R77M5D6M (b2b52af); desktop txt created at C:/Users/Desktop (146 bytes), results-only commit"
 }
