@@ -1,9 +1,9 @@
-﻿{
-    "round":  29,
-    "arena_state":  "awaiting_check",
-    "local_state":  "passed",
-    "arena_updated":  "2026-10-17 15:12:00",
-    "local_updated":  "2026-10-17 15:23:55",
-    "host":  "LAPTOP-R77M5D6M",
-    "note":  "hpc_follow: round 29 passed on LAPTOP-R77M5D6M"
+{
+  "round": 29,
+  "arena_state": "accepted",
+  "local_state": "passed",
+  "arena_updated": "2026-10-17 15:30:00",
+  "local_updated": "2026-10-17 15:23:55",
+  "host": "LAPTOP-R77M5D6M",
+  "note": "accepted: round 29 passed (bcf447c); test txt on real D: desktop (162 bytes), wrong C: copy removed"
 }
