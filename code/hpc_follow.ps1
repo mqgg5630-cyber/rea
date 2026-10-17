@@ -600,7 +600,12 @@ if ($Tick) {
         Write-Output 'not installed (no repo configured); run -Install first'
         exit 1
     }
-    exit (Invoke-Tick $cfg)
+    $code = Invoke-Tick $cfg
+    # say the outcome on the console too; the log file alone made a failed
+    # tick look like "nothing happened" in the field
+    $st = Load-State
+    [Console]::WriteLine(('tick done (exit {0}): {1} {2}' -f $code, $st.last_action, $st.last_detail))
+    exit $code
 }
 Write-Output 'usage: hpc_follow.ps1 -Install [-Repo <url>] [-Prefer <branch>] | -Status | -Tick | -Uninstall'
 exit 2
