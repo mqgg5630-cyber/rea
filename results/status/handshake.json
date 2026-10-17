@@ -1,9 +1,9 @@
 {
-  "round": 27,
-  "arena_state": "accepted",
-  "local_state": "passed",
-  "arena_updated": "2026-10-17 11:24:00",
-  "local_updated": "2026-10-17 11:11:18",
-  "host": "LAPTOP-R77M5D6M",
-  "note": "accepted: round 27 passed on LAPTOP-R77M5D6M (b2b52af); desktop txt created at C:/Users/Desktop (146 bytes), results-only commit"
+  "round": 28,
+  "arena_state": "awaiting_check",
+  "local_state": "pending",
+  "arena_updated": "2026-10-17 11:32:00",
+  "local_updated": "",
+  "host": "",
+  "note": "round 28: desktop is on D: - write test txt to real known-folder Desktop, remove wrong C: copy from r27"
 }
