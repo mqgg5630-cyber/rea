@@ -256,8 +256,8 @@ function Find-BranchToServe([string]$D, $Cfg, $State) {
     $lr = Invoke-Capture -File 'git' -Args @('ls-remote', '--heads', $Cfg.repo) -TimeoutSec 60
     if ($lr.rc -ne 0) {
         $lines = @($lr.out -split "`n" | Where-Object { $_.Trim() })
-        $tail = if ($lines.Count) { $lines[$lines.Count - 1].Trim() } else { 'no output' }
-        throw ('ls-remote failed: ' + $tail)
+        $head = if ($lines.Count) { $lines[0].Trim() } else { 'no output' }
+        throw ('ls-remote failed (exit {0}): {1}' -f $lr.rc, $head)
     }
     $branches = @()
     foreach ($line in ($lr.out -split "`n")) {
