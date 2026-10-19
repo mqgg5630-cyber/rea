@@ -474,10 +474,36 @@ function Start-ResidentLoop {
     return $proc.Id
 }
 
-function Install-CronTask($Cfg) {
+function Get-HiddenLauncher([string]$Mode = 'Tick') {
+    # A scheduled task that launches powershell.exe directly FLASHES a
+    # console window for a split second even with -WindowStyle Hidden:
+    # the console exists before PowerShell processes the switch. The fix
+    # is to never create a console at all: wscript.exe is a GUI-subsystem
+    # host, and its Run(..., 0, ...) starts the child truly windowless.
+    # This writes (idempotently) the .vbs launcher and returns its path.
+    $vbs = Join-Path (Get-FollowHome) ('run_{0}_hidden.vbs' -f $Mode.ToLower())
     $self = Get-SelfCmd
-    $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-        -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "{0}" -Tick' -f $self)
+    $body = @(
+        'Set sh = CreateObject("WScript.Shell")'
+        ('sh.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""{0}"" -{1}", 0, False' -f $self, $Mode)
+    ) -join "`r`n"
+    $needWrite = $true
+    if (Test-Path -LiteralPath $vbs) {
+        $old = Get-Content -LiteralPath $vbs -Raw -ErrorAction SilentlyContinue
+        if ($old -eq ($body + "`r`n")) { $needWrite = $false }
+    }
+    if ($needWrite) {
+        Set-Content -LiteralPath $vbs -Value $body -Encoding ASCII
+    }
+    return $vbs
+}
+
+function Install-CronTask($Cfg) {
+    $vbs = Get-HiddenLauncher
+    # wscript //B = no script-error popups, //Nologo = no banner; the task
+    # itself is the only thing being registered - no console, no flash
+    $action = New-ScheduledTaskAction -Execute 'wscript.exe' `
+        -Argument ('//B //Nologo "{0}"' -f $vbs)
     $t1 = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
         -RepetitionInterval (New-TimeSpan -Minutes 1)
     $t2 = New-ScheduledTaskTrigger -AtLogOn
@@ -542,10 +568,9 @@ function Invoke-Install {
         return 0
     }
     # act now once, so a waiting round is not stuck until the next minute
-    $self = Get-SelfCmd
-    Start-Process -FilePath 'powershell.exe' -WindowStyle Hidden `
-        -ArgumentList @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
-            ('"{0}"' -f $self), '-Tick') | Out-Null
+    $vbs = Get-HiddenLauncher 'Tick'
+    Start-Process -FilePath 'wscript.exe' `
+        -ArgumentList @('//B', '//Nologo', ('"{0}"' -f $vbs)) | Out-Null
     Out-Line 'kicked an immediate first tick in the background'
     return 0
 }
