@@ -81,14 +81,19 @@ function Invoke-HubTick {
             Write-HubLog ("ERROR {0}: {1}" -f $clone.Name, $_.Exception.Message)
         }
     }
-    try {
-        $hub = Join-Path $PSScriptRoot 'code\hub\hub.py'
-        $python = Get-Command python -ErrorAction SilentlyContinue
-        if ($python -and (Test-Path -LiteralPath $hub)) {
-            & $python.Source $hub --root $Root mirror | Out-Null
+    $resultRoot = Join-Path $Root 'results'
+    foreach ($clone in $clones) {
+        $target = Join-Path $resultRoot $clone.Name
+        foreach ($leaf in @('results', 'deliverable')) {
+            $source = Join-Path $clone.FullName $leaf
+            if (Test-Path -LiteralPath $source) {
+                $dest = if ($leaf -eq 'results') { $target } else { Join-Path $target 'deliverable' }
+                if (-not (Test-Path -LiteralPath $dest)) { New-Item -ItemType Directory -Force -Path $dest | Out-Null }
+                Copy-Item -Path (Join-Path $source '*') -Destination $dest -Recurse -Force -ErrorAction SilentlyContinue
+            }
         }
-    } catch { Write-HubLog ("mirror warning: {0}" -f $_.Exception.Message) }
-    Write-HubLog 'tick end'
+    }
+    Write-HubLog 'tick end; results mirrored without Python'
 }
 
 if ($Install) {
