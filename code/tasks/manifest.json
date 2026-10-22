@@ -4,6 +4,9 @@
     "1": [
       "t1_link_probe.ps1",
       "t2_computer_use_smoke.ps1"
+    ],
+    "2": [
+      "t3_sys1_selfcheck.ps1"
     ]
   }
 }

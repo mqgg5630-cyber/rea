@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-10-22T11:47:52Z",
+  "decoder_parity": {
+    "questions": 87,
+    "exact": 87,
+    "mismatched": 0,
+    "skipped": 0,
+    "mismatches": []
+  },
+  "engine_agreement": {
+    "per_checkpoint": {
+      "english": {
+        "choice": {
+          "n": 12,
+          "agreement": 0.8333
+        },
+        "noul": {
+          "n": 11,
+          "agreement": 0.9091
+        },
+        "score": {
+          "n": 6,
+          "mean_abs_error": 0.2482
+        }
+      },
+      "multilingual": {
+        "choice": {
+          "n": 12,
+          "agreement": 0.6667
+        },
+        "noul": {
+          "n": 11,
+          "agreement": 0.5455
+        },
+        "score": {
+          "n": 6,
+          "mean_abs_error": 0.7035
+        }
+      },
+      "typed-decisions": {
+        "choice": {
+          "n": 12,
+          "agreement": 0.8333
+        },
+        "noul": {
+          "n": 11,
+          "agreement": 0.8182
+        },
+        "score": {
+          "n": 6,
+          "mean_abs_error": 0.2558
+        }
+      }
+    },
+    "total": [
+      69,
+      53
+    ],
+    "overall_typed_agreement": 0.7681,
+    "score_mean_abs_error": 0.4025
+  },
+  "routing_parity": {
+    "states": 800,
+    "script": 1.0,
+    "is_english": 0.9087,
+    "language": 0.86,
+    "routes": 4115,
+    "route_model": 0.9628
+  },
+  "latency": {
+    "decisions": 300,
+    "questions_per_decision": 3,
+    "p50_ms": 1.74,
+    "p95_ms": 2.065,
+    "min_ms": 1.473,
+    "max_ms": 3.797,
+    "throughput_decisions_per_sec": 574.6
+  },
+  "calibration_fit": {
+    "temperature": {
+      "choice": 1.46,
+      "score": 1.12,
+      "noul": 1.62
+    },
+    "temperature_by_options": {
+      "choice:2": 1.1600000000000001,
+      "choice:3-5": 1.68,
+      "score:3-5": 1.12,
+      "noul:2": 1.62,
+      "choice:11+": 0.5,
+      "choice:6-10": 1.0
+    },
+    "temperature_by_language": {},
+    "metrics": {
+      "fit": {
+        "n": 44,
+        "argmax_agreement": 1.0,
+        "mean_ce": 0.6647,
+        "ece": 0.2564,
+        "by_kind": {
+          "choice": {
+            "n": 20,
+            "agreement": 1.0
+          },
+          "score": {
+            "n": 8,
+            "agreement": 1.0
+          },
+          "noul": {
+            "n": 16,
+            "agreement": 1.0
+          }
+        }
+      },
+      "held_out": {
+        "n": 43,
+        "argmax_agreement": 1.0,
+        "mean_ce": 0.6124,
+        "ece": 0.2359,
+        "by_kind": {
+          "noul": {
+            "n": 17,
+            "agreement": 1.0
+          },
+          "choice": {
+            "n": 16,
+            "agreement": 1.0
+          },
+          "score": {
+            "n": 10,
+            "agreement": 1.0
+          }
+        }
+      },
+      "held_out_default_T1": {
+        "n": 43,
+        "argmax_agreement": 1.0,
+        "mean_ce": 0.6263,
+        "ece": 0.1979,
+        "by_kind": {
+          "noul": {
+            "n": 17,
+            "agreement": 1.0
+          },
+          "choice": {
+            "n": 16,
+            "agreement": 1.0
+          },
+          "score": {
+            "n": 10,
+            "agreement": 1.0
+          }
+        }
+      }
+    },
+    "n": 44,
+    "buckets": [
+      "choice:11+",
+      "choice:2",
+      "choice:3-5",
+      "choice:6-10",
+      "noul:2",
+      "score:3-5"
+    ]
+  },
+  "engine_calibration": {
+    "temperature": {
+      "choice": 0.5,
+      "score": 1.4,
+      "noul": 0.5
+    },
+    "temperature_by_options": {
+      "choice:2": 2.88,
+      "choice:3-5": 0.5,
+      "score:3-5": 1.4,
+      "noul:2": 0.5,
+      "choice:11+": 0.5,
+      "choice:6-10": 0.5
+    },
+    "temperature_by_language": {},
+    "metrics": {
+      "fit": {
+        "n": 44,
+        "argmax_agreement": 0.7273,
+        "mean_ce": 1.2835,
+        "ece": 0.2409,
+        "by_kind": {
+          "choice": {
+            "n": 20,
+            "agreement": 0.75
+          },
+          "score": {
+            "n": 8,
+            "agreement": 0.625
+          },
+          "noul": {
+            "n": 16,
+            "agreement": 0.75
+          }
+        }
+      },
+      "held_out": {
+        "n": 43,
+        "argmax_agreement": 0.7442,
+        "mean_ce": 1.1803,
+        "ece": 0.2329,
+        "by_kind": {
+          "noul": {
+            "n": 17,
+            "agreement": 0.7647
+          },
+          "choice": {
+            "n": 16,
+            "agreement": 0.8125
+          },
+          "score": {
+            "n": 10,
+            "agreement": 0.6
+          }
+        }
+      },
+      "held_out_default_T1": {
+        "n": 43,
+        "argmax_agreement": 0.7442,
+        "mean_ce": 1.063,
+        "ece": 0.177,
+        "by_kind": {
+          "noul": {
+            "n": 17,
+            "agreement": 0.7647
+          },
+          "choice": {
+            "n": 16,
+            "agreement": 0.8125
+          },
+          "score": {
+            "n": 10,
+            "agreement": 0.6
+          }
+        }
+      },
+      "held_out_agreement_fitted": {
+        "per_checkpoint": {
+          "english": {
+            "choice": {
+              "n": 12,
+              "agreement": 0.8333
+            },
+            "noul": {
+              "n": 11,
+              "agreement": 0.9091
+            },
+            "score": {
+              "n": 6,
+              "mean_abs_error": 0.1592
+            }
+          },
+          "multilingual": {
+            "choice": {
+              "n": 12,
+              "agreement": 0.6667
+            },
+            "noul": {
+              "n": 11,
+              "agreement": 0.5455
+            },
+            "score": {
+              "n": 6,
+              "mean_abs_error": 0.6575
+            }
+          },
+          "typed-decisions": {
+            "choice": {
+              "n": 12,
+              "agreement": 0.8333
+            },
+            "noul": {
+              "n": 11,
+              "agreement": 0.8182
+            },
+            "score": {
+              "n": 6,
+              "mean_abs_error": 0.2426
+            }
+          }
+        },
+        "total": [
+          69,
+          53
+        ],
+        "overall_typed_agreement": 0.7681,
+        "score_mean_abs_error": 0.3531
+      }
+    },
+    "n": 44,
+    "buckets": [
+      "choice:11+",
+      "choice:2",
+      "choice:3-5",
+      "choice:6-10",
+      "noul:2",
+      "score:3-5"
+    ],
+    "source": "laya golden teacher distributions, fitted on this engine's logits"
+  }
+}

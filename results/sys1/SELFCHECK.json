@@ -1,0 +1,440 @@
+{
+  "tool": "sys1",
+  "version": "1.0.0",
+  "generated_at": "2026-10-22T11:47:56Z",
+  "passed": 21,
+  "total": 21,
+  "ok": true,
+  "elapsed_s": 0.81,
+  "checks": [
+    {
+      "check": "render_options keeps order",
+      "ok": true,
+      "detail": [
+        "upgrade",
+        "cancel"
+      ]
+    },
+    {
+      "check": "prompt layout",
+      "ok": true,
+      "detail": "[CLS] choice question: Classify. [SEP] [MASK] upgrade [MASK] cancel [SEP] upgrade please [SEP]"
+    },
+    {
+      "check": "softmax sums to 1",
+      "ok": true,
+      "detail": [
+        0.5761168847658291,
+        0.21194155761708544,
+        0.21194155761708544
+      ]
+    },
+    {
+      "check": "entropy confidence of uniform",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "answer_confidence is max",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "jev choice confidence",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "jev score confidence",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "decoder parity 100%",
+      "ok": true,
+      "detail": {
+        "total": 87,
+        "exact": 87
+      }
+    },
+    {
+      "check": "routing natural sentences",
+      "ok": true,
+      "detail": [
+        [
+          "Please refund my d",
+          "english",
+          "english"
+        ],
+        [
+          "我这个月被重复扣款了两次，请退款。",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "La aplicación se c",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "Ich möchte meine R",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "Bonjour, je veux a",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "Quero cancelar min",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "返金をお願いします。二重に請求されま",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "Мне нужно вернуть ",
+          "multilingual",
+          "multilingual"
+        ],
+        [
+          "أريد استرداد أموال",
+          "multilingual",
+          "multilingual"
+        ]
+      ]
+    },
+    {
+      "check": "script detection",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "english triage",
+      "ok": true,
+      "detail": {
+        "department": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.6664,
+            "technical": 0.1668,
+            "other": 0.1669
+          },
+          "confidence": 0.2099,
+          "answer_confidence": 0.6664,
+          "action": {
+            "act_probability": 1.0
+          },
+          "x_jev_confidence": 0.4995
+        },
+        "urgency": {
+          "type": "score",
+          "score": 1.6007,
+          "legend": {
+            "0": "not urgent",
+            "1": "soon",
+            "2": "blocking"
+          },
+          "probabilities": {
+            "0": 0.0645,
+            "1": 0.2703,
+            "2": 0.6652
+          },
+          "confidence": 0.2704,
+          "answer_confidence": 0.6652,
+          "action": {
+            "act_probability": 1.0
+          },
+          "x_jev_confidence": 0.4011
+        },
+        "churn": {
+          "type": "noul",
+          "noul": 0.6121,
+          "confidence": 0.6121,
+          "answer_confidence": 0.6121,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      }
+    },
+    {
+      "check": "cjk cross-lingual",
+      "ok": true,
+      "detail": {
+        "department": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.6527,
+            "technical": 0.271,
+            "other": 0.0763
+          },
+          "confidence": 0.2457,
+          "answer_confidence": 0.6527,
+          "action": {
+            "act_probability": 1.0
+          },
+          "x_jev_confidence": 0.479
+        },
+        "urgency": {
+          "type": "score",
+          "score": 1.693,
+          "legend": {
+            "0": "not urgent",
+            "1": "soon",
+            "2": "blocking"
+          },
+          "probabilities": {
+            "0": 0.0744,
+            "1": 0.1583,
+            "2": 0.7674
+          },
+          "confidence": 0.3735,
+          "answer_confidence": 0.7674,
+          "action": {
+            "act_probability": 1.0
+          },
+          "x_jev_confidence": 0.5394
+        }
+      }
+    },
+    {
+      "check": "abstention gate",
+      "ok": true,
+      "detail": {
+        "type": "choice",
+        "choice": "tech",
+        "probabilities": {
+          "billing": 0.2722,
+          "tech": 0.4494,
+          "other": 0.2784
+        },
+        "confidence": 0.0264,
+        "answer_confidence": 0.4494,
+        "action": {
+          "act_probability": 1.0
+        },
+        "x_jev_confidence": 0.1741,
+        "low_confidence": true,
+        "abstention": "abstained",
+        "abstention_threshold": 0.99
+      }
+    },
+    {
+      "check": "agent logits decode",
+      "ok": true,
+      "detail": {
+        "type": "choice",
+        "choice": "tech",
+        "probabilities": {
+          "billing": 0.018,
+          "tech": 0.982
+        },
+        "confidence": 0.87,
+        "answer_confidence": 0.982,
+        "action": {
+          "act_probability": 1.0
+        },
+        "x_jev_confidence": 0.964
+      }
+    },
+    {
+      "check": "agent prompt request",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "deterministic",
+      "ok": true,
+      "detail": {
+        "q": {
+          "type": "noul",
+          "noul": 0.6579,
+          "confidence": 0.6579,
+          "answer_confidence": 0.6579,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      }
+    },
+    {
+      "check": "HTTP Jev contract",
+      "ok": true,
+      "detail": {
+        "health": {
+          "status": "ok",
+          "http": 200,
+          "server_timing": null
+        },
+        "single": {
+          "http": 200,
+          "has_routing": true,
+          "answers": {
+            "team": {
+              "type": "choice",
+              "choice": "billing",
+              "probabilities": {
+                "billing": 0.9269,
+                "technical": 0.0731
+              },
+              "confidence": 0.6225,
+              "answer_confidence": 0.9269,
+              "action": {
+                "act_probability": 1.0
+              },
+              "x_jev_confidence": 0.8538
+            },
+            "urgency": {
+              "type": "score",
+              "score": 1.5416,
+              "legend": {
+                "0": "low",
+                "1": "normal",
+                "2": "high"
+              },
+              "probabilities": {
+                "0": 0.0581,
+                "1": 0.3421,
+                "2": 0.5998
+              },
+              "confidence": 0.2363,
+              "answer_confidence": 0.5998,
+              "action": {
+                "act_probability": 1.0
+              },
+              "x_jev_confidence": 0.3125
+            },
+            "churn": {
+              "type": "noul",
+              "noul": 0.8707,
+              "confidence": 0.8707,
+              "answer_confidence": 0.8707,
+              "action": {
+                "act_probability": 1.0
+              }
+            }
+          },
+          "timing_header": "1.68"
+        },
+        "batch": {
+          "http": 200,
+          "n": 2,
+          "total_usage": {
+            "input_tokens": 52,
+            "output_tokens": 0
+          }
+        },
+        "missing_state": {
+          "http": 400,
+          "expected": 400
+        },
+        "bad_question": {
+          "http": 422,
+          "expected": 422
+        },
+        "too_many_options": {
+          "http": 413,
+          "expected": 413
+        },
+        "strict": {
+          "keys": [
+            "answers",
+            "model",
+            "usage"
+          ],
+          "usage_keys": [
+            "input_tokens",
+            "output_tokens"
+          ],
+          "answer_keys": {
+            "team": [
+              "choice",
+              "confidence",
+              "probabilities",
+              "type"
+            ],
+            "urgency": [
+              "confidence",
+              "legend",
+              "probabilities",
+              "score",
+              "type"
+            ],
+            "churn": [
+              "noul",
+              "type"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "check": "MCP stdio",
+      "ok": true,
+      "detail": {
+        "initialize": {
+          "name": "sys1",
+          "version": "1.0.0"
+        },
+        "tools": [
+          "system_one",
+          "system_one_local",
+          "system_one_route",
+          "system_one_prompt",
+          "system_one_health"
+        ],
+        "local_choice": "billing",
+        "needs_status": "needs_agent_scores",
+        "has_prompt": true,
+        "agent_choice": "technical"
+      }
+    },
+    {
+      "check": "no outbound client imports",
+      "ok": true,
+      "detail": {
+        "banned_client_imports": [],
+        "stdlib_only": true,
+        "python": "3.11.2"
+      }
+    },
+    {
+      "check": "works with sockets blocked",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "latency under 25 ms p95",
+      "ok": true,
+      "detail": {
+        "p50_ms": 1.282,
+        "p95_ms": 2.357,
+        "qps": 780.0
+      }
+    }
+  ],
+  "latency": {
+    "p50_ms": 1.282,
+    "p95_ms": 2.357,
+    "qps": 780.0
+  },
+  "audit": {
+    "banned_client_imports": [],
+    "stdlib_only": true,
+    "python": "3.11.2"
+  },
+  "host": {
+    "hostname": "e2b.local",
+    "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
+    "python": "3.11.2",
+    "cpu_count": 2
+  },
+  "SYS1_LOCAL_OK": true
+}
