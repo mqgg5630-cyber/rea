@@ -1,9 +1,9 @@
 {
-  "round": 2,
-  "arena_state": "awaiting_check",
-  "local_state": "pending",
-  "arena_updated": "2026-10-22 11:50:18",
-  "local_updated": null,
-  "host": "",
-  "note": "verify: round 2 - run sys1 offline selfcheck + agent-logit decision on the local Windows machine (no API, no model download)"
+    "round":  2,
+    "arena_state":  "awaiting_check",
+    "local_state":  "failed",
+    "arena_updated":  "2026-10-22 11:50:18",
+    "local_updated":  "2026-10-22 20:07:50",
+    "host":  "LAPTOP-R77M5D6M",
+    "note":  "verify: round 2 - run sys1 offline selfcheck + agent-logit decision on the local Windows machine (no API, no model download)"
 }

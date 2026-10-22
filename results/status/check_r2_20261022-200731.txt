@@ -1,0 +1,62 @@
+check round 2 on LAPTOP-R77M5D6M - failed (exit 1)
+cmd: powershell -NoProfile -ExecutionPolicy Bypass -File code/local_check.ps1
+elapsed: 19s
+
+OK: all .ps1 files are ASCII-only
+OK: sync.config.json branch=arena/94caee25-rea
+OK: sync.config.json branch matches HEAD (arena/94caee25-rea)
+OK: root scripts identical to skills/git-sync/scripts
+OK: no drive-style variable typos ($var:)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+OK: every .ps1 parses
+   (gate ran via E:\hermes\git\bin\bash.exe [git])
+== accept 2a: silent push PROVEN (ls-remote + push --dry-run, prompts disabled)
+== accept 2b (fallback): one LONG-LIVED loop process - one brief flash per logon,
+   not per poll. For zero flash: admin PowerShell -> .\watch.ps1 -Unregister ;
+   .\watch.ps1 -Register -Headless   (or fix the launcher, see watch-*.log)
+== exits in Invoke-PollRound: 6
+OK: every exit path sets its closing summary
+== exits in Invoke-PollOnce: 2 (lock held / crashed / normal)
+OK: loop closing lines covered (6 exit paths, all with their own summary)
+== check_loop_summary PASSED
+== accept 2c: watcher closing lines verified (every exit path has its summary)
+== deliverables: (no deliverable/OFFICE_HASHES.json - package checks skipped)
+   SKIP 3h no Office deliverable declared in deliverable/OFFICE_HASHES.json - nothing to open
+== task r2: t3_sys1_selfcheck.ps1
+SYS1_TASK=sys1-round2
+time_local=2026-10-22 20:07:48 +08:00
+time_utc=2026-10-22 12:07:48
+host=LAPTOP-R77M5D6M
+os=Microsoft Windows 11 专业版
+git=git version 2.54.0.windows.1
+git_branch=arena/94caee25-rea
+git_head=b7f557d8
+git_subject=docs(sys1): measured sparse-clone size
+SYS1_CHECK_ROUND=2
+PYTHON=missing
+SYS1_LOCAL_OK=False
+   [FAIL] task exited 1 (3s)
+== accept 2d: hands-free auto_pull/auto_push present in watch.ps1
+== success criteria: results/status/success_criteria.json
+   rea round 2 - sys1 runs on the real Windows machine. The watcher pulls this branch, runs code/tasks/t3_sys1_selfcheck.ps1 (offline self-check + agent-logit decision + multi-lingual demo), and pushes results/sys1/local/SYS1_LOCAL.md back. 'Local' always means the user's scheduled watcher, never a sandbox folder.
+   OK   exists: watch.ps1 (84094 B)
+   OK   exists: bootstrap.ps1 (5765 B)
+   OK   exists: auth.ps1 (33980 B)
+   OK   exists: skills/git-sync/VERSION (6 B)
+   OK   exists: skills/git-sync/sync.config.json (2151 B)
+   OK   exists: code/local_check.ps1 (30377 B)
+   OK   exists: code/tasks/manifest.json (845 B)
+   OK   exists: code/tasks/t3_sys1_selfcheck.ps1 (6584 B)
+   OK   exists: code/sys1/selfcheck.py (22613 B)
+   OK   exists: code/sys1/sys1/engine.py (15085 B)
+   OK   exists: code/sys1/examples/ticket_questions.json (622 B)
+   OK   exists: deliverable/sys1/README.md (7376 B)
+   OK   exists: deliverable/sys1/LAYA_REVERSE.md (11143 B)
+   OK   exists: deliverable/sys1/JEV_REVERSE.md (7376 B)
+   OK   exists: results/sys1/EVAL.md (1820 B)
+   OK   exists: results/sys1/SELFCHECK.md (845 B)
+   FAIL DOES NOT contain in results/sys1/local/SYS1_LOCAL.md: SYS1_LOCAL_OK=True
+   FAIL regex in results/sys1/local/SYS1_LOCAL.md: SYS1_TASK=sys1-round2[\s\S]*SYS1_LOCAL_OK=True

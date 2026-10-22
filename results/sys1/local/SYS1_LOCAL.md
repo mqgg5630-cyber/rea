@@ -1,0 +1,12 @@
+SYS1_TASK=sys1-round2
+time_local=2026-10-22 20:07:48 +08:00
+time_utc=2026-10-22 12:07:48
+host=LAPTOP-R77M5D6M
+os=Microsoft Windows 11 专业版
+git=git version 2.54.0.windows.1
+git_branch=arena/94caee25-rea
+git_head=b7f557d8
+git_subject=docs(sys1): measured sparse-clone size
+SYS1_CHECK_ROUND=2
+PYTHON=missing
+SYS1_LOCAL_OK=False
