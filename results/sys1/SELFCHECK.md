@@ -3,7 +3,7 @@
 - version: `1.0.0`
 - result: **21/21 PASS**
 - host: `e2b.local` (Linux-6.1.158+-x86_64-with-glibc2.36, Python 3.11.2)
-- latency: p50 1.389 ms, p95 2.155 ms, 720.1 decisions/sec
+- latency: p50 1.221 ms, p95 1.313 ms, 818.7 decisions/sec
 
 | check | result |
 |---|---|

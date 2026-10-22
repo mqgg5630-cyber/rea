@@ -1,11 +1,11 @@
 {
   "tool": "sys1",
   "version": "1.0.0",
-  "generated_at": "2026-10-22T11:50:25Z",
+  "generated_at": "2026-10-22T12:06:25Z",
   "passed": 21,
   "total": 21,
   "ok": true,
-  "elapsed_s": 0.83,
+  "elapsed_s": 0.77,
   "checks": [
     {
       "check": "render_options keeps order",
@@ -321,7 +321,7 @@
               }
             }
           },
-          "timing_header": "1.58"
+          "timing_header": "1.54"
         },
         "batch": {
           "http": 200,
@@ -414,16 +414,16 @@
       "check": "latency under 25 ms p95",
       "ok": true,
       "detail": {
-        "p50_ms": 1.389,
-        "p95_ms": 2.155,
-        "qps": 720.1
+        "p50_ms": 1.221,
+        "p95_ms": 1.313,
+        "qps": 818.7
       }
     }
   ],
   "latency": {
-    "p50_ms": 1.389,
-    "p95_ms": 2.155,
-    "qps": 720.1
+    "p50_ms": 1.221,
+    "p95_ms": 1.313,
+    "qps": 818.7
   },
   "audit": {
     "banned_client_imports": [],
