@@ -47,7 +47,8 @@ E:\0github\
 
 * 克隆参数：`--filter=blob:none --sparse`，sparse 只保留
   `results deliverable code skills`（根目录脚本总是保留）。
-  这个仓库工作区 370 MB，实际落盘约 **3 MB**；`src/`、`website/`、`tests/` 不会被下载。
+  这个仓库在 GitHub 上 374 MB，实测 blobless+sparse 克隆后落盘 **13 MB / 1.4 秒**
+  （`src/`、`website/`、`tests/` 不下载），并且在这个克隆里 `selfcheck.py` 仍是 21/21。
 * `hub.py mirror` 把每个克隆的 `results\` 与 `deliverable\` 复制到
   `E:\0github\results\<name>\`，源码不复制。
 * 想更狠：`.\hub.ps1 trim --keep results` 后，连 `code\` 也会从工作区消失
@@ -60,7 +61,7 @@ E:\0github\
 
 ---
 
-## 3. 重建（三条命令）
+## 3. 重建（复制粘贴即可）
 
 在你刚才的 `E:\0github` 下：
 
