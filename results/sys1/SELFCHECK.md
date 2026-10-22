@@ -3,7 +3,7 @@
 - version: `1.0.0`
 - result: **21/21 PASS**
 - host: `e2b.local` (Linux-6.1.158+-x86_64-with-glibc2.36, Python 3.11.2)
-- latency: p50 1.282 ms, p95 2.357 ms, 780.0 decisions/sec
+- latency: p50 1.389 ms, p95 2.155 ms, 720.1 decisions/sec
 
 | check | result |
 |---|---|
@@ -28,5 +28,3 @@
 | no outbound client imports | OK |
 | works with sockets blocked | OK |
 | latency under 25 ms p95 | OK |
-
-SYS1_LOCAL_OK=True

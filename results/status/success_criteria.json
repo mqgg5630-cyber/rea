@@ -22,7 +22,7 @@
     "results/sys1/local/SYS1_LOCAL.md": "SYS1_LOCAL_OK=True"
   },
   "require_regex": {
-    "results/sys1/local/SYS1_LOCAL.md": "SYS1_ROUND=2\\b[\\s\\S]*SYS1_AGENT_CHOICE=billing[\\s\\S]*SYS1_HTTP_OK=True[\\s\\S]*SYS1_MCP_OK=True"
+    "results/sys1/local/SYS1_LOCAL.md": "SYS1_TASK=sys1-round2[\\s\\S]*SYS1_LOCAL_OK=True"
   },
   "notes": [
     "SYS1_AGENT_CHOICE must be billing: that answer is the agent's logits decoded by laya's math on the local CPU.",

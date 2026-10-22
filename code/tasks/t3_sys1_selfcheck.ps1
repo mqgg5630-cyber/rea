@@ -56,7 +56,7 @@ function Get-Python {
     return $null
 }
 
-Add-Line 'SYS1_ROUND=2'
+Add-Line 'SYS1_TASK=sys1-round2'
 Add-Line ('time_local=' + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'))
 Add-Line ('time_utc=' + (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd HH:mm:ss'))
 Add-Line ('host=' + $env:COMPUTERNAME)
@@ -69,6 +69,16 @@ Add-Line ('git=' + (Get-GitLine @('--version')))
 Add-Line ('git_branch=' + (Get-GitLine @('rev-parse', '--abbrev-ref', 'HEAD')))
 Add-Line ('git_head=' + (Get-GitLine @('rev-parse', '--short', 'HEAD')))
 Add-Line ('git_subject=' + (Get-GitLine @('log', '-1', '--pretty=%s')))
+
+# handshake round this task was launched for (manifest.json decides which task runs)
+$hsRound = -1
+try {
+    $hs = Get-Content -LiteralPath (Join-Path $repoRoot 'results\status\handshake.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+    $hsRound = [int]$hs.round
+} catch {
+    $hsRound = -1
+}
+Add-Line ('SYS1_CHECK_ROUND=' + [string]$hsRound)
 
 $py = Get-Python
 if ($null -eq $py) {

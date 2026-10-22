@@ -1,11 +1,11 @@
 {
   "tool": "sys1",
   "version": "1.0.0",
-  "generated_at": "2026-10-22T11:47:56Z",
+  "generated_at": "2026-10-22T11:50:25Z",
   "passed": 21,
   "total": 21,
   "ok": true,
-  "elapsed_s": 0.81,
+  "elapsed_s": 0.83,
   "checks": [
     {
       "check": "render_options keeps order",
@@ -321,7 +321,7 @@
               }
             }
           },
-          "timing_header": "1.68"
+          "timing_header": "1.58"
         },
         "batch": {
           "http": 200,
@@ -414,16 +414,16 @@
       "check": "latency under 25 ms p95",
       "ok": true,
       "detail": {
-        "p50_ms": 1.282,
-        "p95_ms": 2.357,
-        "qps": 780.0
+        "p50_ms": 1.389,
+        "p95_ms": 2.155,
+        "qps": 720.1
       }
     }
   ],
   "latency": {
-    "p50_ms": 1.282,
-    "p95_ms": 2.357,
-    "qps": 780.0
+    "p50_ms": 1.389,
+    "p95_ms": 2.155,
+    "qps": 720.1
   },
   "audit": {
     "banned_client_imports": [],
@@ -435,6 +435,5 @@
     "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
     "python": "3.11.2",
     "cpu_count": 2
-  },
-  "SYS1_LOCAL_OK": true
+  }
 }
