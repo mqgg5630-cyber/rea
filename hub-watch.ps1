@@ -6,6 +6,8 @@ param(
     [switch]$Status,
     [switch]$Loop,
     [switch]$Once,
+    [string]$AddUrl = '',
+    [string]$Branch = '',
     [ValidateRange(1, 60)][int]$Interval = 2
 )
 $ErrorActionPreference = 'Continue'
@@ -96,6 +98,22 @@ function Invoke-HubTick {
     Write-HubLog 'tick end; results mirrored without Python'
 }
 
+if ($AddUrl) {
+    if (-not $Branch) { Write-Output 'ERROR: -Branch is required with -AddUrl'; exit 2 }
+    if (-not (Test-Path -LiteralPath $CloneRoot)) { New-Item -ItemType Directory -Force -Path $CloneRoot | Out-Null }
+    $repoName = ([string]$AddUrl).TrimEnd('/').Split('/')[-1] -replace '\.git$',''
+    $tail = ($Branch -split '/')[-1]
+    $name = (($repoName + '-' + $tail) -replace '[^A-Za-z0-9_.-]','-')
+    $dest = Join-Path $CloneRoot $name
+    if (Test-Path -LiteralPath $dest) { Write-Output ("already exists: {0}" -f $dest); exit 0 }
+    Write-Output ("sparse clone {0} branch {1} -> {2}" -f $AddUrl, $Branch, $dest)
+    & git clone --filter=blob:none --sparse --branch $Branch $AddUrl $dest
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    & git -C $dest sparse-checkout set results deliverable code skills
+    if ($LASTEXITCODE -ne 0) { Write-Output 'WARNING: sparse path configuration failed'; exit $LASTEXITCODE }
+    Write-Output 'added as a sparse seed; the existing git-sync-hub loop will poll it'
+    exit 0
+}
 if ($Install) {
     if (-not (Test-Path -LiteralPath $CloneRoot)) { New-Item -ItemType Directory -Force -Path $CloneRoot | Out-Null }
     # Migrate from per-clone scheduled tasks and stop their current loops.

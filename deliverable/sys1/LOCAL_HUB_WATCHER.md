@@ -9,7 +9,13 @@
 
 The task starts at the current Windows user's logon and runs one serialized loop. Each tick discovers remote `arena/*` branches for the already registered project remotes, creates sparse, blobless checkouts for new branches under `E:\0github\.git-sync`, then runs each checkout's existing `watch.ps1` once. The sparse paths are `results`, `deliverable`, `code`, and `skills`; project source trees are not materialized. Results and deliverables are mirrored to `E:\0github\results\<checkout-name>` by PowerShell. Polling, branch discovery, and result mirroring do not require Python.
 
-The first checkout for a project is the seed that supplies its remote URL. To onboard another project, make one sparse checkout for that project's remote under `.git-sync`; the hub will discover all its `arena/*` branches thereafter. A new Arena conversation branch for an already registered remote is discovered automatically on a later tick. No per-branch watcher registration is needed.
+The first checkout for a project is the seed that supplies its remote URL. To onboard another project, add one sparse seed checkout (no source tree and no per-project scheduled task):
+
+```powershell
+.\hub-watch.ps1 -AddUrl https://github.com/OWNER/REPO.git -Branch arena/SESSION-REPO
+```
+
+The hub will discover all its `arena/*` branches thereafter. A new Arena conversation branch for an already registered remote is discovered automatically on a later tick. No per-branch watcher registration is needed.
 
 The one-time `-Install` migration pauses and removes existing `git-sync-watch-*` scheduled tasks, then registers only `git-sync-hub`. Useful commands:
 
