@@ -3,13 +3,14 @@
     "host":  "LAPTOP-R77M5D6M",
     "repo":  "rea",
     "branch":  "arena/94caee25-rea",
-    "source_commit":  "51e347aee224a7876bd0e5d6b7e5cb4e1b75d385",
-    "synced_at_utc":  "2026-10-24T07:05:33Z",
-    "synced_at_local":  "2026-10-24 15:05:33",
-    "poll_interval_sec":  15,
+    "source_commit":  "76f1e5ff7ff9c512b566af362c94859c8f006235",
+    "synced_at_utc":  "2026-10-24T08:04:00Z",
+    "synced_at_local":  "2026-10-24 16:04:00",
+    "poll_interval_sec":  null,
     "local_results_dir":  "E:\\0github\\results\\rea-94caee25-rea",
     "synced_files_count":  29,
     "tasks_executed_count":  0,
+    "tasks_all_ok":  true,
     "tasks_executed":  [
 
                        ],
