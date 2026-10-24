@@ -1,0 +1,20 @@
+﻿{
+    "status":  "synced",
+    "host":  "LAPTOP-R77M5D6M",
+    "repo":  "rea",
+    "branch":  "arena/94caee25-rea",
+    "source_commit":  "51e347aee224a7876bd0e5d6b7e5cb4e1b75d385",
+    "synced_at_utc":  "2026-10-24T07:05:19Z",
+    "synced_at_local":  "2026-10-24 15:05:19",
+    "poll_interval_sec":  15,
+    "local_results_dir":  "E:\\0github\\results\\rea-94caee25-rea",
+    "synced_files_count":  28,
+    "tasks_executed_count":  0,
+    "tasks_executed":  [
+
+                       ],
+    "copied_targets":  [
+
+                       ],
+    "mode":  "auto-poll-exec-and-sync-zero-window-v4.0"
+}
